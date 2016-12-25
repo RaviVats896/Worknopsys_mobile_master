@@ -10,8 +10,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ravivats.worknopsysmobile.LoginActivity">
 
-    <TextView
+    <EditText
+        android:hint="@string/loginPersonal_numberHint"
+        android:id="@+id/loginPersonalNoEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:inputType="number"
+        />
+    <EditText
+        android:inputType="textPassword"
+        android:hint="@string/loginPasswordHint"
+        android:id="@+id/loginPasswordEditText"
+        android:textColorHint="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginPersonalNoEditText"
+        android:layout_marginTop="10dp"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:id="@+id/loginLocationSwitch"
+        android:layout_height="wrap_content"
+        android:text="Enable Location"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginPasswordEditText"
+        android:switchPadding="40dp"
+        android:layout_marginTop="10dp"
+        />
+    <Button
+        android:id="@+id/loginLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginLocationSwitch"
+        android:layout_marginTop="10dp"
+        android:text="@string/loginLoginBtnText"/>
 </RelativeLayout>
