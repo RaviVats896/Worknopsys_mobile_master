@@ -80,19 +80,26 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_daily_overview) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_working_orders) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_create_customer) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_create_project) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_mgmt_working_orders) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_hours_review) {
+
+        } else if (id == R.id.nav_config) {
+
+        } else if (id == R.id.nav_logout) {
+
+        } else if (id == R.id.nav_about) {
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
