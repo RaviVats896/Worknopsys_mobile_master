@@ -1,5 +1,6 @@
 package com.example.ravivats.worknopsysmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -89,6 +90,8 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_create_customer) {
 
         } else if (id == R.id.nav_create_project) {
+            Intent i=new Intent(Main2Activity.this,CreateProject.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_mgmt_working_orders) {
 
