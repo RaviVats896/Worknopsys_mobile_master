@@ -3,13 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.Orders">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:id="@+id/helloWorld"/>
+        android:text="@string/description"
+        android:id="@+id/cp_orders_desc_label"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity"
+        android:id="@+id/cp_orders_activity_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Short Text"
+        android:id="@+id/cp_orders_short_txt_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Status"
+        android:id="@+id/cp_orders_activity_status_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Long Text"
+        android:id="@+id/cp_orders_long_txt_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Time"
+        android:id="@+id/cp_orders_time_label"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:id="@+id/cp_orders_long_txt_status_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+
     <Button
         android:id="@+id/fragmentBtn"
         android:layout_width="wrap_content"
