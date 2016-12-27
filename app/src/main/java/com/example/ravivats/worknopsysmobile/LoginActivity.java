@@ -38,9 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(loginPersonalNoEditText.getText().equals("admin") && loginPasswordEditText.getText().equals("admin") )
-                { Intent i= new Intent(LoginActivity.this,Main2Activity.class);
-                   startActivity(i);
+                if(loginPersonalNoEditText.getText().toString().equals("12345") && loginPasswordEditText.getText().toString().equals("admin") ) {
+                    Intent i = new Intent(LoginActivity.this, Main2Activity.class);
+                    startActivity(i);
+                    String number = loginPersonalNoEditText.getText().toString();
+                    Constants.setPhoneNumber(number);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Incorrect login credentials!", Toast.LENGTH_SHORT).show();
