@@ -15,7 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
         android:hint="@string/loginPersonal_numberHint"
         android:inputType="number"
         android:textColorHint="@color/colorPrimaryDark" />
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginPersonalNoEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
         android:hint="@string/loginPasswordHint"
         android:inputType="textPassword"
         android:textColorHint="@color/colorAccent" />
@@ -37,12 +39,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginPasswordEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:switchPadding="40dp"
+        android:layout_marginTop="15dp"
+        android:ems="11"
+        android:switchPadding="30dp"
         android:text="Enable Location"
         android:textColor="@color/colorPrimary"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textStyle="italic" />
 
     <Button
         android:id="@+id/loginLoginBtn"
@@ -50,6 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginLocationSwitch"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/loginLoginBtnText" />
 </RelativeLayout>
