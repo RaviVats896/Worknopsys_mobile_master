@@ -11,44 +11,45 @@
     tools:context="com.example.ravivats.worknopsysmobile.LoginActivity">
 
     <EditText
-        android:hint="@string/loginPersonal_numberHint"
         android:id="@+id/loginPersonalNoEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:hint="@string/loginPersonal_numberHint"
         android:inputType="number"
-        />
+        android:textColorHint="@color/colorPrimaryDark" />
+
     <EditText
-        android:inputType="textPassword"
-        android:hint="@string/loginPasswordHint"
         android:id="@+id/loginPasswordEditText"
-        android:textColorHint="@color/colorAccent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/loginPersonalNoEditText"
-        android:layout_marginTop="10dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="@string/loginPasswordHint"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorAccent" />
+
     <Switch
-        android:layout_width="wrap_content"
         android:id="@+id/loginLocationSwitch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/loginPasswordEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:switchPadding="40dp"
         android:text="Enable Location"
         android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
         android:textSize="16dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/loginPasswordEditText"
-        android:switchPadding="40dp"
-        android:layout_marginTop="10dp"
-        />
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/loginLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/loginLocationSwitch"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/loginLoginBtnText"/>
+        android:text="@string/loginLoginBtnText" />
 </RelativeLayout>

@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView navDrawerNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class Main2Activity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main2, menu);
-        navDrawerNumber=(TextView) findViewById(R.id.navDrawertxtViewNumber);
+        navDrawerNumber = (TextView) findViewById(R.id.navDrawertxtViewNumber);
         navDrawerNumber.setText(Constants.getPhoneNumber());
         return true;
     }
@@ -90,7 +91,7 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_create_customer) {
 
         } else if (id == R.id.nav_create_project) {
-            Intent i=new Intent(Main2Activity.this,CreateProject.class);
+            Intent i = new Intent(Main2Activity.this, CreateProject.class);
             startActivity(i);
 
         } else if (id == R.id.nav_mgmt_working_orders) {

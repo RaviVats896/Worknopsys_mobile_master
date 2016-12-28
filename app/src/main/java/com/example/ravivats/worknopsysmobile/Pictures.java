@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 public class Pictures extends Fragment {
 
 
-
     public Pictures() {
         // Required empty public constructor
     }
