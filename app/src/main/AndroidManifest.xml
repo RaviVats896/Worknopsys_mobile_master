@@ -19,11 +19,22 @@
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateProject"
+        <activity
+            android:name=".CreateProject"
             android:label="@string/CreateProject"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProjectDetails"
+            android:label="@string/CreateProject"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProjectPictures"
+            android:label="@string/CreateProject"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProjectOrders"
+            android:label="@string/CreateProject"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
