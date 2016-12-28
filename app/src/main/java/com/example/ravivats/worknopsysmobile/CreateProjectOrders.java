@@ -14,6 +14,7 @@ import android.widget.Button;
 
 public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button cpOrdersNxtBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                 //startActivity(in);
             }
         });
+
     }
 
     @Override
