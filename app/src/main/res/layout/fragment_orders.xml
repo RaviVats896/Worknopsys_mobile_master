@@ -3,67 +3,146 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.Orders">
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/description"
         android:id="@+id/cp_orders_desc_label"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textStyle="italic"
-        android:layout_marginLeft="10dp"
-        android:textColor="@color/colorPrimaryDark"
-        />
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/colorPrimaryDark" />
+    <EditText android:layout_marginLeft="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cp_orders_activity_edit_text"
+        android:textColorHint="@color/colorAccent"
+        android:layout_below="@id/cp_orders_desc_label"
+        android:layout_marginTop="30dp"
+        android:text="Activity Name"
+        android:layout_alignBottom="@+id/cp_orders_activity_label" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Activity"
+        android:layout_below="@id/cp_orders_desc_label"
         android:id="@+id/cp_orders_activity_label"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"/>
-    <TextView
+        <EditText android:layout_marginLeft="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cp_orders_short_txt_edit_text"
+            android:textColorHint="@color/colorAccent"
+            android:layout_below="@id/cp_orders_activity_label"
+            android:layout_marginTop="30dp"
+            android:hint="Short Text"
+            android:layout_alignBottom="@+id/cp_orders_short_txt_label" />
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Short Text"
         android:id="@+id/cp_orders_short_txt_label"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/cp_orders_activity_label"
         android:layout_marginLeft="20dp"/>
-    <TextView
+        <EditText android:layout_marginLeft="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cp_orders_activity_status_edit_text"
+            android:textColorHint="@color/colorAccent"
+            android:layout_below="@id/cp_orders_short_txt_label"
+            android:layout_marginTop="30dp"
+            android:hint="Activity Status"
+            android:layout_alignBottom="@+id/cp_orders_activity_status_label" />
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Activity Status"
         android:id="@+id/cp_orders_activity_status_label"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
-    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/cp_orders_short_txt_label"/>
+        <EditText android:layout_marginLeft="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cp_orders_long_txt_edit_text"
+            android:textColorHint="@color/colorAccent"
+            android:layout_below="@id/cp_orders_activity_status_label"
+            android:layout_marginTop="30dp"
+            android:hint="Long Text"
+            android:layout_alignBottom="@+id/cp_orders_long_txt_label" />
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Long Text"
         android:id="@+id/cp_orders_long_txt_label"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/cp_orders_activity_status_label"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Time"
         android:id="@+id/cp_orders_time_label"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textStyle="italic"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/cp_orders_long_txt_label"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
-        android:id="@+id/cp_orders_long_txt_status_label"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
+        android:id="@+id/cp_orders_date_label"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/cp_orders_time_label"/>
+        <EditText android:layout_marginLeft="250dp"
+            android:hint="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cp_orders_date_edit_text"
+            android:textColorHint="@color/colorAccent"
+            android:layout_below="@id/cp_orders_time_label"
+            android:layout_marginTop="30dp"
+            android:layout_alignBottom="@+id/cp_orders_date_label" />
 
-    <Button
-        android:id="@+id/fragmentBtn"
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/loginLoginBtnText" />
+        android:text="Time"
+        android:id="@+id/cp_orders_time1_label"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/cp_orders_date_label"/>
+        <EditText 
+            android:hint="time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cp_orders_time1_edit_text"
+            android:textColorHint="@color/colorAccent"
+            android:layout_marginLeft="250dp"
+            android:layout_below="@id/cp_orders_date_label"
+            android:layout_marginTop="30dp"
+            android:layout_alignBottom="@+id/cp_orders_time1_label" />
 
+        <Button
+        android:id="@+id/fragmentBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/loginLoginBtnText"
+        android:layout_below="@id/cp_orders_time1_label"/>
+    </RelativeLayout>
 </FrameLayout>
