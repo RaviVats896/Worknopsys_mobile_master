@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group >
+    <group>
         <item
             android:id="@+id/nav_daily_overview"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
             android:title="Daily Overview" />
         <item
             android:id="@+id/nav_working_orders"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_assignment_black_24dp"
             android:title="My Working Orders" />
     </group>
 
@@ -16,15 +16,15 @@
         <menu>
             <item
                 android:id="@+id/nav_create_customer"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_group_add_black_24dp"
                 android:title="Create Customer" />
             <item
                 android:id="@+id/nav_create_project"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_create_new_folder_black_24dp"
                 android:title="Create Project" />
             <item
                 android:id="@+id/nav_mgmt_working_orders"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_assignment_late_black_24dp"
                 android:title="Management Working Orders" />
 
         </menu>
@@ -33,19 +33,19 @@
         <menu>
             <item
                 android:id="@+id/nav_hours_review"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_av_timer_black_24dp"
                 android:title="Hours Overview" />
             <item
                 android:id="@+id/nav_config"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_manage"
                 android:title="Configuration" />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="Logout" />
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_info_black_24dp"
                 android:title="About" />
 
         </menu>
