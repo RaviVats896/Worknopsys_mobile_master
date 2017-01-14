@@ -13,8 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button cpDetailsNxtBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,11 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        cpDetailsNxtBtn=(Button) findViewById(R.id.cp_details_nxt_btn);
+        cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
         cpDetailsNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(CreateProjectDetails.this,CreateProjectPictures.class);
+                Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
                 startActivity(in);
             }
         });
@@ -59,6 +60,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
+            startActivity(new Intent(CreateProjectDetails.this, CreateCustomer.class));
 
         } else if (id == R.id.nav_create_project) {
             //Intent i=new Intent(CreateProject.this,CreateProject.class);

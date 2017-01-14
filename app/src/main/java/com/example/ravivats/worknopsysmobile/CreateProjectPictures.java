@@ -209,7 +209,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
-
+            startActivity(new Intent(CreateProjectPictures.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
             //Intent i=new Intent(CreateProject.this,CreateProject.class);
             //startActivity(i);
