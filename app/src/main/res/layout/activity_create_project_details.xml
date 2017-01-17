@@ -92,17 +92,27 @@
                 android:layout_marginTop="15dp"
                 android:text="Starting Date" />
 
-            <EditText
-                android:id="@+id/cp_details_st_date_edit_text"
+            <!--<EditText-->
+                <!--android:id="@+id/cp_details_st_date_edit_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/cp_details_pro_name_label"-->
+                <!--android:layout_marginLeft="200dp"-->
+                <!--android:ems="9"-->
+                <!--android:hint="Starting Date"-->
+                <!--android:inputType="text"-->
+                <!--android:textColorHint="@color/colorAccent"-->
+                <!--android:textSize="16dp" />-->
+
+            <DatePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_details_pro_name_label"
                 android:layout_marginLeft="200dp"
-                android:ems="9"
-                android:hint="Starting Date"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                android:datePickerMode="calendar"
+                android:calendarViewShown="true"
+                android:id="@+id/cp_details_st_date_picker"
+                />
 
             <TextView
                 android:id="@+id/cp_details_pro_status_label"

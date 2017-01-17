@@ -12,9 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button cpDetailsNxtBtn;
+    DatePicker cpDetailsStartDatePicker;
+    TextView cpDetailsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +35,16 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
+        cpDetailsTextView=(TextView ) findViewById(R.id.cp_customers_cust_name_label);
+        cpDetailsStartDatePicker=(DatePicker) findViewById(R.id.cp_details_st_date_picker);
         cpDetailsNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
-                startActivity(in);
+                long s = cpDetailsStartDatePicker.getMaxDate();
+                cpDetailsTextView.setText(""+s);
+                Toast.makeText(getApplicationContext(),""+s,Toast.LENGTH_LONG).show();
+                //Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
+                //startActivity(in);
             }
         });
     }
