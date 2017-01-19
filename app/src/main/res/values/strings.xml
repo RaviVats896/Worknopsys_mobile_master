@@ -15,4 +15,16 @@
     <string name="create_project">Create Project</string>
     <string name="description">Description :</string>
     <string name="create_customer">Create Customer</string>
+    <string name="salutation_prompt">Salutation</string>
+    <string name="pick_date">PICK DATE</string>
+    <string-array name="salutation_array">
+        <item>Mr</item>
+        <item>Dr</item>
+        <item>Mrs</item>
+        <item>Ms</item>
+    </string-array>
+    <string-array name="project_status_array">
+        <item>In process</item>
+        <item>Completed</item>
+    </string-array>
 </resources>

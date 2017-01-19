@@ -1,19 +1,28 @@
 package com.example.ravivats.worknopsysmobile;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
+import android.widget.TimePicker;
 
-public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
     Button cpOrdersNxtBtn;
+    ImageButton cpOrdersDatePickerButton;
+    ImageButton cpOrdersTimePickerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,22 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         cpOrdersNxtBtn = (Button) findViewById(R.id.cp_orders_nxt_button);
+        cpOrdersDatePickerButton = (ImageButton) findViewById(R.id.cp_orders_date_button);
+        cpOrdersTimePickerButton = (ImageButton) findViewById(R.id.cp_orders_time1_button);
+        cpOrdersTimePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new CpOrderTimePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "timePicker");
+            }
+        });
+        cpOrdersDatePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new CpOrderDatePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
         cpOrdersNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +61,8 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                 //startActivity(in);
             }
         });
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -81,5 +106,16 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Log.v("Date",year+"  "+month+"  "+dayOfMonth);
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Log.v("Time",hourOfDay+"  "+minute);
     }
 }

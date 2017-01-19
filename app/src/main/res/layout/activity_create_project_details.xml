@@ -92,27 +92,15 @@
                 android:layout_marginTop="15dp"
                 android:text="Starting Date" />
 
-            <!--<EditText-->
-                <!--android:id="@+id/cp_details_st_date_edit_text"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@id/cp_details_pro_name_label"-->
-                <!--android:layout_marginLeft="200dp"-->
-                <!--android:ems="9"-->
-                <!--android:hint="Starting Date"-->
-                <!--android:inputType="text"-->
-                <!--android:textColorHint="@color/colorAccent"-->
-                <!--android:textSize="16dp" />-->
-
-            <DatePicker
+            <ImageButton
+                android:id="@+id/cp_details_st_date_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_details_pro_name_label"
                 android:layout_marginLeft="200dp"
-                android:datePickerMode="calendar"
-                android:calendarViewShown="true"
-                android:id="@+id/cp_details_st_date_picker"
-                />
+                android:layout_marginTop="10dp"
+                android:onClick="showDatePickerDialog"
+                android:src="@drawable/ic_event_black_24dp" />
 
             <TextView
                 android:id="@+id/cp_details_pro_status_label"
@@ -123,17 +111,14 @@
                 android:layout_marginTop="15dp"
                 android:text="Project Status" />
 
-            <EditText
-                android:id="@+id/cp_details_pro_status_edit_text"
+            <Spinner
+                android:id="@+id/cp_details_project_status_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_details_st_date_label"
                 android:layout_marginLeft="200dp"
-                android:ems="9"
-                android:hint="Project Status"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                android:layout_marginTop="20dp"
+                android:dropDownWidth="wrap_content" />
 
             <TextView
                 android:id="@+id/cp_details_location_label"
