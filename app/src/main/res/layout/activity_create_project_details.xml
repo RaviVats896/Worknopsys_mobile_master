@@ -92,15 +92,18 @@
                 android:layout_marginTop="15dp"
                 android:text="Starting Date" />
 
-            <ImageButton
-                android:id="@+id/cp_details_st_date_button"
+            <EditText
+                android:id="@+id/cp_details_st_date_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_details_pro_name_label"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="10dp"
-                android:onClick="showDatePickerDialog"
-                android:src="@drawable/ic_event_black_24dp" />
+                android:ems="9"
+                android:hint="Starting Date"
+                android:inputType="date"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="16dp"
+                android:clickable="true"/>
 
             <TextView
                 android:id="@+id/cp_details_pro_status_label"

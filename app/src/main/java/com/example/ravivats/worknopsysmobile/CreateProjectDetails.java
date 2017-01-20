@@ -25,10 +25,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,DatePickerDialog.OnDateSetListener,AdapterView.OnItemSelectedListener {
-    ImageButton cpDetailsStartDatePickerBtn;
+public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
+    EditText cpDetailsStartDatePickerBtn;
     Button cpDetailsNxtBtn;
-    EditText cpDetailsEditText;
     Spinner cpDetailsProStatusSpinner;
 
     @Override
@@ -45,8 +44,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
-        cpDetailsStartDatePickerBtn = (ImageButton) findViewById(R.id.cp_details_st_date_button);
-        cpDetailsEditText =(EditText) findViewById(R.id.cp_details_pro_name_edit_text);
+        cpDetailsStartDatePickerBtn = (EditText) findViewById(R.id.cp_details_st_date_edit_text);
         cpDetailsProStatusSpinner = (Spinner) findViewById(R.id.cp_details_project_status_spinner);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.project_status_array, android.R.layout.simple_spinner_item);
@@ -55,8 +53,13 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         // Apply the adapter to the spinner
         cpDetailsProStatusSpinner.setAdapter(adapter1);
         cpDetailsProStatusSpinner.setOnItemSelectedListener(this);
-
-
+        cpDetailsStartDatePickerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
         cpDetailsNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +67,6 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
                 startActivity(in);
             }
         });
-
-    }
-
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
 
     }
 
@@ -121,7 +118,9 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        //cpDetailsEditText.setText(year+" "+month+" "+dayOfMonth);
+        cpDetailsStartDatePickerBtn.setText(new StringBuilder().append(dayOfMonth).append("/")
+                .append(month+1).append("/").append(year));
+
     }
 
     @Override

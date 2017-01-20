@@ -16,13 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 
 public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
     Button cpOrdersNxtBtn;
-    ImageButton cpOrdersDatePickerButton;
-    ImageButton cpOrdersTimePickerButton;
+    EditText cpOrdersDatePickerButton;
+    EditText cpOrdersTimePickerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         cpOrdersNxtBtn = (Button) findViewById(R.id.cp_orders_nxt_button);
-        cpOrdersDatePickerButton = (ImageButton) findViewById(R.id.cp_orders_date_button);
-        cpOrdersTimePickerButton = (ImageButton) findViewById(R.id.cp_orders_time1_button);
+        cpOrdersDatePickerButton = (EditText) findViewById(R.id.cp_orders_date_edit_text);
+        cpOrdersTimePickerButton = (EditText) findViewById(R.id.cp_orders_time1_edit_text);
         cpOrdersTimePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,10 +113,14 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Log.v("Date",year+"  "+month+"  "+dayOfMonth);
+        cpOrdersDatePickerButton.setText(new StringBuilder().append(dayOfMonth).append("/")
+                .append(month+1).append("/").append(year));
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Log.v("Time",hourOfDay+"  "+minute);
+        cpOrdersTimePickerButton.setText(new StringBuilder().append(hourOfDay).append(":")
+                .append(minute));
     }
 }
