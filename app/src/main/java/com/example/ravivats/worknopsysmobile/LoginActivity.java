@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (loginPersonalNoEditText.getText().toString().equals("12345") && loginPasswordEditText.getText().toString().equals("admin")) {
-                    Intent i = new Intent(LoginActivity.this, Main2Activity.class);
+                    Intent i = new Intent(LoginActivity.this, HoursReviewActivity.class);
                     startActivity(i);
                     String number = loginPersonalNoEditText.getText().toString();
                     Constants.setPhoneNumber(number);

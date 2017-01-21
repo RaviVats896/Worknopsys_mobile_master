@@ -15,14 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Main2Activity extends AppCompatActivity
+public class HoursReviewActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView navDrawerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_hours_review);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -89,9 +89,9 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
-            startActivity(new Intent(Main2Activity.this, CreateCustomer.class));
+            startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
-            Intent i = new Intent(Main2Activity.this, CreateProjectDetails.class);
+            Intent i = new Intent(HoursReviewActivity.this, CreateProjectDetails.class);
             startActivity(i);
 
         } else if (id == R.id.nav_mgmt_working_orders) {
