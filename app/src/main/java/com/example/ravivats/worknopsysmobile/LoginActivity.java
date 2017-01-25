@@ -10,11 +10,26 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginActivity extends AppCompatActivity {
+    public static final String REGISTER_URL = "http://worknopsys.ml/api/employees/auth";
+
+    public static final String KEY_USERNAME = "employeephone";
+    public static final String KEY_PASSWORD = "employeepassword";
     Switch locationSwitch;
     EditText loginPersonalNoEditText;
     EditText loginPasswordEditText;
     Button loginBtn;
+    StringRequest stringRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +50,48 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (loginPersonalNoEditText.getText().toString().equals("12345") && loginPasswordEditText.getText().toString().equals("admin")) {
-                    Intent i = new Intent(LoginActivity.this, HoursReviewActivity.class);
-                    startActivity(i);
-                    String number = loginPersonalNoEditText.getText().toString();
-                    Constants.setPhoneNumber(number);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Incorrect login credentials!", Toast.LENGTH_SHORT).show();
-                }
+                final String employeePhone=loginPersonalNoEditText.getText().toString().trim();
+                final String employeePassword=loginPasswordEditText.getText().toString().trim();
+                stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.equalsIgnoreCase("true")){
+                                    Constants.setPhoneNumber(employeePhone);
+                                    startActivity(new Intent(LoginActivity.this, HoursReviewActivity.class));
+                                }
+                                else if(response.equalsIgnoreCase("false")){
+                                    Toast.makeText(LoginActivity.this,"Login failed! Please check login credentials.",Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                Toast.makeText(LoginActivity.this,"Request failed! Please check your Internet Connection.",Toast.LENGTH_LONG).show();
+                            }
+                        }){
+                    @Override
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put(KEY_USERNAME,employeePhone);
+                        params.put(KEY_PASSWORD,employeePassword);
+
+                        return params;
+                    }
+
+                };
+                requestQueue.add(stringRequest);
+
             }
         });
+
 
     }
 }

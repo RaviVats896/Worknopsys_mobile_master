@@ -1,5 +1,6 @@
 package com.example.ravivats.worknopsysmobile;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,9 +16,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+
 public class HoursReviewActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView navDrawerNumber;
+    TextView txtView1;
+
+
+    final static String url = "http://worknopsys.ml/api/tasks";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +62,56 @@ public class HoursReviewActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        txtView1 = (TextView) findViewById(R.id.textview1);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject last = response.getJSONObject(0);
+                    String a1 = last.getString("Name");
+                    txtView1.setText("Response is:" + a1);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtView1.setText("Error");
+
+            }
+        });
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        // Display the first 500 characters of the response string.
+//                        txtView1.setText("Response is: " + response);
+//                        try {
+//                            JSONArray array = new JSONArray(response);
+//                            JSONObject last = array.getJSONObject(0);
+//                            String a1 = last.getString("Name");
+//                            txtView1.setText("Response is:" + a1);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//
+//                    }
+//
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                txtView1.setText("That didn't work!");
+//            }
+//        });
+// Add the request to the RequestQueue.
+        queue.add(jsObjRequest);
+
+
     }
 
     @Override
@@ -93,7 +163,6 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_create_project) {
             Intent i = new Intent(HoursReviewActivity.this, CreateProjectDetails.class);
             startActivity(i);
-
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
