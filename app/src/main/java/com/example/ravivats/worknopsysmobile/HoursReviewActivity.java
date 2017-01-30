@@ -24,6 +24,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.domain.Task;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,6 +65,7 @@ public class HoursReviewActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         txtView1 = (TextView) findViewById(R.id.textview1);
+
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
@@ -70,8 +73,9 @@ public class HoursReviewActivity extends AppCompatActivity
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject last = response.getJSONObject(0);
-                    String a1 = last.getString("Name");
-                    txtView1.setText("Response is:" + a1);
+                    Gson gson=new Gson();
+                    Task task = gson.fromJson(last.toString(),Task.class);
+                    txtView1.setText("Response is:" + task.getName()+"\t"+task.getTask()+"\t"+task.getDescription());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
