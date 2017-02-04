@@ -1,17 +1,20 @@
 package com.example.ravivats.worknopsysmobile;
 
+import com.example.ravivats.worknopsysmobile.domain.Employee;
+
 /**
  * Created by Ravi Vats on 27-12-2016.
  */
 
 public class Constants {
-    private static String PHONE_NUMBER;
+    private static Employee EMPLOYEE;
 
-    public static String getPhoneNumber() {
-        return PHONE_NUMBER;
+    public static Employee getEMPLOYEE() {
+        return EMPLOYEE;
     }
 
-    public static void setPhoneNumber(String phoneNumber) {
-        PHONE_NUMBER = phoneNumber;
+    public static void setEMPLOYEE(Employee EMPLOYEE) {
+        Constants.EMPLOYEE = EMPLOYEE;
     }
+
 }

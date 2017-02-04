@@ -262,7 +262,7 @@
                 android:layout_below="@id/cp_customers_zip_label"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="@string/create_project" />
+                android:text="@string/create_customer" />
         </RelativeLayout>
     </android.support.design.widget.CoordinatorLayout>
 

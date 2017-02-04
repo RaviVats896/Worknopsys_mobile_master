@@ -2,6 +2,7 @@ package com.example.ravivats.worknopsysmobile;
 
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,12 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -36,7 +40,10 @@ import java.net.HttpURLConnection;
 public class HoursReviewActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView navDrawerNumber;
+    TextView navDrawerName;
     TextView txtView1;
+    String IMAGE_URL;
+    ImageView mImageView;
 
 
     final static String url = "http://worknopsys.ml/api/tasks";
@@ -88,30 +95,6 @@ public class HoursReviewActivity extends AppCompatActivity
 
             }
         });
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        txtView1.setText("Response is: " + response);
-//                        try {
-//                            JSONArray array = new JSONArray(response);
-//                            JSONObject last = array.getJSONObject(0);
-//                            String a1 = last.getString("Name");
-//                            txtView1.setText("Response is:" + a1);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//
-//                    }
-//
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                txtView1.setText("That didn't work!");
-//            }
-//        });
 // Add the request to the RequestQueue.
         queue.add(jsObjRequest);
 
@@ -132,8 +115,28 @@ public class HoursReviewActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main2, menu);
+        RequestQueue iQueue = Volley.newRequestQueue(this);
+        mImageView = (ImageView) findViewById(R.id.navDrawerImageView);
         navDrawerNumber = (TextView) findViewById(R.id.navDrawertxtViewNumber);
-        navDrawerNumber.setText(Constants.getPhoneNumber());
+        navDrawerName =(TextView) findViewById(R.id.navDrawertxtViewName);
+        navDrawerNumber.setText(Constants.getEMPLOYEE().getPhone());
+        navDrawerName.setText(Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName());
+        IMAGE_URL=Constants.getEMPLOYEE().getFileName();
+        ImageRequest imageRequest = new ImageRequest(IMAGE_URL,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap bitmap) {
+                        mImageView.setImageBitmap(bitmap);
+                    }
+                }, 0, 0, null,
+                new Response.ErrorListener() {
+                    public void onErrorResponse(VolleyError error) {
+                        mImageView.setImageResource(R.drawable.ic_assignment_black_24dp);
+                    }
+                });
+        iQueue.add(imageRequest);
+
+
         return true;
     }
 
