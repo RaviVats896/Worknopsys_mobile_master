@@ -50,6 +50,7 @@
             android:name=".CreateCustomer"
             android:label="@string/create_customer"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateCustomerBankDetails"></activity>
     </application>
 
 </manifest>

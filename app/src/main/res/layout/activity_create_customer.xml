@@ -27,7 +27,8 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
-
+        <ScrollView android:layout_height="match_parent"
+            android:layout_width="match_parent">
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/activity_create_customer"
@@ -218,7 +219,7 @@
                 android:layout_below="@id/cp_customers_location_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
-                android:text="Street" />
+                android:text="Address" />
 
             <EditText
                 android:id="@+id/cp_customers_street_edit_text"
@@ -228,7 +229,7 @@
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="15dp"
                 android:ems="8"
-                android:hint="Street"
+                android:hint="Address"
                 android:inputType="text"
                 android:textColorHint="@color/colorAccent"
                 android:textSize="16dp" />
@@ -262,7 +263,7 @@
                 android:layout_below="@id/cp_customers_city_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
-                android:text="Country Code" />
+                android:text="Zip" />
 
             <EditText
                 android:id="@+id/cp_customers_zip_edit_text"
@@ -272,7 +273,7 @@
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="15dp"
                 android:ems="8"
-                android:hint="Country Code"
+                android:hint="Zip"
                 android:inputType="number"
                 android:textColorHint="@color/colorAccent"
                 android:textSize="16dp" />
@@ -284,7 +285,7 @@
                 android:layout_below="@id/cp_customers_zip_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
-                android:text="Zip" />
+                android:text="Country Code" />
 
             <EditText
                 android:id="@+id/cp_customers_ccode_edit_text"
@@ -294,22 +295,23 @@
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="15dp"
                 android:ems="8"
-                android:hint="Zip"
+                android:hint="Country Code"
                 android:inputType="number"
                 android:textColorHint="@color/colorAccent"
                 android:textSize="16dp" />
+
 
             <Button
                 android:id="@+id/cp_customers_nxt_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_zip_label"
+                android:layout_below="@id/cp_customers_ccode_label"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="@string/next" />
 
-
         </RelativeLayout>
+        </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
