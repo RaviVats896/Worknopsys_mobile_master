@@ -8,7 +8,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,13 +15,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class CreateCustomer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     Spinner salutationSpinner;
-    Button createProjectBtn;
-    String spinnerData;
-
+    Button createCustomerNxtBtn;
+    EditText CustomerName,CustomerDebNumber,CustomerPhoneNumber,CustomerFax,CustomerEmail,CustomerWebsite;
+    EditText CustomerAddress,CustomerCity,CustomerPostCode,CustomerCCode;
+    String ckname,cdebnum,ccdate,ceditedon,ceditedby,csalutation,cname,cphone,cfax,cwebsite,cemail,cacity,caadd,capostcode,caccode;
+    Bundle customerInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +41,19 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         salutationSpinner = (Spinner) findViewById(R.id.cp_customers_salutation_spinner);
-        createProjectBtn = (Button) findViewById(R.id.cp_customers_nxt_btn);
+        customerInfo= new Bundle();
+        createCustomerNxtBtn = (Button) findViewById(R.id.cp_customers_nxt_btn);
+        CustomerName= (EditText)  findViewById(R.id.cp_customers_cust_name_edit_text);
+        CustomerDebNumber= (EditText)  findViewById(R.id.cp_customers_cust_debno_edit_text);
+        CustomerPhoneNumber =(EditText)  findViewById(R.id.cp_customers_phone_edit_text);
+        CustomerFax =(EditText) findViewById(R.id.cp_customers_fax_edit_text);
+        CustomerEmail=(EditText) findViewById(R.id.cp_customers_email_edit_text);
+        CustomerWebsite =(EditText)  findViewById(R.id.cp_customers_website_edit_text);
+        CustomerAddress= (EditText)  findViewById(R.id.cp_customers_address_edit_text);
+        CustomerCity=(EditText)  findViewById(R.id.cp_customers_city_edit_text);
+        CustomerPostCode=(EditText)  findViewById(R.id.cp_customers_zip_edit_text);
+        CustomerCCode= (EditText)  findViewById(R.id.cp_customers_ccode_edit_text);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.salutation_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -45,9 +61,40 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         // Apply the adapter to the spinner
         salutationSpinner.setAdapter(adapter);
         salutationSpinner.setOnItemSelectedListener(this);
-        createProjectBtn.setOnClickListener(new View.OnClickListener() {
+        createCustomerNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ckname=Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName();
+                cdebnum=CustomerDebNumber.getText().toString().trim();
+                ceditedon=getDate();
+                ccdate=getDate();
+                ceditedby=ckname;
+                cname=CustomerName.getText().toString().trim();
+                cphone=CustomerPhoneNumber.getText().toString().trim();
+                cfax=CustomerFax.getText().toString().trim();
+                cemail=CustomerEmail.getText().toString().trim();
+                cacity=CustomerCity.getText().toString().trim();
+                caadd=CustomerAddress.getText().toString().trim();
+                capostcode=CustomerPostCode.getText().toString().trim();
+                caccode=CustomerCCode.getText().toString().trim();
+
+                customerInfo.putString("ckname",ckname);
+                customerInfo.putString("csalutation",csalutation);
+                customerInfo.putString("cdebnum",cdebnum);
+                customerInfo.putString("ceditedon",ceditedon);
+                customerInfo.putString("ccdate",ccdate);
+                customerInfo.putString("ceditedby",ceditedby);
+                customerInfo.putString("cname",cname);
+                customerInfo.putString("cphone",cphone);
+                customerInfo.putString("cfax",cfax);
+                customerInfo.putString("cemail",cemail);
+                customerInfo.putString("caadd",caadd);
+                customerInfo.putString("capostcode",capostcode);
+                customerInfo.putString("cacity",cacity);
+                customerInfo.putString("caccode",caccode);
+                Intent i=new Intent(CreateCustomer.this,CreateCustomerBankDetails.class);
+                i.putExtras(customerInfo);
+                startActivity(i);
 
             }
         });
@@ -90,7 +137,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        spinnerData = salutationSpinner.getItemAtPosition(position).toString();
+        csalutation = salutationSpinner.getItemAtPosition(position).toString();
 
     }
 
@@ -98,4 +145,16 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    private String getDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        return sdf.format(calendar.getTime());
+    }
+    private String getTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh-mm", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        return sdf.format(calendar.getTime());
+    }
+
 }

@@ -13,9 +13,9 @@
         android:id="@+id/cp_customers_bank_postbox_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cp_customers_home_page_label"
+        android:layout_below="@id/cp_customers_website_label"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="0dp"
         android:text="Postbox :"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -115,7 +115,6 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Bank Name"
-        android:inputType="number"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
     <TextView
@@ -178,7 +177,6 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Bank User"
-        android:inputType="number"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
     <TextView
@@ -241,7 +239,6 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Currency"
-        android:inputType="number"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
     <Button

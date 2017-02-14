@@ -142,7 +142,7 @@
                 android:layout_below="@id/cp_customers_phone_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
-                android:text="Fax" />
+                android:text="Fax " />
 
             <EditText
                 android:id="@+id/cp_customers_fax_edit_text"
@@ -180,7 +180,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/cp_customers_home_page_label"
+                android:id="@+id/cp_customers_website_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_customers_email_label"
@@ -189,7 +189,7 @@
                 android:text="Website" />
 
             <EditText
-                android:id="@+id/cp_customers_home_page_edit_text"
+                android:id="@+id/cp_customers_website_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_customers_email_label"
@@ -205,7 +205,7 @@
                 android:id="@+id/cp_customers_location_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_home_page_label"
+                android:layout_below="@id/cp_customers_website_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
                 android:text="Location :"
@@ -213,7 +213,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/cp_customers_street_label"
+                android:id="@+id/cp_customers_address_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_customers_location_label"
@@ -222,7 +222,7 @@
                 android:text="Address" />
 
             <EditText
-                android:id="@+id/cp_customers_street_edit_text"
+                android:id="@+id/cp_customers_address_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cp_customers_location_label"
@@ -238,7 +238,7 @@
                 android:id="@+id/cp_customers_city_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_street_label"
+                android:layout_below="@id/cp_customers_address_label"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="18dp"
                 android:text="City" />
@@ -247,7 +247,7 @@
                 android:id="@+id/cp_customers_city_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_street_label"
+                android:layout_below="@id/cp_customers_address_label"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="15dp"
                 android:ems="8"
