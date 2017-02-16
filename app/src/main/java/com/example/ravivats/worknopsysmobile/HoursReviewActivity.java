@@ -163,6 +163,8 @@ public class HoursReviewActivity extends AppCompatActivity
 
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
+            Intent i = new Intent(HoursReviewActivity.this, ViewCustomers.class);
+            startActivity(i);
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {

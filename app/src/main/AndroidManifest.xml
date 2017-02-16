@@ -50,7 +50,8 @@
             android:name=".CreateCustomer"
             android:label="@string/create_customer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateCustomerBankDetails"></activity>
+        <activity android:name=".CreateCustomerBankDetails" />
+        <activity android:name=".ViewCustomers"></activity>
     </application>
 
 </manifest>

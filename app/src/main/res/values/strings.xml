@@ -18,6 +18,8 @@
     <string name="salutation_prompt">Salutation</string>
     <string name="pick_date">PICK DATE</string>
     <string name="next">NEXT</string>
+    <string name="my_customers">My Customers</string>
+    <string name="refresh">Refresh</string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>

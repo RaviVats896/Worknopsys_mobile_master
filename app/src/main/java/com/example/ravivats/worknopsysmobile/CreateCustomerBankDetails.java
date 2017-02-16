@@ -3,7 +3,6 @@ package com.example.ravivats.worknopsysmobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,14 +56,13 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                 BankIBAN=ccBankName.getText().toString().trim();
                 BankBIC=ccBankName.getText().toString().trim();
                 BankCurrency=ccBankName.getText().toString().trim();
-                Log.d("Debugging Purpose","hfkahkajdka");
                 postRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 if (response.equalsIgnoreCase("created successfuly")) {
-                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation successfull!", Toast.LENGTH_LONG).show();
-                                    //startActivity(new Intent(CreateCustomerBankDetails.this, HoursReviewActivity.class));
+                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation successful!", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(CreateCustomerBankDetails.this, ViewCustomers.class));
                                 } else{
                                     Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation failed!", Toast.LENGTH_LONG).show();
                                 }
