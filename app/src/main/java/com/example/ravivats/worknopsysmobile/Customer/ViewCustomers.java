@@ -1,6 +1,7 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Customer;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ravivats.worknopsysmobile.domain.Customer;
-import com.example.ravivats.worknopsysmobile.domain.Employee;
-import com.google.gson.Gson;
+import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +39,8 @@ public class ViewCustomers extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     selectedCustomer= allCustomers.getJSONObject(position).toString();
+                    Intent intent1= new Intent(ViewCustomers.this,CustomerDetails.class);
+                    intent1.putExtra("selectedCustomer",selectedCustomer);
                     Toast.makeText(ViewCustomers.this, selectedCustomer + "", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -53,6 +55,8 @@ public class ViewCustomers extends AppCompatActivity {
             public void onResponse(String string) {
                 try {
                      allCustomers = new JSONArray(string);
+                    Constants.setCUSTOMERS(allCustomers);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -76,7 +80,8 @@ public class ViewCustomers extends AppCompatActivity {
             ArrayList<String> al = new ArrayList();
 
             for(int i = 0; i < customersArray.length(); ++i) {
-                al.add(customersArray.getJSONObject(i).getJSONObject("BankDetails").getString("BankUser"));
+                if(customersArray.getJSONObject(i).getString("CName")!=null)
+                {al.add(customersArray.getJSONObject(i).getString("CName"));}
             }
 
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, al);

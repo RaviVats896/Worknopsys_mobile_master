@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ravivats.worknopsysmobile.CreateCustomerBankDetails">
+    tools:context="com.example.ravivats.worknopsysmobile.Customer.CreateCustomerBankDetails">
     <TextView
         android:id="@+id/cp_customers_bank_postbox_label"
         android:layout_width="wrap_content"

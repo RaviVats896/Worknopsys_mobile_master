@@ -38,7 +38,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="com.example.ravivats.worknopsysmobile.CreateCustomer">
+            tools:context="com.example.ravivats.worknopsysmobile.Customer.CreateCustomer">
 
             <TextView
                 android:id="@+id/cp_customers_desc_label"

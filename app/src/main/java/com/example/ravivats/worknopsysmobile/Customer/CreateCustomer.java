@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Customer;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.CreateProjectDetails;
+import com.example.ravivats.worknopsysmobile.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -25,7 +29,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     Button createCustomerNxtBtn;
     EditText CustomerName,CustomerDebNumber,CustomerPhoneNumber,CustomerFax,CustomerEmail,CustomerWebsite;
     EditText CustomerAddress,CustomerCity,CustomerPostCode,CustomerCCode;
-    String ckname,cdebnum,ccdate,ceditedon,ceditedby,csalutation,cname,cphone,cfax,cwebsite,cemail,cacity,caadd,capostcode,caccode;
+    String ckname,cdebnum,ccdate,ceditedon,ceditedby,csalutation, ccname,cphone,cfax,cwebsite,cemail,cacity,caadd,capostcode,caccode;
     Bundle customerInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,33 +68,33 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         createCustomerNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ckname=Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName();
+                ckname= Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName();
                 cdebnum=CustomerDebNumber.getText().toString().trim();
                 ceditedon=getDate();
                 ccdate=getDate();
                 ceditedby=ckname;
-                cname=CustomerName.getText().toString().trim();
+                ccname =CustomerName.getText().toString().trim();
                 cphone=CustomerPhoneNumber.getText().toString().trim();
+                cwebsite=CustomerWebsite.getText().toString().trim();
                 cfax=CustomerFax.getText().toString().trim();
                 cemail=CustomerEmail.getText().toString().trim();
                 cacity=CustomerCity.getText().toString().trim();
                 caadd=CustomerAddress.getText().toString().trim();
                 capostcode=CustomerPostCode.getText().toString().trim();
                 caccode=CustomerCCode.getText().toString().trim();
-
-                customerInfo.putString("ckname",ckname);
-                customerInfo.putString("csalutation",csalutation);
                 customerInfo.putString("cdebnum",cdebnum);
-                customerInfo.putString("ceditedon",ceditedon);
                 customerInfo.putString("ccdate",ccdate);
+                customerInfo.putString("ceditedon",ceditedon);
                 customerInfo.putString("ceditedby",ceditedby);
-                customerInfo.putString("cname",cname);
+                customerInfo.putString("csalutation",csalutation);
+                customerInfo.putString("ccname", ccname);
                 customerInfo.putString("cphone",cphone);
                 customerInfo.putString("cfax",cfax);
                 customerInfo.putString("cemail",cemail);
+                customerInfo.putString("cwebsite",cwebsite);
+                customerInfo.putString("cacity",cacity);
                 customerInfo.putString("caadd",caadd);
                 customerInfo.putString("capostcode",capostcode);
-                customerInfo.putString("cacity",cacity);
                 customerInfo.putString("caccode",caccode);
                 Intent i=new Intent(CreateCustomer.this,CreateCustomerBankDetails.class);
                 i.putExtras(customerInfo);

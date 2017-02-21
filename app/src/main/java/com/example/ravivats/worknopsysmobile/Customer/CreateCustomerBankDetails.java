@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Customer;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,16 +80,16 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("ckname", customerDetails.getString("ckname"));
                         params.put("cdebnum", customerDetails.getString("cdebnum"));
                         params.put("ccdate", customerDetails.getString("ccdate"));
                         params.put("ceditedon", customerDetails.getString("ceditedon"));
                         params.put("ceditedby", customerDetails.getString("ceditedby"));
                         params.put("csalutation", customerDetails.getString("csalutation"));
-                        params.put("cname", customerDetails.getString("cname"));
+                        params.put("ccname", customerDetails.getString("ccname"));
                         params.put("cphone", customerDetails.getString("cphone"));
                         params.put("cfax", customerDetails.getString("cfax"));
                         params.put("cemail", customerDetails.getString("cemail"));
+                        params.put("cwebsite",customerDetails.getString("cwebsite"));
                         params.put("cacity", customerDetails.getString("cacity"));
                         params.put("caadd", customerDetails.getString("caadd"));
                         params.put("capostcode", customerDetails.getString("capostcode"));

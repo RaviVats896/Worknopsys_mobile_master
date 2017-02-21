@@ -47,11 +47,12 @@
             android:label="@string/create_project"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateCustomer"
+            android:name=".Customer.CreateCustomer"
             android:label="@string/create_customer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateCustomerBankDetails" />
-        <activity android:name=".ViewCustomers"></activity>
+        <activity android:name=".Customer.CreateCustomerBankDetails"/>
+        <activity android:name=".Customer.ViewCustomers"/>
+        <activity android:name=".Customer.CustomerDetails"/>
     </application>
 
 </manifest>
