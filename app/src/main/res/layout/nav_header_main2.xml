@@ -16,22 +16,26 @@
         android:id="@+id/navDrawerImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:paddingTop="5dp"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
-        android:id="@+id/navDrawertxtViewName"
+        android:id="@+id/navDrawerTxtViewName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/navDrawerImageView"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/navDrawerImageView"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/navDrawertxtViewNumber"
-        android:layout_below="@id/navDrawertxtViewName"
+        android:id="@+id/navDrawerTxtViewNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginPersonal_numberHint" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/navDrawerImageView"
+        android:layout_below="@id/navDrawerTxtViewName"
+        android:text="@string/loginPersonal_numberHint"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

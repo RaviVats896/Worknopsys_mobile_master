@@ -113,8 +113,8 @@ public class HoursReviewActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main2, menu);
         RequestQueue iQueue = Volley.newRequestQueue(this);
         mImageView = (ImageView) findViewById(R.id.navDrawerImageView);
-        navDrawerNumber = (TextView) findViewById(R.id.navDrawertxtViewNumber);
-        navDrawerName =(TextView) findViewById(R.id.navDrawertxtViewName);
+        navDrawerNumber = (TextView) findViewById(R.id.navDrawerTxtViewNumber);
+        navDrawerName =(TextView) findViewById(R.id.navDrawerTxtViewName);
         navDrawerNumber.setText(Constants.getEMPLOYEE().getPhone());
         navDrawerName.setText(Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName());
         IMAGE_URL=Constants.getEMPLOYEE().getFileName();
