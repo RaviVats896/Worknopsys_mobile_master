@@ -148,7 +148,7 @@ public class HoursReviewActivity extends AppCompatActivity
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         }
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
             return true;
         }
 

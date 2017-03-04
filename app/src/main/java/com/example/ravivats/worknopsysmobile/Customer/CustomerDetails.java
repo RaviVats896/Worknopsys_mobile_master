@@ -3,7 +3,7 @@ package com.example.ravivats.worknopsysmobile.Customer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Spinner;
 
 import com.example.ravivats.worknopsysmobile.R;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public class CustomerDetails extends AppCompatActivity {
     String selectedCustomer;
-    EditText CustomerName,DebNumber,PhoneNumber,Fax,Email,Website,Address,City,Zip,CountryCode;
+    TextView CustomerName,DebNumber,PhoneNumber,Fax,Email,Website,Address,City,Zip,CountryCode;
     Customer SelectedCustomer;
     Spinner Salutation;
 
@@ -28,17 +28,18 @@ public class CustomerDetails extends AppCompatActivity {
         Gson gson = new Gson();
         SelectedCustomer  = gson.fromJson(selectedCustomer, Customer.class);
 
-        CustomerName= (EditText) findViewById(R.id.cd_customers_cust_name_edit_text);
-        DebNumber=(EditText) findViewById(R.id.cd_customers_cust_debno_edit_text);
+        CustomerName= (TextView) findViewById(R.id.cd_customers_cust_name_edit_text);
+        DebNumber=(TextView) findViewById(R.id.cd_customers_cust_debno_edit_text);
         Salutation =(Spinner) findViewById(R.id.cd_customers_salutation_spinner);
-        PhoneNumber=(EditText) findViewById(R.id.cd_customers_phone_edit_text);
-        Fax=(EditText) findViewById(R.id.cd_customers_fax_edit_text);
-        Email=(EditText) findViewById(R.id.cd_customers_email_edit_text);
-        Website=(EditText) findViewById(R.id.cd_customers_website_edit_text);
-        Address=(EditText) findViewById(R.id.cd_customers_address_edit_text);
-        City=(EditText) findViewById(R.id.cd_customers_city_edit_text);
-        Zip=(EditText) findViewById(R.id.cd_customers_zip_edit_text);
-        CountryCode=(EditText) findViewById(R.id.cd_customers_ccode_edit_text);
+        PhoneNumber=(TextView) findViewById(R.id.cd_customers_phone_edit_text);
+        Fax=(TextView) findViewById(R.id.cd_customers_fax_edit_text);
+        Email=(TextView) findViewById(R.id.cd_customers_email_edit_text);
+        Website=(TextView) findViewById(R.id.cd_customers_website_edit_text);
+        Address=(TextView) findViewById(R.id.cd_customers_address_edit_text);
+        City=(TextView) findViewById(R.id.cd_customers_city_edit_text);
+        Zip=(TextView) findViewById(R.id.cd_customers_zip_edit_text);
+        CountryCode=(TextView) findViewById(R.id.cd_customers_ccode_edit_text);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.salutation_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears

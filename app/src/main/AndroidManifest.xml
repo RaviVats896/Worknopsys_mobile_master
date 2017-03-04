@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".HoursReviewActivity"
-            android:label="@string/title_activity_main2"
+            android:label="@string/hours_review_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Project.CreateProjectDetails"
@@ -50,9 +50,12 @@
             android:name=".Customer.CreateCustomer"
             android:label="@string/create_customer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Customer.CreateCustomerBankDetails"/>
-        <activity android:name=".Customer.ViewCustomers"/>
-        <activity android:name=".Customer.CustomerDetails"/>
+        <activity android:name=".Customer.CreateCustomerBankDetails"
+            android:label="@string/create_customer"/>
+        <activity android:name=".Customer.ViewCustomers"
+            android:label="ViewCustomers"/>
+        <activity android:name=".Customer.CustomerDetails"
+            android:label="CustomerDetails"/>
     </application>
 
 </manifest>

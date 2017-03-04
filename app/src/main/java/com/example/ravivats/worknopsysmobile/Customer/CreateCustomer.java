@@ -1,6 +1,7 @@
 package com.example.ravivats.worknopsysmobile.Customer;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,15 +9,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -99,11 +109,18 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
                 Intent i=new Intent(CreateCustomer.this,CreateCustomerBankDetails.class);
                 i.putExtras(customerInfo);
                 startActivity(i);
-
             }
         });
-
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main2, menu);
+        return true;
+    }
+    
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -111,17 +128,13 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if(id==R.id.view_customers)
-        {
+        if (id == R.id.view_customers) {
             startActivity(new Intent(CreateCustomer.this, ViewCustomers.class));
         }
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.logout || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -141,6 +154,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
+            startActivity(new Intent(CreateCustomer.this, HoursReviewActivity.class));
 
         } else if (id == R.id.nav_config) {
 

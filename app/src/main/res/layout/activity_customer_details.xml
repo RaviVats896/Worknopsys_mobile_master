@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_customer_details"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,10 +16,10 @@
         android:id="@+id/cd_customers_desc_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/description"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
@@ -27,51 +27,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_desc_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Customer Name" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_cust_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_desc_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Customer Name"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_cust_debno_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_cust_name_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Debitor Number" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_cust_debno_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_cust_name_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Debitor Number"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_salutation_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_cust_debno_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Salutation" />
 
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_cust_debno_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="20dp"
         android:dropDownWidth="wrap_content"
         android:prompt="@string/salutation_prompt" />
@@ -90,95 +90,95 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_salutation_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Phone" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_phone_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_salutation_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Phone number"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_fax_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_phone_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Fax " />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_fax_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_phone_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Fax"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_fax_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Email" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_email_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_fax_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Email"
-        android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_website_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_email_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Website" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_website_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_email_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Website"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_location_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_website_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Location :"
         android:textSize="18dp"
@@ -189,88 +189,88 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_location_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Address" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_address_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_location_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Address"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_city_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_address_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="City" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_city_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_address_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="City"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_zip_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_city_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Zip" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_zip_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_city_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Zip"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/cd_customers_ccode_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_zip_label"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:text="Country Code" />
 
-    <EditText
+    <TextView
         android:id="@+id/cd_customers_ccode_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cd_customers_zip_label"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Country Code"
         android:inputType="none"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
 
 </RelativeLayout>
 </ScrollView>
