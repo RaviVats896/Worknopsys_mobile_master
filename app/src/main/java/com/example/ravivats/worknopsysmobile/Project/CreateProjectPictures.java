@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,6 +23,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.Utility;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

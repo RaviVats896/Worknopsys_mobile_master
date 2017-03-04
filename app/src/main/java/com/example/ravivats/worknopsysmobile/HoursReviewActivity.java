@@ -26,6 +26,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
+import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.domain.Task;
 import com.google.gson.Gson;
 
@@ -142,7 +143,10 @@ public class HoursReviewActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        if(id==R.id.view_customers)
+        {
+            startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;

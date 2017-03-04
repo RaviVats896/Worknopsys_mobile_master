@@ -1,6 +1,7 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Project;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.DialogFragment;
@@ -10,26 +11,28 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TimePicker;
 
+import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
+import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.R;
 
-public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
-    EditText cpDetailsStartDatePickerBtn;
-    Button cpDetailsNxtBtn;
-    Spinner cpDetailsProStatusSpinner;
+public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
+    Button cpOrdersNxtBtn;
+    EditText cpOrdersDatePickerButton;
+    EditText cpOrdersTimePickerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_project_details);
+        setContentView(R.layout.activity_create_project_orders);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -39,32 +42,32 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
-        cpDetailsStartDatePickerBtn = (EditText) findViewById(R.id.cp_details_st_date_edit_text);
-        cpDetailsProStatusSpinner = (Spinner) findViewById(R.id.cp_details_project_status_spinner);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.project_status_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        cpDetailsProStatusSpinner.setAdapter(adapter1);
-        cpDetailsProStatusSpinner.setOnItemSelectedListener(this);
-        cpDetailsStartDatePickerBtn.setOnClickListener(new View.OnClickListener() {
+        cpOrdersNxtBtn = (Button) findViewById(R.id.cp_orders_nxt_button);
+        cpOrdersDatePickerButton = (EditText) findViewById(R.id.cp_orders_date_edit_text);
+        cpOrdersTimePickerButton = (EditText) findViewById(R.id.cp_orders_time1_edit_text);
+        cpOrdersTimePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment();
+                DialogFragment newFragment = new CpOrderTimePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "timePicker");
+            }
+        });
+        cpOrdersDatePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new CpOrderDatePickerFragment();
                 newFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
-        cpDetailsNxtBtn.setOnClickListener(new View.OnClickListener() {
+        cpOrdersNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
-                startActivity(in);
+                //Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
+                //startActivity(in);
             }
         });
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -87,8 +90,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
-            startActivity(new Intent(CreateProjectDetails.this, CreateCustomer.class));
-
+            startActivity(new Intent(CreateProjectOrders.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
             //Intent i=new Intent(CreateProject.this,CreateProject.class);
             //startActivity(i);
@@ -114,18 +116,15 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        cpDetailsStartDatePickerBtn.setText(new StringBuilder().append(dayOfMonth).append("/")
+        Log.v("Date",year+"  "+month+"  "+dayOfMonth);
+        cpOrdersDatePickerButton.setText(new StringBuilder().append(dayOfMonth).append("/")
                 .append(month+1).append("/").append(year));
-
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
+    public void  onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Log.v("Time",hourOfDay+"  "+minute);
+        cpOrdersTimePickerButton.setText(new StringBuilder().append(hourOfDay).append(":")
+                .append(minute));
     }
 }

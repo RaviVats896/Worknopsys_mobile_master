@@ -26,6 +26,9 @@ public class Customer implements Serializable
     @SerializedName("Salutation")
     @Expose
     private String salutation;
+    @SerializedName("CName")
+    @Expose
+    private String cName;
     @SerializedName("Phone")
     @Expose
     private String phone;
@@ -35,6 +38,9 @@ public class Customer implements Serializable
     @SerializedName("Email")
     @Expose
     private String email;
+    @SerializedName("Website")
+    @Expose
+    private String website;
     @SerializedName("__v")
     @Expose
     private Integer v;
@@ -97,6 +103,15 @@ public class Customer implements Serializable
         this.salutation = salutation;
     }
 
+    public String getCName() {
+        return cName;
+    }
+
+    public void setCName(String cName) {
+        this.cName = cName;
+    }
+
+
     public String getPhone() {
         return phone;
     }
@@ -119,6 +134,14 @@ public class Customer implements Serializable
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public Integer getV() {

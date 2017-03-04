@@ -38,7 +38,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="com.example.ravivats.worknopsysmobile.CreateProjectDetails">
+            tools:context="com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails">
 
             <EditText
                 android:id="@+id/cp_details_cust_name_edit_text"

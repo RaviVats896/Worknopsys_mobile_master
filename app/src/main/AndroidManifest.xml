@@ -35,15 +35,15 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateProjectDetails"
+            android:name=".Project.CreateProjectDetails"
             android:label="@string/create_project"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateProjectPictures"
+            android:name=".Project.CreateProjectPictures"
             android:label="@string/create_project"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateProjectOrders"
+            android:name=".Project.CreateProjectOrders"
             android:label="@string/create_project"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.ravivats.worknopsysmobile.Constants;
-import com.example.ravivats.worknopsysmobile.CreateProjectDetails;
+import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 
 import java.text.SimpleDateFormat;
@@ -105,6 +105,23 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if(id==R.id.view_customers)
+        {
+            startActivity(new Intent(CreateCustomer.this, ViewCustomers.class));
+        }
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

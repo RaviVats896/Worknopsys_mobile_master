@@ -41,7 +41,7 @@ public class ViewCustomers extends AppCompatActivity {
                     selectedCustomer= allCustomers.getJSONObject(position).toString();
                     Intent intent1= new Intent(ViewCustomers.this,CustomerDetails.class);
                     intent1.putExtra("selectedCustomer",selectedCustomer);
-                    Toast.makeText(ViewCustomers.this, selectedCustomer + "", Toast.LENGTH_SHORT).show();
+                    startActivity(intent1);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
