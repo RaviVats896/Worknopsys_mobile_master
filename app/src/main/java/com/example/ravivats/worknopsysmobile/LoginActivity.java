@@ -61,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if(Constants.isLogout()){
+            loginPersonalNoEditText.getText().clear();
+            loginPasswordEditText.getText().clear();
+            Constants.setLogout(false);
+        }
+
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         loginBtn.setOnClickListener(
                 new View.OnClickListener() {
@@ -111,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        // TODO Auto-generated method stub
+
 
                                     }
                                 });
@@ -121,7 +128,5 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
-
-
     }
 }

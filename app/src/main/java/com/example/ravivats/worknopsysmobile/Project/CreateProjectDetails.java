@@ -19,8 +19,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.DatePickerFragment;
+import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
@@ -102,7 +104,8 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-
+            Constants.setLogout(true);
+            startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
 
         }

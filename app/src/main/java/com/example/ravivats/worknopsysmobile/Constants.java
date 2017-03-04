@@ -13,6 +13,15 @@ public class Constants {
     private static Employee EMPLOYEE;
     private static JSONArray CUSTOMERS;
 
+    public static boolean isLogout() {
+        return logout;
+    }
+
+    public static void setLogout(boolean logout) {
+        Constants.logout = logout;
+    }
+
+    private static boolean logout;
     public static JSONArray getCUSTOMERS() {
         return CUSTOMERS;
     }

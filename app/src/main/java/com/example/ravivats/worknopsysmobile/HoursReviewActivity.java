@@ -147,13 +147,14 @@ public class HoursReviewActivity extends AppCompatActivity
         {
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         }
-        //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
-            return true;
+            Constants.setLogout(true);
+            startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -179,7 +180,8 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-
+            Constants.setLogout(true);
+            startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
 
         }

@@ -22,7 +22,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
 
@@ -225,7 +227,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-
+            Constants.setLogout(true);
+            startActivity(new Intent(CreateProjectPictures.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
 
         }

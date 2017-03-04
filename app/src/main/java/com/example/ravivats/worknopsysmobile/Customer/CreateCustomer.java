@@ -27,6 +27,7 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -119,7 +120,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         getMenuInflater().inflate(R.menu.main2, menu);
         return true;
     }
-    
+
 
 
     @Override
@@ -131,7 +132,12 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         if (id == R.id.view_customers) {
             startActivity(new Intent(CreateCustomer.this, ViewCustomers.class));
         }
-        return id == R.id.logout || super.onOptionsItemSelected(item);
+        if (id == R.id.logout) {
+            Constants.setLogout(true);
+            startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 
@@ -159,6 +165,8 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
+            Constants.setLogout(true);
+            startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
 
         } else if (id == R.id.nav_about) {
 
