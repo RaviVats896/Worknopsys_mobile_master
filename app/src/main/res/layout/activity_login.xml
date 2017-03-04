@@ -44,7 +44,7 @@
         android:switchPadding="30dp"
         android:text="Enable Location"
         android:textColor="@color/colorPrimary"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="italic" />
 
     <Button
