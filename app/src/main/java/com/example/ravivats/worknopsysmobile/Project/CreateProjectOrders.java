@@ -19,10 +19,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
 import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -107,7 +109,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
             Constants.setLogout(true);
             startActivity(new Intent(CreateProjectOrders.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(CreateProjectOrders.this, AboutActivity.class));
         }
 
 

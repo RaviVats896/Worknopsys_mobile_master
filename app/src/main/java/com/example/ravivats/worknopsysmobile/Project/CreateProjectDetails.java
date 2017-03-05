@@ -19,9 +19,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.DatePickerFragment;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -107,7 +109,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             Constants.setLogout(true);
             startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(CreateProjectDetails.this, AboutActivity.class));
         }
 
 

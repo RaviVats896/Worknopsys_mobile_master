@@ -22,8 +22,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
@@ -230,7 +232,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             Constants.setLogout(true);
             startActivity(new Intent(CreateProjectPictures.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(CreateProjectPictures.this, AboutActivity.class));
         }
 
 

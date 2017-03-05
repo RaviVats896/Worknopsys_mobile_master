@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
@@ -169,7 +170,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
 
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(CreateCustomer.this, AboutActivity.class));
         }
 
 

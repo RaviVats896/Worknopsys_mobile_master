@@ -41,7 +41,8 @@
         android:ems="8"
         android:hint="Customer Name"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -63,7 +64,8 @@
         android:ems="8"
         android:hint="Debitor Number"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -104,7 +106,8 @@
         android:ems="8"
         android:hint="Phone number"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -126,7 +129,8 @@
         android:ems="8"
         android:hint="Fax"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -147,8 +151,8 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Email"
-        
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -170,7 +174,8 @@
         android:ems="8"
         android:hint="Website"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -203,7 +208,8 @@
         android:ems="8"
         android:hint="Address"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -225,7 +231,8 @@
         android:ems="8"
         android:hint="City"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -247,7 +254,8 @@
         android:ems="8"
         android:hint="Zip"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
     <TextView
@@ -269,7 +277,8 @@
         android:ems="8"
         android:hint="Country Code"
         android:inputType="none"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
 </RelativeLayout>

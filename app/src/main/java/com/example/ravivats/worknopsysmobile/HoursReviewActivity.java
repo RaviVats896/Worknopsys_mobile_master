@@ -164,15 +164,13 @@ public class HoursReviewActivity extends AppCompatActivity
 
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
-            Intent i = new Intent(HoursReviewActivity.this, ViewCustomers.class);
-            startActivity(i);
+            startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
-            Intent i = new Intent(HoursReviewActivity.this, CreateProjectDetails.class);
-            startActivity(i);
+            startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
@@ -183,7 +181,7 @@ public class HoursReviewActivity extends AppCompatActivity
             Constants.setLogout(true);
             startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(HoursReviewActivity.this, AboutActivity.class));
         }
 
 
