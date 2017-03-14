@@ -14,19 +14,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
-import com.example.ravivats.worknopsysmobile.domain.Task;
 import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         loginPersonalNoEditText = (EditText) findViewById(R.id.loginPersonalNoEditText);
         loginPasswordEditText = (EditText) findViewById(R.id.loginPasswordEditText);
         loginBtn = (Button) findViewById(R.id.loginLoginBtn);
+        loginPersonalNoEditText.getText().clear();
+        loginPasswordEditText.getText().clear();
         locationSwitch.setChecked(false);
         locationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -61,12 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-        if(Constants.isLogout()){
-            loginPersonalNoEditText.getText().clear();
-            loginPasswordEditText.getText().clear();
-            Constants.setLogout(false);
-        }
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         loginBtn.setOnClickListener(

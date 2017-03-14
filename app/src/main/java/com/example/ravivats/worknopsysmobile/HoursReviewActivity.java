@@ -148,7 +148,7 @@ public class HoursReviewActivity extends AppCompatActivity
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         }
         if (id == R.id.logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
         }
 
@@ -178,7 +178,7 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(HoursReviewActivity.this, AboutActivity.class));

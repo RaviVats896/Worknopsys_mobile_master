@@ -229,7 +229,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(CreateProjectPictures.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectPictures.this, AboutActivity.class));

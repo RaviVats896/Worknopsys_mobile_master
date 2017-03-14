@@ -106,7 +106,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(CreateProjectOrders.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectOrders.this, AboutActivity.class));

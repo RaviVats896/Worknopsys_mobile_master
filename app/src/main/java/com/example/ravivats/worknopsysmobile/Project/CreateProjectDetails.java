@@ -106,7 +106,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectDetails.this, AboutActivity.class));

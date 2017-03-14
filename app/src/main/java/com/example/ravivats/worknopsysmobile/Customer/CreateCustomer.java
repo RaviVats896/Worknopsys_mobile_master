@@ -134,7 +134,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(CreateCustomer.this, ViewCustomers.class));
         }
         if (id == R.id.logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
         }
 
@@ -166,7 +166,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-            Constants.setLogout(true);
+
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
 
         } else if (id == R.id.nav_about) {
