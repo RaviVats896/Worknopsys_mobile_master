@@ -8,11 +8,7 @@ import android.widget.Spinner;
 
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Customer;
-import com.example.ravivats.worknopsysmobile.domain.Employee;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class CustomerDetails extends AppCompatActivity {
     String selectedCustomer;

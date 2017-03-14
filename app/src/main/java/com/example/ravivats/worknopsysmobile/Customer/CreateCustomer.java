@@ -1,7 +1,6 @@
 package com.example.ravivats.worknopsysmobile.Customer;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,22 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
