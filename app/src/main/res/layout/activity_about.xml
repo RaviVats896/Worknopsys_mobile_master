@@ -116,7 +116,8 @@
             android:id="@+id/about_adm_emp_cust_create"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,7 +126,8 @@
             android:id="@+id/about_adm_emp_cust_view"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,7 +136,8 @@
             android:layout_below="@id/about_adm_emp_cust_view"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,7 +146,8 @@
             android:id="@+id/about_adm_emp_proj_view"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,7 +156,8 @@
             android:id="@+id/about_adm_emp_wo_create"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -161,7 +166,8 @@
             android:id="@+id/about_adm_emp_wo_view"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,7 +176,8 @@
             android:id="@+id/about_adm_emp_wo_edit"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,7 +186,8 @@
             android:id="@+id/about_adm_emp_wo_delete"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -188,7 +196,8 @@
             android:id="@+id/about_adm_auth_pass"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -197,7 +206,8 @@
             android:id="@+id/about_adm_auth_pin"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -206,7 +216,8 @@
             android:id="@+id/about_adm_hours_add"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -215,7 +226,8 @@
             android:id="@+id/about_adm_hours_edit"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -224,7 +236,8 @@
             android:id="@+id/about_adm_hours_member_QRScan"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -233,7 +246,8 @@
             android:id="@+id/about_adm_wo_show_all"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -242,7 +256,8 @@
             android:id="@+id/about_adm_wo_sort_distance"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:clickable="false"/>
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 </RelativeLayout>
