@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,19 +23,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
-import com.example.ravivats.worknopsysmobile.domain.Task;
+import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +38,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
+    public static final String KEY_AUTHID = "userid";
     TextView navDrawerNumber;
     TextView navDrawerName;
     TextView txtView1;
@@ -52,6 +46,7 @@ public class HoursReviewActivity extends AppCompatActivity
     ImageView mImageView;
     RequestQueue queue;
     final static String url = "http://worknopsys.ml/api/tasks";
+    final static String auth_url = "http://worknopsys.ml/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
 
     @Override
@@ -78,31 +73,34 @@ public class HoursReviewActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         txtView1 = (TextView) findViewById(R.id.textview1);
-
         queue = Volley.newRequestQueue(this);
-        JsonArrayRequest jsObjRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
+         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String response1=response.replace("[","").replace("]","").trim();
+                        Gson gson = new Gson();
+                        Authorization auth= gson.fromJson(response1, Authorization.class);
+                        Constants.setAUTH(auth);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+
+                    }
+                }) {
             @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    JSONObject last = response.getJSONObject(0);
-                    Gson gson=new Gson();
-                    Task task = gson.fromJson(last.toString(),Task.class);
-                    txtView1.setText("Response is:" + task.getName()+"\t"+task.getTask()+"\t"+task.getDescription());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_AUTHID, Constants.getEMPLOYEE().getId());
+                return params;
             }
-        }, new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                txtView1.setText("Error");
-
-            }
-        });
-
-        queue.add(jsObjRequest);
+        };
+        queue.add(authRequest);
     }
 
     @Override
@@ -122,10 +120,10 @@ public class HoursReviewActivity extends AppCompatActivity
         //RequestQueue iQueue = Volley.newRequestQueue(this);
         mImageView = (ImageView) findViewById(R.id.navDrawerImageView);
         navDrawerNumber = (TextView) findViewById(R.id.navDrawerTxtViewNumber);
-        navDrawerName =(TextView) findViewById(R.id.navDrawerTxtViewName);
+        navDrawerName = (TextView) findViewById(R.id.navDrawerTxtViewName);
         navDrawerNumber.setText(Constants.getEMPLOYEE().getPhone());
-        navDrawerName.setText(Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName());
-        IMAGE_URL=Constants.getEMPLOYEE().getFileName();
+        navDrawerName.setText(Constants.getEMPLOYEE().getFirstName() + " " + Constants.getEMPLOYEE().getLastName());
+        IMAGE_URL = Constants.getEMPLOYEE().getFileName();
         ImageRequest imageRequest = new ImageRequest(IMAGE_URL,
                 new Response.Listener<Bitmap>() {
                     @Override
@@ -150,8 +148,7 @@ public class HoursReviewActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if(id==R.id.view_customers)
-        {
+        if (id == R.id.view_customers) {
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         }
         if (id == R.id.logout) {
@@ -195,7 +192,7 @@ public class HoursReviewActivity extends AppCompatActivity
         return true;
     }
 
-    private void logoutFunction(){
+    private void logoutFunction() {
         StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
                 new Response.Listener<String>() {
                     @Override
