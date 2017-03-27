@@ -28,9 +28,11 @@ import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
-    EditText cpDetailsStartDatePickerBtn;
+    EditText cpDetailsStartDatePickerBtn,cpDetailsCustName,cpDetailsProjName,cpDetailsStreet,cpDetailsCity,cpDetailsZip;
     Button cpDetailsNxtBtn;
     Spinner cpDetailsProStatusSpinner;
+    String ProjectStatus;
+    String status[]={"In process","Completed"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,12 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
         cpDetailsStartDatePickerBtn = (EditText) findViewById(R.id.cp_details_st_date_edit_text);
         cpDetailsProStatusSpinner = (Spinner) findViewById(R.id.cp_details_project_status_spinner);
+        cpDetailsCustName =(EditText) findViewById(R.id.cp_details_cust_name_edit_text);
+        cpDetailsProjName= (EditText) findViewById(R.id.cp_details_pro_name_edit_text);
+        cpDetailsStreet= (EditText) findViewById(R.id.cp_details_street_edit_text);
+        cpDetailsCity=(EditText) findViewById(R.id.cp_details_city_edit_text);
+        cpDetailsZip=(EditText) findViewById(R.id.cp_details_zip_edit_text);
+
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.project_status_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -66,6 +74,15 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
+                if(ProjectStatus==null){ProjectStatus=status[0];
+                }
+                in.putExtra("CustomerName",cpDetailsCustName.getText().toString());
+                in.putExtra("ProjectName",cpDetailsProjName.getText().toString());
+                in.putExtra("ProjectStartDate",cpDetailsStartDatePickerBtn.getText().toString());
+                in.putExtra("StreetDetails",cpDetailsStreet.getText().toString());
+                in.putExtra("StreetCity",cpDetailsCity.getText().toString());
+                in.putExtra("StreetZip",cpDetailsZip.getText().toString());
+                in.putExtra("ProjectStatus",ProjectStatus);
                 startActivity(in);
             }
         });
@@ -106,7 +123,6 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
-
             startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectDetails.this, AboutActivity.class));
@@ -128,7 +144,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        ProjectStatus=status[position];
     }
 
     @Override
