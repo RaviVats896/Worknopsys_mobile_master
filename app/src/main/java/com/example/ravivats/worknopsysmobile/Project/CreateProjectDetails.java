@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
@@ -26,6 +27,7 @@ import com.example.ravivats.worknopsysmobile.DatePickerFragment;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
     EditText cpDetailsStartDatePickerBtn,cpDetailsCustName,cpDetailsProjName,cpDetailsStreet,cpDetailsCity,cpDetailsZip;
@@ -103,6 +105,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Authorization auth1=Constants.getAUTH();
         int id = item.getItemId();
 
         if (id == R.id.nav_daily_overview) {
@@ -110,16 +113,21 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
+            if(auth1.getAdmEmpCustCreate())
             startActivity(new Intent(CreateProjectDetails.this, CreateCustomer.class));
-
+            else{
+                Toast.makeText(CreateProjectDetails.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_create_project) {
-            //Intent i=new Intent(CreateProject.this,CreateProject.class);
-            //startActivity(i);
 
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
-
+            if(auth1.getHoursEdit())
+                startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
+            else{
+                Toast.makeText(CreateProjectDetails.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
