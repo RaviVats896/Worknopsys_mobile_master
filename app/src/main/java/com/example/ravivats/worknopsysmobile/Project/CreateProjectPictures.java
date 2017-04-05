@@ -22,10 +22,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.cloudinary.Cloudinary;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
-import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
-import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
@@ -38,8 +37,9 @@ import java.io.IOException;
 
 public class CreateProjectPictures extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button cpPicturesNxtBtn;
+    Bundle detailsBundle;
     ImageButton cpPicturesCameraBtn, cpPicturesUploadBtn, cpPicturesDeleteBtn;
-    String userChoosenTask;
+    String userChosenTask;
     ImageView cpPicturesImageView;
     private int REQUEST_CAMERA = 2;
     private int SELECT_FILE = 1;
@@ -65,6 +65,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesCameraBtn = (ImageButton) findViewById(R.id.cp_pictures_camera);
         cpPicturesUploadBtn = (ImageButton) findViewById(R.id.cp_pictures_upload);
         cpPicturesDeleteBtn = (ImageButton) findViewById(R.id.cp_pictures_delete);
+        detailsBundle=getIntent().getExtras();
+
         cpPicturesImageView.setImageResource(R.drawable.ic_satellite_black_24dp);
         cpPicturesCameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +84,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
+
                 startActivity(in);
             }
         });
@@ -98,11 +101,11 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             public void onClick(DialogInterface dialog, int item) {
                 boolean result = Utility.checkPermission(CreateProjectPictures.this);
                 if (items[item].equals("Take Photo")) {
-                    userChoosenTask = "Take Photo";
+                    userChosenTask = "Take Photo";
                     if (result)
                         cameraIntent();
                 } else if (items[item].equals("Choose from Library")) {
-                    userChoosenTask = "Choose from Library";
+                    userChosenTask = "Choose from Library";
                     if (result)
                         galleryIntent();
                 } else if (items[item].equals("Cancel")) {

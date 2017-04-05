@@ -16,12 +16,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.example.ravivats.worknopsysmobile.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.domain.Authorization;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -121,15 +125,17 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.view_customers) {
+            if(Constants.getAUTH().getAdmEmpCustView())
             startActivity(new Intent(CreateCustomer.this, ViewCustomers.class));
+            else{
+                Toast.makeText(CreateCustomer.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         }
         if (id == R.id.logout) {
-
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
-
     }
 
 
@@ -138,7 +144,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        Authorization auth1=Constants.getAUTH();
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
@@ -146,13 +152,19 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_create_customer) {
 
         } else if (id == R.id.nav_create_project) {
+            if(auth1.getAdmEmpProjCreate())
             startActivity(new Intent(CreateCustomer.this, CreateProjectDetails.class));
-
+            else{
+                Toast.makeText(CreateCustomer.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
+            if(auth1.getHoursEdit())
             startActivity(new Intent(CreateCustomer.this, HoursReviewActivity.class));
-
+            else{
+                Toast.makeText(CreateCustomer.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
@@ -162,7 +174,6 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateCustomer.this, AboutActivity.class));
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

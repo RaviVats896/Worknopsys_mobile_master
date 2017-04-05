@@ -23,6 +23,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +61,7 @@
             android:name=".Customer.CustomerDetails"
             android:label="CustomerDetails" />
         <activity android:name=".AboutActivity"></activity>
+        <meta-data android:name="CLOUDINARY_URL" android:value="cloudinary://123456789012345:abcdeghijklmnopqrstuvwxyz12@n07t21i7"/>
     </application>
 
 </manifest>
