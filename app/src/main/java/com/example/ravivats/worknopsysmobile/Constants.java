@@ -4,6 +4,9 @@ import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 
 /**
@@ -38,5 +41,15 @@ public class Constants {
 
     public static void setAUTH(Authorization AUTH) {
         Constants.AUTH = AUTH;
+    }
+    public static String getDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        return sdf.format(calendar.getTime());
+    }
+    public static String getTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh-mm", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        return sdf.format(calendar.getTime());
     }
 }

@@ -76,8 +76,8 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             public void onClick(View v) {
                 ckname= Constants.getEMPLOYEE().getFirstName()+" "+Constants.getEMPLOYEE().getLastName();
                 cdebnum=CustomerDebNumber.getText().toString().trim();
-                ceditedon=getDate();
-                ccdate=getDate();
+                ceditedon=Constants.getDate();
+                ccdate=Constants.getDate();
                 ceditedby=ckname;
                 ccname =CustomerName.getText().toString().trim();
                 cphone=CustomerPhoneNumber.getText().toString().trim();
@@ -191,15 +191,5 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
 
     }
 
-    private String getDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Calendar calendar = Calendar.getInstance();
-        return sdf.format(calendar.getTime());
-    }
-    private String getTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("hh-mm", Locale.ENGLISH);
-        Calendar calendar = Calendar.getInstance();
-        return sdf.format(calendar.getTime());
-    }
 
 }

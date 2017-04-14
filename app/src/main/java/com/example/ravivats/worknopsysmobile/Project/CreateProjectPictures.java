@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,7 +24,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
@@ -34,6 +37,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateProjectPictures extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button cpPicturesNxtBtn;
@@ -41,11 +46,13 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     ImageButton cpPicturesCameraBtn, cpPicturesUploadBtn, cpPicturesDeleteBtn;
     String userChosenTask;
     ImageView cpPicturesImageView;
+    File finalPicture;
+    String picLocation;
     private int REQUEST_CAMERA = 2;
     private int SELECT_FILE = 1;
     private int flag;
     private static final String TAG = "AddBook";
-    private Uri fileUri = null;
+    private Uri fileUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +73,32 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesUploadBtn = (ImageButton) findViewById(R.id.cp_pictures_upload);
         cpPicturesDeleteBtn = (ImageButton) findViewById(R.id.cp_pictures_delete);
         detailsBundle=getIntent().getExtras();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        Map config = new HashMap();
+        config.put("cloud_name", "worknopsys");
+        config.put("api_key", "675743786426914");
+        config.put("api_secret", "8aoJtViSin-WWv4NF5XLIwf9tnI");
+        final Cloudinary cloudinary = new Cloudinary(config);
+
 
         cpPicturesImageView.setImageResource(R.drawable.ic_satellite_black_24dp);
+        cpPicturesUploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String picId=detailsBundle.getString("CustomerName")+"_"+detailsBundle.getString("CustomerName")
+                            +"_"+ Constants.getDate()+":"+Constants.getTime();
+                    Log.e("picID",picId);
+                    Map m= cloudinary.uploader().upload(picLocation,ObjectUtils.asMap("public_id", picId));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
         cpPicturesCameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,7 +212,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
         File destination = new File(Environment.getExternalStorageDirectory(),
                 System.currentTimeMillis() + ".jpg");
-
+        finalPicture=destination;
         Log.d(TAG, "dest" + destination);
         FileOutputStream fo;
         try {
@@ -196,6 +227,9 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         }
 
         fileUri = Uri.fromFile(destination);
+        picLocation=fileUri.toString().substring(7);
+        Log.e("Destination",picLocation);
+
 
     }
 
