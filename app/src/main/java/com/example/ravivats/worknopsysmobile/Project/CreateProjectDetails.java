@@ -65,7 +65,10 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         cpDetailsFax =(EditText) findViewById(R.id.cp_details_fax_edit_text);
         cpDetailsEmail=(EditText) findViewById(R.id.cp_details_email_edit_text);
         cpDetailsContact=(EditText) findViewById(R.id.cp_details_contact_edit_text);
-
+        Authorization auth=Constants.getAUTH();
+        if(auth.getAdmEmpProjCreate()) {
+            cpDetailsNxtBtn.setClickable(false);
+        }
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.salutation_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -151,21 +154,14 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
-            if(auth1.getAdmEmpCustCreate())
             startActivity(new Intent(CreateProjectDetails.this, CreateCustomer.class));
-            else{
-                Toast.makeText(CreateProjectDetails.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_create_project) {
 
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
-            if(auth1.getHoursEdit())
+
                 startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
-            else{
-                Toast.makeText(CreateProjectDetails.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {

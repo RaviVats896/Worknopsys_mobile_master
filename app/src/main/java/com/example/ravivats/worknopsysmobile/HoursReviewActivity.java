@@ -164,25 +164,16 @@ public class HoursReviewActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Authorization auth=Constants.getAUTH();
-
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         } else if (id == R.id.nav_working_orders) {
 
         } else if (id == R.id.nav_create_customer) {
-            if(auth.getAdmEmpCustCreate())
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
-            else{
-                Toast.makeText(HoursReviewActivity.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_create_project) {
-            if(auth.getAdmEmpProjCreate())
+
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
-            else{
-                Toast.makeText(HoursReviewActivity.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {

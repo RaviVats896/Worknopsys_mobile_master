@@ -63,7 +63,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         CustomerCity=(EditText)  findViewById(R.id.cp_customers_city_edit_text);
         CustomerPostCode=(EditText)  findViewById(R.id.cp_customers_zip_edit_text);
         CustomerCCode= (EditText)  findViewById(R.id.cp_customers_ccode_edit_text);
-
+        Authorization auth=Constants.getAUTH();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.salutation_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -71,6 +71,9 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         // Apply the adapter to the spinner
         salutationSpinner.setAdapter(adapter);
         salutationSpinner.setOnItemSelectedListener(this);
+        if(auth.getAdmEmpCustCreate()){
+           createCustomerNxtBtn.setClickable(false);
+        }
         createCustomerNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
