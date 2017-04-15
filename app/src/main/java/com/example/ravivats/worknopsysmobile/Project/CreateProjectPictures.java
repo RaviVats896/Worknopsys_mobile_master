@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -46,8 +47,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     ImageButton cpPicturesCameraBtn, cpPicturesUploadBtn, cpPicturesDeleteBtn;
     String userChosenTask;
     ImageView cpPicturesImageView;
-    File finalPicture;
-    String picLocation;
+    String picLocation,picId;
     private int REQUEST_CAMERA = 2;
     private int SELECT_FILE = 1;
     private int flag;
@@ -75,25 +75,25 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         detailsBundle=getIntent().getExtras();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
         Map config = new HashMap();
         config.put("cloud_name", "worknopsys");
         config.put("api_key", "675743786426914");
         config.put("api_secret", "8aoJtViSin-WWv4NF5XLIwf9tnI");
         final Cloudinary cloudinary = new Cloudinary(config);
 
-
         cpPicturesImageView.setImageResource(R.drawable.ic_satellite_black_24dp);
         cpPicturesUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    String picId=detailsBundle.getString("CustomerName")+"_"+detailsBundle.getString("CustomerName")
-                            +"_"+ Constants.getDate()+":"+Constants.getTime();
+                     picId=detailsBundle.getString("CustomerName")+"_"+detailsBundle.getString("CustomerName")
+                            +"_"+ Constants.getDate()+"_"+Constants.getTime();
                     Log.e("picID",picId);
                     Map m= cloudinary.uploader().upload(picLocation,ObjectUtils.asMap("public_id", picId));
+                    Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_LONG).show();
 
                 } catch (IOException e) {
+                    Toast.makeText(CreateProjectPictures.this, "Upload failed. Check your internet connection.", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -114,8 +114,9 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                detailsBundle.putString("PictureId",picId);
                 Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
-
+                in.putExtras(detailsBundle);
                 startActivity(in);
             }
         });
@@ -212,7 +213,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
         File destination = new File(Environment.getExternalStorageDirectory(),
                 System.currentTimeMillis() + ".jpg");
-        finalPicture=destination;
+
         Log.d(TAG, "dest" + destination);
         FileOutputStream fo;
         try {

@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,10 +33,13 @@ import com.example.ravivats.worknopsysmobile.domain.Authorization;
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
     EditText cpDetailsStartDatePickerBtn,cpDetailsCustName,cpDetailsProjName,cpDetailsStreet,cpDetailsCity,cpDetailsZip;
     Button cpDetailsNxtBtn;
+    EditText cpDetailsFax,cpDetailsContact,cpDetailsEmail;
+    Spinner salutationSpin;
+    String projSalutation;
     Spinner cpDetailsProStatusSpinner;
     String ProjectStatus;
     String status[]={"In process","Completed"};
-
+    String salutations[]={"Mr","Dr","Mrs","Ms"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        salutationSpin = (Spinner) findViewById(R.id.cp_details_salutation_spinner);
         cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
         cpDetailsStartDatePickerBtn = (EditText) findViewById(R.id.cp_details_st_date_edit_text);
         cpDetailsProStatusSpinner = (Spinner) findViewById(R.id.cp_details_project_status_spinner);
@@ -57,14 +62,43 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         cpDetailsStreet= (EditText) findViewById(R.id.cp_details_street_edit_text);
         cpDetailsCity=(EditText) findViewById(R.id.cp_details_city_edit_text);
         cpDetailsZip=(EditText) findViewById(R.id.cp_details_zip_edit_text);
+        cpDetailsFax =(EditText) findViewById(R.id.cp_details_fax_edit_text);
+        cpDetailsEmail=(EditText) findViewById(R.id.cp_details_email_edit_text);
+        cpDetailsContact=(EditText) findViewById(R.id.cp_details_contact_edit_text);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.salutation_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        salutationSpin.setAdapter(adapter);
+        salutationSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                projSalutation = salutations[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                projSalutation = salutations[0];
+            }
+        });
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.project_status_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         cpDetailsProStatusSpinner.setAdapter(adapter1);
-        cpDetailsProStatusSpinner.setOnItemSelectedListener(this);
+        cpDetailsProStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ProjectStatus = status[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                ProjectStatus = status[0];
+            }
+        });
         cpDetailsStartDatePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +110,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
-                if(ProjectStatus==null){ProjectStatus=status[0];
-                }
+                if(ProjectStatus==null){ProjectStatus=status[0];}
                 in.putExtra("CustomerName",cpDetailsCustName.getText().toString());
                 in.putExtra("ProjectName",cpDetailsProjName.getText().toString());
                 in.putExtra("ProjectStartDate",cpDetailsStartDatePickerBtn.getText().toString());
@@ -85,6 +118,11 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
                 in.putExtra("StreetCity",cpDetailsCity.getText().toString());
                 in.putExtra("StreetZip",cpDetailsZip.getText().toString());
                 in.putExtra("ProjectStatus",ProjectStatus);
+                if(projSalutation==null){ projSalutation=salutations[0];}
+                in.putExtra("Salutation",projSalutation);
+                in.putExtra("Fax",cpDetailsFax.getText().toString());
+                in.putExtra("Email",cpDetailsEmail.getText().toString());
+                in.putExtra("Contact",cpDetailsContact.getText().toString());
                 startActivity(in);
             }
         });
@@ -152,7 +190,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        ProjectStatus=status[position];
+
     }
 
     @Override
