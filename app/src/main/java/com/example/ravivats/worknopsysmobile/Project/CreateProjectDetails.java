@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.DatePickerFragment;
@@ -160,10 +161,9 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
-
-                startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
+            startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {
-
+            startActivity(new Intent(CreateProjectDetails.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {

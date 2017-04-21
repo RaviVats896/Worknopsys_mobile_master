@@ -172,14 +172,13 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
-
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
 
         } else if (id == R.id.nav_config) {
-
+            startActivity(new Intent(HoursReviewActivity.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             logoutFunction();
         } else if (id == R.id.nav_about) {

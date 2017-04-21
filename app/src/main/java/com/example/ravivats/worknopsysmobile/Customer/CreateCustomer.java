@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
@@ -26,9 +27,6 @@ import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class CreateCustomer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     Spinner salutationSpinner;
@@ -169,11 +167,9 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
                 Toast.makeText(CreateCustomer.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_config) {
-
+            startActivity(new Intent(CreateCustomer.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
-
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
-
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateCustomer.this, AboutActivity.class));
         }

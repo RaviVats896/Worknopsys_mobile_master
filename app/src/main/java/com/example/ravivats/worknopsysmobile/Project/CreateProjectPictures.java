@@ -27,8 +27,10 @@ import android.widget.Toast;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
@@ -257,17 +259,14 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectPictures.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
-            //Intent i=new Intent(CreateProject.this,CreateProject.class);
-            //startActivity(i);
-
+            startActivity(new Intent(CreateProjectPictures.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
-
+            startActivity(new Intent(CreateProjectPictures.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {
-
+            startActivity(new Intent(CreateProjectPictures.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
-
             startActivity(new Intent(CreateProjectPictures.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectPictures.this, AboutActivity.class));

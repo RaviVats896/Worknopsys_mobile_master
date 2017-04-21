@@ -27,9 +27,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
 import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -159,15 +161,13 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectOrders.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {
-            //Intent i=new Intent(CreateProject.this,CreateProject.class);
-            //startActivity(i);
-
+            startActivity(new Intent(CreateProjectOrders.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
 
         } else if (id == R.id.nav_hours_review) {
-
+            startActivity(new Intent(CreateProjectOrders.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {
-
+            startActivity(new Intent(CreateProjectOrders.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateProjectOrders.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
