@@ -1,5 +1,7 @@
 package com.example.ravivats.worknopsysmobile;
 
+import android.support.annotation.BoolRes;
+
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
 import org.json.JSONArray;
@@ -16,12 +18,17 @@ import java.util.Locale;
 public class Constants {
 
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
+    private static Boolean posLocation;
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
     public static JSONArray getCUSTOMERS() {
         return CUSTOMERS;
     }
+
+    public static Boolean getPosLocation() { return posLocation; }
+
+    public static void setPosLocation(Boolean posLocation) { Constants.posLocation = posLocation; }
 
     public static void setCUSTOMERS(JSONArray CUSTOMERS) {
         Constants.CUSTOMERS = CUSTOMERS;

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ravivats.worknopsysmobile.ConfigurationActivity">
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Position Location"
+        android:id="@+id/config_pos_location"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:clickable="true"/>
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Two columns layout"
+        android:id="@+id/config_two_columns"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@id/config_pos_location"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:clickable="true"/>
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Project Creation Enhancement"
+        android:id="@+id/config_project_enhance"
+        android:layout_below="@id/config_two_columns"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:clickable="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Change Password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/config_change_password"
+        android:layout_below="@id/config_project_enhance"
+        />
+</RelativeLayout>
