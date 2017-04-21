@@ -19,12 +19,17 @@ public class Constants {
 
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
     private static Boolean posLocation;
+    private static Boolean projEnhance;
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
     public static JSONArray getCUSTOMERS() {
         return CUSTOMERS;
     }
+
+    public static Boolean getProjEnhance() { return projEnhance; }
+
+    public static void setProjEnhance(Boolean projEnhance) { Constants.projEnhance = projEnhance;}
 
     public static Boolean getPosLocation() { return posLocation; }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -22,6 +23,20 @@ public class ConfigurationActivity extends AppCompatActivity {
         configProjectEnhance = (Switch) findViewById(R.id.config_project_enhance);
         configPosLocation = (Switch) findViewById(R.id.config_pos_location);
         changePassword =(Button) findViewById(R.id.config_change_password);
+        configPosLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) Constants.setPosLocation(true);
+                else Constants.setPosLocation(false);
+            }
+        });
+        configProjectEnhance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) Constants.setProjEnhance(true);
+                else Constants.setProjEnhance(false);
+            }
+        });
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +60,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("Confirm",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                if(oldPass.getText().toString().equals(Constants.getEMPLOYEE().getPassword()))
                                 Toast.makeText(ConfigurationActivity.this, "Yippee!", Toast.LENGTH_SHORT).show();
                             }
                         });
