@@ -1,10 +1,12 @@
 package com.example.ravivats.worknopsysmobile;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.text.style.CharacterStyle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -13,9 +15,25 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConfigurationActivity extends AppCompatActivity {
+    static final String CHANGE_PASS_URL = "http://worknopsys.ml/api/changepass";
     Switch configProjectEnhance, configPosLocation;
     Button changePassword;
+    StringRequest changePassRequest;
+    static final String KEY_USERNAME = "employeephone";
+    static final String KEY_PASSWORD = "employeepassword";
+    static final String KEY_NEW = "newpass";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +59,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ConfigurationActivity.this);
-                alertDialog.setTitle("Values");
+                alertDialog.setTitle("Change Password");
                 final EditText oldPass = new EditText(ConfigurationActivity.this);
                 final EditText newPass = new EditText(ConfigurationActivity.this);
                 final EditText confirmPass = new EditText(ConfigurationActivity.this);
@@ -60,8 +78,38 @@ public class ConfigurationActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("Confirm",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                if(oldPass.getText().toString().equals(Constants.getEMPLOYEE().getPassword()))
-                                Toast.makeText(ConfigurationActivity.this, "Yippee!", Toast.LENGTH_SHORT).show();
+                                final RequestQueue passwordChangeQueue = Volley.newRequestQueue(ConfigurationActivity.this);
+                                if(oldPass.getText().toString().equals(Constants.getEMPLOYEE().getPassword()) &&  newPass.getText().toString().equals(confirmPass.getText().toString())) {
+                                    changePassRequest = new StringRequest(Request.Method.POST, CHANGE_PASS_URL,
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    if (response.equalsIgnoreCase("successful")) {
+                                                        Toast.makeText(ConfigurationActivity.this, "Password change successful!", Toast.LENGTH_LONG).show();
+                                                    } else if (response.equalsIgnoreCase("false")) {
+                                                        Toast.makeText(ConfigurationActivity.this, "Password change failed!", Toast.LENGTH_LONG).show();
+                                                    }
+
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    error.printStackTrace();
+                                                    Toast.makeText(ConfigurationActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                                }
+                                            }) {
+                                        @Override
+                                        protected Map<String, String> getParams() {
+                                            Map<String, String> params = new HashMap<String, String>();
+                                            params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
+                                            params.put(KEY_PASSWORD, oldPass.getText().toString());
+                                            params.put(KEY_NEW,confirmPass.getText().toString());
+                                            return params;
+                                        }
+                                    };
+                                    passwordChangeQueue.add(changePassRequest);
+                                } else{ Toast.makeText(ConfigurationActivity.this, "Wrong Password credentials. ", Toast.LENGTH_LONG).show();}
                             }
                         });
                 alertDialog.setNegativeButton("Cancel",
