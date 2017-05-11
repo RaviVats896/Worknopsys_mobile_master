@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
 import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
@@ -159,7 +160,13 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         } else if (id == R.id.nav_working_orders) {
 
         } else if(id==R.id.nav_facebook){
-
+            Intent i=new Intent(CreateProjectOrders.this,BrowserActivity.class);
+            i.putExtra("choice",1);
+            startActivity(i);
+        } else if(id==R.id.nav_youtube){
+            Intent i=new Intent(CreateProjectOrders.this,BrowserActivity.class);
+            i.putExtra("choice",2);
+            startActivity(i);
         } else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);

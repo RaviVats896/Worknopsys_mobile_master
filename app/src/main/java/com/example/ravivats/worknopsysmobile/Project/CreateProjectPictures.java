@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.ravivats.worknopsysmobile.AboutActivity;
+import com.example.ravivats.worknopsysmobile.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
@@ -257,7 +258,13 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_working_orders) {
 
         } else if(id==R.id.nav_facebook){
-
+            Intent i=new Intent(CreateProjectPictures.this,BrowserActivity.class);
+            i.putExtra("choice",1);
+            startActivity(i);
+        } else if(id==R.id.nav_youtube){
+            Intent i=new Intent(CreateProjectPictures.this,BrowserActivity.class);
+            i.putExtra("choice",2);
+            startActivity(i);
         } else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);

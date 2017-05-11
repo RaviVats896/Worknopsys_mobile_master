@@ -170,8 +170,15 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_working_orders) {
 
         } else if(id==R.id.nav_facebook){
-
-        } else if(id==R.id.nav_whatsapp){
+            Intent i=new Intent(HoursReviewActivity.this,BrowserActivity.class);
+            i.putExtra("choice",1);
+            startActivity(i);
+        } else if(id==R.id.nav_youtube){
+            Intent i=new Intent(HoursReviewActivity.this,BrowserActivity.class);
+            i.putExtra("choice",2);
+            startActivity(i);
+        }
+        else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));
