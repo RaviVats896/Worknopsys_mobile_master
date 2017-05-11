@@ -169,6 +169,15 @@ public class HoursReviewActivity extends AppCompatActivity
             startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         } else if (id == R.id.nav_working_orders) {
 
+        } else if(id==R.id.nav_facebook){
+
+        } else if(id==R.id.nav_whatsapp){
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_project) {

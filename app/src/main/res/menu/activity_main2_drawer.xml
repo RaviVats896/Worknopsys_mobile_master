@@ -10,6 +10,14 @@
             android:id="@+id/nav_working_orders"
             android:icon="@drawable/ic_assignment_black_24dp"
             android:title="My Working Orders" />
+        <item
+            android:id="@+id/nav_facebook"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="Facebook" />
+        <item
+            android:id="@+id/nav_whatsapp"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="WhatsApp" />
     </group>
 
     <item android:title="Administration">

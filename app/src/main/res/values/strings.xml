@@ -20,6 +20,7 @@
     <string name="next">NEXT</string>
     <string name="my_customers">My Customers</string>
     <string name="refresh">Refresh</string>
+    <string name="share_whatsapp">Download the Worknopsys app to seamlessly manage your work.For more details, visit http://worknopsys.ml/ </string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>

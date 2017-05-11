@@ -150,6 +150,15 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
 
+        } else if(id==R.id.nav_facebook){
+
+        } else if(id==R.id.nav_whatsapp){
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
 
         } else if (id == R.id.nav_create_project) {
