@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Others;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+
+import com.example.ravivats.worknopsysmobile.R;
 
 public class BrowserActivity extends AppCompatActivity {
     String facebookUrl ="https://www.facebook.com/Timesnow/";

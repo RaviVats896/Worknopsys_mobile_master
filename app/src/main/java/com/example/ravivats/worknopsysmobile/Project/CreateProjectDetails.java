@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,16 +18,16 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.ravivats.worknopsysmobile.AboutActivity;
-import com.example.ravivats.worknopsysmobile.BrowserActivity;
-import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
+import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
+import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
+import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.DatePickerFragment;
-import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
-import com.example.ravivats.worknopsysmobile.LoginActivity;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
@@ -154,7 +153,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-
+            startActivity(new Intent(CreateProjectDetails.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
             Intent i=new Intent(CreateProjectDetails.this,BrowserActivity.class);
             i.putExtra("choice",1);

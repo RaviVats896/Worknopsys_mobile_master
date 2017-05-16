@@ -26,14 +26,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ravivats.worknopsysmobile.AboutActivity;
-import com.example.ravivats.worknopsysmobile.BrowserActivity;
-import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
+import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
+import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
+import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
 import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
-import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
-import com.example.ravivats.worknopsysmobile.LoginActivity;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
 import java.util.HashMap;
@@ -158,7 +159,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-
+            startActivity(new Intent(CreateProjectOrders.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
             Intent i=new Intent(CreateProjectOrders.this,BrowserActivity.class);
             i.putExtra("choice",1);

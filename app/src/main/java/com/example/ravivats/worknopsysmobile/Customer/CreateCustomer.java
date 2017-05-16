@@ -18,12 +18,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.ravivats.worknopsysmobile.AboutActivity;
-import com.example.ravivats.worknopsysmobile.BrowserActivity;
-import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
+import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
+import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
+import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
-import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
-import com.example.ravivats.worknopsysmobile.LoginActivity;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -114,7 +115,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
+        getMenuInflater().inflate(R.menu.menu_view_customers, menu);
         return true;
     }
 
@@ -122,9 +123,6 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.view_customers) {
             if(Constants.getAUTH().getAdmEmpCustView())
@@ -148,9 +146,9 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         int id = item.getItemId();
         Authorization auth1=Constants.getAUTH();
         if (id == R.id.nav_daily_overview) {
-            // Handle the camera action
-        } else if (id == R.id.nav_working_orders) {
 
+        } else if (id == R.id.nav_working_orders) {
+            startActivity(new Intent(CreateCustomer.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
             Intent i=new Intent(CreateCustomer.this,BrowserActivity.class);
             i.putExtra("choice",1);

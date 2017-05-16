@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Others;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,9 +25,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
+import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -116,7 +119,7 @@ public class HoursReviewActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
+        getMenuInflater().inflate(R.menu.menu_view_customers, menu);
         //RequestQueue iQueue = Volley.newRequestQueue(this);
         mImageView = (ImageView) findViewById(R.id.navDrawerImageView);
         navDrawerNumber = (TextView) findViewById(R.id.navDrawerTxtViewNumber);
@@ -165,10 +168,8 @@ public class HoursReviewActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_daily_overview) {
-            // Handle the camera action
-            startActivity(new Intent(HoursReviewActivity.this, ViewCustomers.class));
         } else if (id == R.id.nav_working_orders) {
-
+            startActivity(new Intent(HoursReviewActivity.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
             Intent i=new Intent(HoursReviewActivity.this,BrowserActivity.class);
             i.putExtra("choice",1);

@@ -26,13 +26,14 @@ import android.widget.Toast;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.example.ravivats.worknopsysmobile.AboutActivity;
-import com.example.ravivats.worknopsysmobile.BrowserActivity;
-import com.example.ravivats.worknopsysmobile.ConfigurationActivity;
+import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
+import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
+import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
-import com.example.ravivats.worknopsysmobile.HoursReviewActivity;
-import com.example.ravivats.worknopsysmobile.LoginActivity;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
 
@@ -256,7 +257,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-
+            startActivity(new Intent(CreateProjectPictures.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
             Intent i=new Intent(CreateProjectPictures.this,BrowserActivity.class);
             i.putExtra("choice",1);

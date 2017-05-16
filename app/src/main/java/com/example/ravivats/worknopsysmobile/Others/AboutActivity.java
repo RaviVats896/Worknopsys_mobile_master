@@ -1,4 +1,4 @@
-package com.example.ravivats.worknopsysmobile;
+package com.example.ravivats.worknopsysmobile.Others;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 
+import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
@@ -36,7 +38,7 @@ public class AboutActivity extends AppCompatActivity {
         woShowall=(Switch) findViewById(R.id.about_adm_wo_show_all);
         woSortDistance=(Switch) findViewById(R.id.about_adm_wo_sort_distance);
 
-        userAuth=Constants.getAUTH();
+        userAuth= Constants.getAUTH();
 
         if(userAuth.getAdmEmpCustCreate())  custCreate.setChecked(true);
         if(userAuth.getAdmEmpCustView())  custView.setChecked(true);
