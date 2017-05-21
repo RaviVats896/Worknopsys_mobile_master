@@ -27,6 +27,7 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.DatePickerFragment;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -155,13 +156,9 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(CreateProjectDetails.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
-            Intent i=new Intent(CreateProjectDetails.this,BrowserActivity.class);
-            i.putExtra("choice",1);
-            startActivity(i);
+            startActivity(new Intent(CreateProjectDetails.this,BrowserActivity.class).putExtra("choice",1));
         } else if(id==R.id.nav_youtube){
-            Intent i=new Intent(CreateProjectDetails.this,BrowserActivity.class);
-            i.putExtra("choice",2);
-            startActivity(i);
+            startActivity(new Intent(CreateProjectDetails.this,BrowserActivity.class).putExtra("choice",2));
         } else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -174,7 +171,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         } else if (id == R.id.nav_create_project) {
 
         } else if (id == R.id.nav_mgmt_working_orders) {
-
+            startActivity(new Intent(CreateProjectDetails.this, ManagementWorkingOrders.class));
         } else if (id == R.id.nav_hours_review) {
             startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {

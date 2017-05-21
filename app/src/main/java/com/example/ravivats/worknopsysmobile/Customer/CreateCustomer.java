@@ -24,6 +24,7 @@ import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
@@ -150,13 +151,9 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(CreateCustomer.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
-            Intent i=new Intent(CreateCustomer.this,BrowserActivity.class);
-            i.putExtra("choice",1);
-            startActivity(i);
+            startActivity(new Intent(CreateCustomer.this,BrowserActivity.class).putExtra("choice",1));
         } else if(id==R.id.nav_youtube){
-            Intent i=new Intent(CreateCustomer.this,BrowserActivity.class);
-            i.putExtra("choice",2);
-            startActivity(i);
+            startActivity(new Intent(CreateCustomer.this,BrowserActivity.class).putExtra("choice",2));
         } else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -173,7 +170,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
                 Toast.makeText(CreateCustomer.this,"You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_mgmt_working_orders) {
-
+            startActivity(new Intent(CreateCustomer.this, ManagementWorkingOrders.class));
         } else if (id == R.id.nav_hours_review) {
             if(auth1.getHoursEdit())
             startActivity(new Intent(CreateCustomer.this, HoursReviewActivity.class));

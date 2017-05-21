@@ -30,6 +30,7 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.google.gson.Gson;
@@ -171,13 +172,9 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(HoursReviewActivity.this,MyOrdersActivity.class));
         } else if(id==R.id.nav_facebook){
-            Intent i=new Intent(HoursReviewActivity.this,BrowserActivity.class);
-            i.putExtra("choice",1);
-            startActivity(i);
+            startActivity(new Intent(HoursReviewActivity.this,BrowserActivity.class).putExtra("choice",1));
         } else if(id==R.id.nav_youtube){
-            Intent i=new Intent(HoursReviewActivity.this,BrowserActivity.class);
-            i.putExtra("choice",2);
-            startActivity(i);
+            startActivity(new Intent(HoursReviewActivity.this,BrowserActivity.class).putExtra("choice",2));
         }
         else if(id==R.id.nav_whatsapp){
             Intent sendIntent = new Intent();
@@ -191,9 +188,8 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
-
+            startActivity(new Intent(HoursReviewActivity.this, ManagementWorkingOrders.class));
         } else if (id == R.id.nav_hours_review) {
-
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(HoursReviewActivity.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {

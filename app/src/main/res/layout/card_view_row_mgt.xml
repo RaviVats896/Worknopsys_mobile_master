@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+<android.support.v7.widget.CardView
+    android:id="@+id/card_view_mgt"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:contentPadding="10dp">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/weekDayTextMgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/weekDateTextMgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/weekDayTextMgt"
+            android:layout_marginStart="20dp"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/projectNameTextMgt"
+            android:layout_below="@id/weekDayTextMgt"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activityTextMgt"
+            android:layout_below="@id/projectNameTextMgt"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customerNameTextMgt"
+            android:layout_below="@id/activityTextMgt"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customerAddressTextMgt"
+            android:layout_below="@id/customerNameTextMgt"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            />
+</RelativeLayout>
+</android.support.v7.widget.CardView>
+</LinearLayout>
