@@ -4,5 +4,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_pName"
+        android:hint="Project Name"
+        android:layout_marginTop="8dp"
+        android:ems="14"
+        android:layout_marginStart="10dp"/>
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/create_wo_editText_sDate"
+        android:inputType="date"
+        android:layout_marginStart="10dp"
+        android:hint="Start Date"
+        android:ems="7"
+        android:layout_below="@id/create_wo_editText_pName"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_sTime"
+        android:inputType="time"
+        android:ems="7"
+        android:layout_marginStart="20dp"
+        android:hint="Start Time"
+        android:layout_toEndOf="@id/create_wo_editText_sDate"
+        android:layout_below="@id/create_wo_editText_pName"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_address"
+        android:ems="14"
+        android:layout_marginStart="10dp"
+        android:hint="Address"
+        android:layout_below="@id/create_wo_editText_sDate"
+        android:layout_marginTop="8dp"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_tName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:hint="Task Name"
+        android:layout_below="@id/create_wo_editText_address"
+        android:ems="14" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Customer Name"
+        android:layout_below="@id/create_wo_editText_tName"
+        android:layout_marginStart="10dp"
+        android:id="@+id/create_wo_editText_cName"
+        android:ems="14"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_travelBtn"
+        android:text="Travel"
+        android:drawableStart="@drawable/ic_menu_manage"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/create_wo_editText_cName"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_postingBtn"
+        android:text="Posting"
+        android:drawableStart="@drawable/ic_menu_manage"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/create_wo_editText_travelBtn"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_wo_editText_breakBtn"
+        android:text="Break"
+        android:drawableStart="@drawable/ic_menu_manage"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/create_wo_editText_postingBtn"
+        android:layout_marginTop="8dp" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.ravivats.worknopsysmobile.WorkingOrders;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class MyOrdersActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "MyOrdersActivity";
+    FloatingActionButton createWO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,13 @@ public class MyOrdersActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new WorkingOrderViewAdapter(getDataSet());
         mRecyclerView.setAdapter(mAdapter);
+        createWO= (FloatingActionButton) findViewById(R.id.create_new_wo_button);
+        createWO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyOrdersActivity.this,CreateWorkingOrder.class));
+            }
+        });
     }
 
     @Override
