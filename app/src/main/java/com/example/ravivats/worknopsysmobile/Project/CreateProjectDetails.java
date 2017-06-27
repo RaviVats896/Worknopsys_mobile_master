@@ -28,7 +28,7 @@ import com.example.ravivats.worknopsysmobile.DatePickerFragment;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
@@ -154,7 +154,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(CreateProjectDetails.this,MyOrdersActivity.class));
+            startActivity(new Intent(CreateProjectDetails.this,MyWorkingOrders.class));
         } else if(id==R.id.nav_facebook){
             startActivity(new Intent(CreateProjectDetails.this,BrowserActivity.class).putExtra("choice",1));
         } else if(id==R.id.nav_youtube){

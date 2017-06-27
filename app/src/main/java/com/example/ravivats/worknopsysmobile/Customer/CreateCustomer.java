@@ -25,7 +25,7 @@ import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.MyOrdersActivity;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -149,7 +149,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         if (id == R.id.nav_daily_overview) {
 
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(CreateCustomer.this,MyOrdersActivity.class));
+            startActivity(new Intent(CreateCustomer.this,MyWorkingOrders.class));
         } else if(id==R.id.nav_facebook){
             startActivity(new Intent(CreateCustomer.this,BrowserActivity.class).putExtra("choice",1));
         } else if(id==R.id.nav_youtube){

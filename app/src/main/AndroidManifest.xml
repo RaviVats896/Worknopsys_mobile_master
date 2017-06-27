@@ -67,7 +67,7 @@
         <activity
             android:name=".Others.BrowserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WorkingOrders.MyOrdersActivity"
+        <activity android:name=".WorkingOrders.MyWorkingOrders"
             android:label="My Working Orders"/>
         <activity android:name=".WorkingOrders.CreateWorkingOrder"
             android:label="Create Working Order"/>

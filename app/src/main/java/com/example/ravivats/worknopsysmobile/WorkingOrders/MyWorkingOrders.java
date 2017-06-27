@@ -17,16 +17,16 @@ import com.example.ravivats.worknopsysmobile.R;
 
 import java.util.ArrayList;
 
-public class MyOrdersActivity extends AppCompatActivity {
+public class MyWorkingOrders extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "MyOrdersActivity";
+    private static String LOG_TAG = "MyWorkingOrders";
     FloatingActionButton createWO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_orders);
+        setContentView(R.layout.activity_my_working_orders);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -37,7 +37,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         createWO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyOrdersActivity.this,CreateWorkingOrder.class));
+                startActivity(new Intent(MyWorkingOrders.this,CreateWorkingOrder.class));
             }
         });
     }
@@ -53,7 +53,7 @@ public class MyOrdersActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.create_working_orders){
-            startActivity(new Intent(MyOrdersActivity.this,CreateWorkingOrder.class));
+            startActivity(new Intent(MyWorkingOrders.this,CreateWorkingOrder.class));
         }
         return super.onOptionsItemSelected(item);
     }
