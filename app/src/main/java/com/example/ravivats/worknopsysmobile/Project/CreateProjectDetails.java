@@ -80,7 +80,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 projSalutation = salutations[position];
-            }
+             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -193,16 +193,11 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         cpDetailsStartDatePickerBtn.setText(new StringBuilder().append(dayOfMonth).append("/")
                 .append(month+1).append("/").append(year));
-
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 }
