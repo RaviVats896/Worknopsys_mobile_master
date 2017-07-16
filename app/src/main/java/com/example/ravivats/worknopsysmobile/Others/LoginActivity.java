@@ -18,7 +18,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
 import com.google.gson.Gson;
 import org.json.JSONObject;
@@ -84,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onErrorResponse(VolleyError error) {
                                         error.printStackTrace();
                                         Toast.makeText(LoginActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(LoginActivity.this, CreateWorkingOrder.class));
                                     }
                                 }) {
                             @Override

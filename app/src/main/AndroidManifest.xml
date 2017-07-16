@@ -62,19 +62,28 @@
         <activity
             android:name=".Others.AboutActivity"
             android:label="About" />
-        <activity android:name=".Others.ConfigurationActivity"
-            android:label="Configuration"/>
+        <activity
+            android:name=".Others.ConfigurationActivity"
+            android:label="Configuration" />
         <activity
             android:name=".Others.BrowserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WorkingOrders.MyWorkingOrders"
-            android:label="My Working Orders"/>
-        <activity android:name=".WorkingOrders.CreateWorkingOrder"
-            android:label="Create Working Order"/>
-        <activity android:name=".WorkingOrders.ManagementWorkingOrders"
-            android:label="Manage Working Orders"/>
+        <activity
+            android:name=".WorkingOrders.MyWorkingOrders"
+            android:label="My Working Orders" />
+        <activity
+            android:name=".WorkingOrders.CreateWorkingOrder"
+            android:label="Create Working Order" />
+        <activity
+            android:name=".WorkingOrders.ManagementWorkingOrders"
+            android:label="Manage Working Orders" />
+        <activity android:name=".WorkingOrders.TimingsEvidence"
+            android:label="Evidence"/>
+
         <meta-data
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://123456789012345:abcdeghijklmnopqrstuvwxyz12@n07t21i7" />
+
     </application>
+
 </manifest>
