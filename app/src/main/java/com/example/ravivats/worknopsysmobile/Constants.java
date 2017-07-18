@@ -18,6 +18,7 @@ public class Constants {
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
+    private static String evidenceWorkDate;
     private static String evidenceGTime1;
     private static String evidenceGTime2;
     private static String evidenceWTime1;
@@ -26,6 +27,10 @@ public class Constants {
     private static String evidenceBTime2;
     private static String evidenceRTime1;
     private static String evidenceRTime2;
+
+    public static String getEvidenceWorkDate() { return evidenceWorkDate; }
+
+    public static void setEvidenceWorkDate(String evidenceWorkDate) { Constants.evidenceWorkDate = evidenceWorkDate; }
 
     public static String getEvidenceRTime2() { return evidenceRTime2; }
 

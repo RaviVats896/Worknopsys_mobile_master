@@ -39,6 +39,10 @@ public class CreateWorkingOrder extends AppCompatActivity {
         breakTime = Constants.getEvidenceBTime1()+":"+Constants.getEvidenceBTime2();
         postingTime = Constants.getEvidenceWTime1()+":"+Constants.getEvidenceWTime2();
 
+        createWoTravelTime.setText(travelTime);
+        createWoBreakTime.setText(breakTime);
+        createWoPostingTime.setText(postingTime);
+
         createWoChooseTimingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -83,6 +83,7 @@ public class HoursReviewActivity extends AppCompatActivity
         Constants.setEvidenceBTime1("--:--"); Constants.setEvidenceBTime2("--:--");
         Constants.setEvidenceGTime1("--:--"); Constants.setEvidenceGTime2("--:--");
         Constants.setEvidenceRTime1("--:--"); Constants.setEvidenceRTime2("--:--");
+        Constants.setEvidenceWorkDate("--/--/----");
 
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {
