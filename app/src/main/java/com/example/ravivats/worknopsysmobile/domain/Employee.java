@@ -1,8 +1,5 @@
 package com.example.ravivats.worknopsysmobile.domain;
 
-/**
- * Created by halfbloodprince on 2/5/17.
- */
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;

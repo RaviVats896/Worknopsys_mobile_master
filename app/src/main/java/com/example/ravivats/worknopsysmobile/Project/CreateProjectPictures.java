@@ -86,7 +86,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         config.put("api_secret", "8aoJtViSin-WWv4NF5XLIwf9tnI");
         final Cloudinary cloudinary = new Cloudinary(config);
 
-        cpPicturesImageView.setImageResource(R.drawable.ic_satellite_black_24dp);
+        cpPicturesImageView.setImageResource(R.drawable.ic_menu_gallery_black);
         cpPicturesUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +113,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesDeleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cpPicturesImageView.setImageResource(R.drawable.ic_satellite_black_24dp);
+                cpPicturesImageView.setImageResource(R.drawable.ic_menu_gallery_black);
             }
         });
         cpPicturesNxtBtn.setOnClickListener(new View.OnClickListener() {

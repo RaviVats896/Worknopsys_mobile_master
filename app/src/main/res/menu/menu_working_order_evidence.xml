@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/create_wo_evidence_send"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Submit"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/create_wo_evidence_discard"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:title="Discard"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/create_wo_evidence_logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+</menu>

@@ -10,11 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-
-/**
- * Created by Ravi Vats on 27-12-2016.
- */
-
 public class Constants {
 
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
@@ -23,6 +18,47 @@ public class Constants {
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
+    private static String evidenceGTime1;
+    private static String evidenceGTime2;
+    private static String evidenceWTime1;
+    private static String evidenceWTime2;
+    private static String evidenceBTime1;
+    private static String evidenceBTime2;
+    private static String evidenceRTime1;
+    private static String evidenceRTime2;
+
+    public static String getEvidenceRTime2() { return evidenceRTime2; }
+
+    public static void setEvidenceRTime2(String evidenceRTime2) { Constants.evidenceRTime2 = evidenceRTime2; }
+
+    public static String getEvidenceBTime1() { return evidenceBTime1; }
+
+    public static void setEvidenceBTime1(String evidenceBTime1) { Constants.evidenceBTime1 = evidenceBTime1; }
+
+    public static String getEvidenceRTime1() { return evidenceRTime1; }
+
+    public static void setEvidenceRTime1(String evidenceRTime1) { Constants.evidenceRTime1 = evidenceRTime1; }
+
+    public static String getEvidenceBTime2() { return evidenceBTime2; }
+
+    public static void setEvidenceBTime2(String evidenceBTime2) { Constants.evidenceBTime2 = evidenceBTime2; }
+
+    public static String getEvidenceWTime2() { return evidenceWTime2; }
+
+    public static void setEvidenceWTime2(String evidenceWTime2) { Constants.evidenceWTime2 = evidenceWTime2; }
+
+    public static String getEvidenceWTime1() { return evidenceWTime1; }
+
+    public static void setEvidenceWTime1(String evidenceWTime1) { Constants.evidenceWTime1 = evidenceWTime1; }
+
+    public static String getEvidenceGTime2() { return evidenceGTime2; }
+
+    public static void setEvidenceGTime2(String evidenceGTime2) { Constants.evidenceGTime2 = evidenceGTime2; }
+
+    public static String getEvidenceGTime1() { return evidenceGTime1; }
+
+    public static void setEvidenceGTime1(String evidenceGTime1) { Constants.evidenceGTime1 = evidenceGTime1; }
+
     public static JSONArray getCUSTOMERS() {
         return CUSTOMERS;
     }
@@ -54,6 +90,7 @@ public class Constants {
     public static void setAUTH(Authorization AUTH) {
         Constants.AUTH = AUTH;
     }
+
     public static String getDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Calendar calendar = Calendar.getInstance();
