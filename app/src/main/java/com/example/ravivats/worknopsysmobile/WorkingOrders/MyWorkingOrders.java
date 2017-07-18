@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrderViewAdapter;
 import com.example.ravivats.worknopsysmobile.R;
@@ -40,6 +41,12 @@ public class MyWorkingOrders extends AppCompatActivity {
                 startActivity(new Intent(MyWorkingOrders.this,CreateWorkingOrder.class));
             }
         });
+
+        Constants.setEvidenceWTime1("--:--"); Constants.setEvidenceWTime2("--:--");
+        Constants.setEvidenceBTime1("--:--"); Constants.setEvidenceBTime2("--:--");
+        Constants.setEvidenceGTime1("--:--"); Constants.setEvidenceGTime2("--:--");
+        Constants.setEvidenceRTime1("--:--"); Constants.setEvidenceRTime2("--:--");
+        Constants.setEvidenceWorkDate("--/--/----");
     }
 
     @Override

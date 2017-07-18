@@ -189,8 +189,8 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                evidenceWorkDate.setText(dayOfMonth+"/"+month+"/"+year);
-                Constants.setEvidenceWorkDate(dayOfMonth+"/"+month+"/"+year);
+                evidenceWorkDate.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                Constants.setEvidenceWorkDate(dayOfMonth+"/"+(month+1)+"/"+year);
             }
         };
 

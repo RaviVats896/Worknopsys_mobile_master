@@ -87,10 +87,10 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/create_wo_travel_label"
         android:layout_below="@id/create_wo_choose_timings_button"
-        android:ems="8"
+        android:ems="12"
         android:id="@+id/create_wo_editText_travelTime"
         android:hint="Travel Time"
         android:layout_marginTop="5dp"/>
@@ -107,10 +107,10 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/create_wo_posting_label"
         android:layout_below="@id/create_wo_travel_label"
-        android:ems="8"
+        android:ems="12"
         android:id="@+id/create_wo_editText_postingTime"
         android:hint="Posting Time"
         android:layout_marginTop="5dp"/>
@@ -127,11 +127,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:id="@+id/create_wo_editText_breakTime"
         android:layout_toEndOf="@id/create_wo_break_label"
         android:layout_below="@id/create_wo_posting_label"
-        android:ems="8"
+        android:ems="12"
         android:hint="W/O Break"
         android:layout_marginTop="5dp"/>
 </RelativeLayout>

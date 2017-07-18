@@ -79,12 +79,6 @@ public class HoursReviewActivity extends AppCompatActivity
         txtView1 = (TextView) findViewById(R.id.textview1);
         queue = Volley.newRequestQueue(this);
 
-        Constants.setEvidenceWTime1("--:--"); Constants.setEvidenceWTime2("--:--");
-        Constants.setEvidenceBTime1("--:--"); Constants.setEvidenceBTime2("--:--");
-        Constants.setEvidenceGTime1("--:--"); Constants.setEvidenceGTime2("--:--");
-        Constants.setEvidenceRTime1("--:--"); Constants.setEvidenceRTime2("--:--");
-        Constants.setEvidenceWorkDate("--/--/----");
-
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {
                     @Override
