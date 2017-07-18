@@ -9,12 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
 
 public class CreateWorkingOrder extends AppCompatActivity {
     EditText createWoProjectName, createWoStartDate, createWoAddress, createWoTaskName, createWoCustomerName;
-    EditText createWoPersonal, createWoResources, createWoPostingTime, createWoBreakTime;
-    Button createWoTravelBtn;
+    EditText createWoPersonal, createWoResources, createWoPostingTime, createWoBreakTime, createWoTravelTime;
+    Button createWoChooseTimingsBtn;
+    String travelTime, breakTime, postingTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,14 @@ public class CreateWorkingOrder extends AppCompatActivity {
         createWoResources = (EditText) findViewById(R.id.create_wo_editText_resources);
         createWoPostingTime = (EditText) findViewById(R.id.create_wo_editText_postingTime);
         createWoBreakTime = (EditText) findViewById(R.id.create_wo_editText_breakTime);
-        createWoTravelBtn = (Button) findViewById(R.id.create_wo_editText_travelBtn);
+        createWoTravelTime = (EditText)findViewById(R.id.create_wo_editText_travelTime);
+        createWoChooseTimingsBtn = (Button) findViewById(R.id.create_wo_choose_timings_button);
 
-        createWoTravelBtn.setOnClickListener(new View.OnClickListener() {
+        travelTime = Constants.getEvidenceGTime1()+":"+Constants.getEvidenceGTime2()+", "+Constants.getEvidenceRTime1()+":"+Constants.getEvidenceRTime2();
+        breakTime = Constants.getEvidenceBTime1()+":"+Constants.getEvidenceBTime2();
+        postingTime = Constants.getEvidenceWTime1()+":"+Constants.getEvidenceWTime2();
+
+        createWoChooseTimingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreateWorkingOrder.this,TimingsEvidence.class));
