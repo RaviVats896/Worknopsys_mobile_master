@@ -45,7 +45,7 @@ public class ManagementWorkingOrders extends AppCompatActivity {
     private ArrayList<WorkingOrderObject> getDataSet() {
         ArrayList results = new ArrayList<WorkingOrderObject>();
         for (int index = 0; index < 6; index++) {
-            WorkingOrderObject obj = new WorkingOrderObject("Saturday ,","17th December 2016","Monteu Las Vegas Road","Street Cleaning","Monteu SA","Sankt, 22, 6989A");
+            WorkingOrderObject obj = new WorkingOrderObject("Saturday ,", "17th December 2016", "Monteu Las Vegas Road", "Street Cleaning", "Monteu SA", "Sankt, 22, 6989A");
             results.add(index, obj);
         }
         return results;

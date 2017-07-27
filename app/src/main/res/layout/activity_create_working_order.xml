@@ -4,134 +4,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder">
-    <EditText
-        android:layout_width="wrap_content"
+
+    <Spinner
+        android:id="@+id/create_wo_editText_pID"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/create_wo_editText_pName"
-        android:hint="Project Name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"/>
+        android:prompt="Project ID" />
+
     <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:id="@+id/create_wo_editText_sDate"
-        android:inputType="date"
-        android:layout_marginStart="5dp"
-        android:hint="Start Date"
-        android:layout_toEndOf="@id/create_wo_editText_pName"
-        android:ems="6"
-        android:layout_marginTop="5dp" />
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/create_wo_editText_address"
-        android:layout_marginStart="10dp"
-        android:hint="Address"
-        android:layout_below="@id/create_wo_editText_sDate"
-        android:layout_marginTop="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_wo_editText_tName"
+        android:layout_below="@id/create_wo_editText_pID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:hint="Task Name"
+        android:ems="6"
+        android:hint="Start Date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/create_wo_editText_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_wo_editText_sDate"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:hint="Address" />
+
+    <Spinner
+        android:id="@+id/create_wo_editText_tID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/create_wo_editText_address"
-        />
-    <EditText
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:dropDownWidth="wrap_content"
+        android:prompt="Task ID" />
+
+    <Spinner
+        android:id="@+id/create_wo_editText_cID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Customer Name"
-        android:layout_below="@id/create_wo_editText_tName"
+        android:layout_below="@id/create_wo_editText_tID"
         android:layout_marginStart="10dp"
-        android:id="@+id/create_wo_editText_cName"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:hint="Customer ID" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Personal"
-        android:layout_below="@id/create_wo_editText_cName"
-        android:layout_marginStart="10dp"
-        android:id="@+id/create_wo_editText_personal"
-        android:layout_marginTop="5dp" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Resources"
-        android:layout_below="@id/create_wo_editText_personal"
-        android:layout_marginStart="10dp"
         android:id="@+id/create_wo_editText_resources"
-        android:layout_marginTop="5dp" />
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/create_wo_choose_timings_button"
-        android:text="Choose Timings"
-        android:drawablePadding="10dp"
-        android:drawableStart="@drawable/ic_av_timer_black_24dp"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/create_wo_editText_cID"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:hint="Resources" />
+
+    <Button
+        android:id="@+id/create_wo_final_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/create_wo_editText_resources"
-        android:layout_marginTop="5dp" />
-    <TextView
-        android:layout_width="80sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_wo_travel_label"
-        android:text="Travel"
-        android:textSize="19sp"
-        android:layout_marginStart="14dp"
-        android:layout_below="@id/create_wo_choose_timings_button"
-        android:layout_marginTop="12dp"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@id/create_wo_travel_label"
-        android:layout_below="@id/create_wo_choose_timings_button"
-        android:ems="12"
-        android:id="@+id/create_wo_editText_travelTime"
-        android:hint="Travel Time"
-        android:layout_marginTop="5dp"/>
-    <TextView
-        android:layout_width="80sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_wo_posting_label"
-        android:text="Posting"
-        android:textSize="19sp"
-        android:layout_marginStart="14dp"
-        android:layout_below="@id/create_wo_travel_label"
-        android:layout_marginTop="12dp"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@id/create_wo_posting_label"
-        android:layout_below="@id/create_wo_travel_label"
-        android:ems="12"
-        android:id="@+id/create_wo_editText_postingTime"
-        android:hint="Posting Time"
-        android:layout_marginTop="5dp"/>
-    <TextView
-        android:layout_width="80sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_wo_break_label"
-        android:text="Break"
-        android:textSize="19sp"
-        android:layout_marginStart="14dp"
-        android:layout_below="@id/create_wo_posting_label"
-        android:layout_marginTop="12dp"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:id="@+id/create_wo_editText_breakTime"
-        android:layout_toEndOf="@id/create_wo_break_label"
-        android:layout_below="@id/create_wo_posting_label"
-        android:ems="12"
-        android:hint="W/O Break"
-        android:layout_marginTop="5dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Create Working Order" />
+
 </RelativeLayout>

@@ -24,6 +24,7 @@ public class MyWorkingOrders extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "MyWorkingOrders";
     FloatingActionButton createWO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +35,22 @@ public class MyWorkingOrders extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new WorkingOrderViewAdapter(getDataSet());
         mRecyclerView.setAdapter(mAdapter);
-        createWO= (FloatingActionButton) findViewById(R.id.create_new_wo_button);
+        createWO = (FloatingActionButton) findViewById(R.id.create_new_wo_button);
         createWO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyWorkingOrders.this,CreateWorkingOrder.class));
+                startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
             }
         });
 
-        Constants.setEvidenceWTime1("--:--"); Constants.setEvidenceWTime2("--:--");
-        Constants.setEvidenceBTime1("--:--"); Constants.setEvidenceBTime2("--:--");
-        Constants.setEvidenceGTime1("--:--"); Constants.setEvidenceGTime2("--:--");
-        Constants.setEvidenceRTime1("--:--"); Constants.setEvidenceRTime2("--:--");
+        Constants.setEvidenceWTime1("--:--");
+        Constants.setEvidenceWTime2("--:--");
+        Constants.setEvidenceBTime1("--:--");
+        Constants.setEvidenceBTime2("--:--");
+        Constants.setEvidenceGTime1("--:--");
+        Constants.setEvidenceGTime2("--:--");
+        Constants.setEvidenceRTime1("--:--");
+        Constants.setEvidenceRTime2("--:--");
         Constants.setEvidenceWorkDate("--/--/----");
     }
 
@@ -59,11 +64,12 @@ public class MyWorkingOrders extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.create_working_orders){
-            startActivity(new Intent(MyWorkingOrders.this,CreateWorkingOrder.class));
+        if (id == R.id.create_working_orders) {
+            startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -79,7 +85,7 @@ public class MyWorkingOrders extends AppCompatActivity {
     private ArrayList<WorkingOrderObject> getDataSet() {
         ArrayList results = new ArrayList<WorkingOrderObject>();
         for (int index = 0; index < 6; index++) {
-            WorkingOrderObject obj = new WorkingOrderObject("Saturday ,","17th December 2016","Monteu Las Vegas Road","Monteu SA","Sankt, 22, 6989A");
+            WorkingOrderObject obj = new WorkingOrderObject("Saturday ,", "17th December 2016", "Monteu Las Vegas Road", "Monteu SA", "Sankt, 22, 6989A");
             results.add(index, obj);
         }
         return results;

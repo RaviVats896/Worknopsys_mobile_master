@@ -21,11 +21,11 @@ import java.util.Calendar;
 
 public class TimingsEvidence extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    TimePickerDialog.OnTimeSetListener evidenceGTime1Listener,evidenceGTime2Listener,evidenceWTime1Listener,
-            evidenceWTime2Listener, evidenceBTime1Listener,evidenceBTime2Listener,evidenceRTime1Listener,evidenceRTime2Listener;
+    TimePickerDialog.OnTimeSetListener evidenceGTime1Listener, evidenceGTime2Listener, evidenceWTime1Listener,
+            evidenceWTime2Listener, evidenceBTime1Listener, evidenceBTime2Listener, evidenceRTime1Listener, evidenceRTime2Listener;
     DatePickerDialog.OnDateSetListener evidenceWorkDateListener;
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
-    evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate;
+            evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate;
     Calendar cal;
 
     @Override
@@ -47,7 +47,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceWorkDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog dp1=  new DatePickerDialog(TimingsEvidence.this,evidenceWorkDateListener , cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+                DatePickerDialog dp1 = new DatePickerDialog(TimingsEvidence.this, evidenceWorkDateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
                 dp1.show();
             }
         });
@@ -121,86 +121,96 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceGTimePicker1.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceGTime1(hourOfDay+":"+minute);
-            }};
+                evidenceGTimePicker1.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceGTime1(hourOfDay + ":" + minute);
+            }
+        };
         evidenceGTime2Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceGTimePicker2.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceGTime2(hourOfDay+":"+minute);
-            }};
+                evidenceGTimePicker2.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceGTime2(hourOfDay + ":" + minute);
+            }
+        };
 
         evidenceBTime1Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceBTimePicker1.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceBTime1(hourOfDay+":"+minute);
-            }};
+                evidenceBTimePicker1.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceBTime1(hourOfDay + ":" + minute);
+            }
+        };
         evidenceBTime2Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceBTimePicker2.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceBTime2(hourOfDay+":"+minute);
-            }};
+                evidenceBTimePicker2.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceBTime2(hourOfDay + ":" + minute);
+            }
+        };
 
         evidenceWTime1Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceWTimePicker1.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceWTime1(hourOfDay+":"+minute);
-            }};
+                evidenceWTimePicker1.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceWTime1(hourOfDay + ":" + minute);
+            }
+        };
         evidenceWTime2Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceWTimePicker2.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceWTime2(hourOfDay+":"+minute);
-            }};
+                evidenceWTimePicker2.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceWTime2(hourOfDay + ":" + minute);
+            }
+        };
 
         evidenceRTime1Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceRTimePicker1.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceRTime1(hourOfDay+":"+minute);
-            }};
+                evidenceRTimePicker1.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceRTime1(hourOfDay + ":" + minute);
+            }
+        };
         evidenceRTime2Listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceRTimePicker2.setText(hourOfDay+":"+minute);
-                Constants.setEvidenceRTime2(hourOfDay+":"+minute);
-            }};
-        evidenceWorkDateListener= new DatePickerDialog.OnDateSetListener() {
+                evidenceRTimePicker2.setText(hourOfDay + ":" + minute);
+                Constants.setEvidenceRTime2(hourOfDay + ":" + minute);
+            }
+        };
+        evidenceWorkDateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                evidenceWorkDate.setText(dayOfMonth+"/"+(month+1)+"/"+year);
-                Constants.setEvidenceWorkDate(dayOfMonth+"/"+(month+1)+"/"+year);
+                evidenceWorkDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                Constants.setEvidenceWorkDate(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         };
 
 
     }
 
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {}
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {}
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -217,14 +227,18 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         int id = item.getItemId();
         if (id == R.id.create_wo_evidence_send) {
             startActivity(new Intent(TimingsEvidence.this, CreateWorkingOrder.class));
-        } else if(id == R.id.create_wo_evidence_discard){
-            Constants.setEvidenceWTime1("--:--"); Constants.setEvidenceWTime2("--:--");
-            Constants.setEvidenceBTime1("--:--"); Constants.setEvidenceBTime2("--:--");
-            Constants.setEvidenceGTime1("--:--"); Constants.setEvidenceGTime2("--:--");
-            Constants.setEvidenceRTime1("--:--"); Constants.setEvidenceRTime2("--:--");
+        } else if (id == R.id.create_wo_evidence_discard) {
+            Constants.setEvidenceWTime1("--:--");
+            Constants.setEvidenceWTime2("--:--");
+            Constants.setEvidenceBTime1("--:--");
+            Constants.setEvidenceBTime2("--:--");
+            Constants.setEvidenceGTime1("--:--");
+            Constants.setEvidenceGTime2("--:--");
+            Constants.setEvidenceRTime1("--:--");
+            Constants.setEvidenceRTime2("--:--");
             Constants.setEvidenceWorkDate("--/--/----");
             startActivity(new Intent(TimingsEvidence.this, CreateWorkingOrder.class));
-        } else if(id == R.id.create_wo_evidence_logout){
+        } else if (id == R.id.create_wo_evidence_logout) {
 
         }
         return super.onOptionsItemSelected(item);

@@ -1,54 +1,59 @@
 package com.example.ravivats.worknopsysmobile.WorkingOrders;
 
-import android.content.Intent;
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
-import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
 
-public class CreateWorkingOrder extends AppCompatActivity {
-    EditText createWoProjectName, createWoStartDate, createWoAddress, createWoTaskName, createWoCustomerName;
-    EditText createWoPersonal, createWoResources, createWoPostingTime, createWoBreakTime, createWoTravelTime;
-    Button createWoChooseTimingsBtn;
-    String travelTime, breakTime, postingTime;
+import java.util.Calendar;
+
+public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    EditText createWoStartDate, createWoAddress, createWoResources;
+    Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
+    DatePickerDialog.OnDateSetListener createWoStartDateListener;
+    Button createWoButton;
+    Calendar cal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_working_order);
 
-        createWoProjectName = (EditText) findViewById(R.id.create_wo_editText_pName);
+        createWoProjectID = (Spinner) findViewById(R.id.create_wo_editText_pID);
         createWoStartDate = (EditText) findViewById(R.id.create_wo_editText_sDate);
         createWoAddress = (EditText) findViewById(R.id.create_wo_editText_address);
-        createWoTaskName = (EditText) findViewById(R.id.create_wo_editText_tName);
-        createWoCustomerName = (EditText) findViewById(R.id.create_wo_editText_cName);
-        createWoPersonal = (EditText) findViewById(R.id.create_wo_editText_personal);
+        createWoTaskID = (Spinner) findViewById(R.id.create_wo_editText_tID);
+        createWoCustomerID = (Spinner) findViewById(R.id.create_wo_editText_cID);
         createWoResources = (EditText) findViewById(R.id.create_wo_editText_resources);
-        createWoPostingTime = (EditText) findViewById(R.id.create_wo_editText_postingTime);
-        createWoBreakTime = (EditText) findViewById(R.id.create_wo_editText_breakTime);
-        createWoTravelTime = (EditText)findViewById(R.id.create_wo_editText_travelTime);
-        createWoChooseTimingsBtn = (Button) findViewById(R.id.create_wo_choose_timings_button);
+        createWoButton = (Button) findViewById(R.id.create_wo_final_button);
+        cal = Calendar.getInstance();
 
-        travelTime = Constants.getEvidenceGTime1()+":"+Constants.getEvidenceGTime2()+", "+Constants.getEvidenceRTime1()+":"+Constants.getEvidenceRTime2();
-        breakTime = Constants.getEvidenceBTime1()+":"+Constants.getEvidenceBTime2();
-        postingTime = Constants.getEvidenceWTime1()+":"+Constants.getEvidenceWTime2();
-
-        createWoTravelTime.setText(travelTime);
-        createWoBreakTime.setText(breakTime);
-        createWoPostingTime.setText(postingTime);
-
-        createWoChooseTimingsBtn.setOnClickListener(new View.OnClickListener() {
+        createWoStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CreateWorkingOrder.this,TimingsEvidence.class));
+                DatePickerDialog dp1 = new DatePickerDialog(CreateWorkingOrder.this, createWoStartDateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+                dp1.show();
             }
         });
+
+        createWoStartDateListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                createWoStartDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+            }
+        };
     }
 
     @Override
@@ -70,4 +75,10 @@ public class CreateWorkingOrder extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+    }
+
 }
