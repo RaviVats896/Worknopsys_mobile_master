@@ -14,9 +14,10 @@
             android:id="@+id/nav_facebook"
             android:icon="@drawable/facebook_logo"
             android:title="Facebook" />
-        <item android:id="@+id/nav_youtube"
+        <item
+            android:id="@+id/nav_youtube"
             android:icon="@drawable/youtube_logo"
-            android:title="YouTube"/>
+            android:title="YouTube" />
         <item
             android:id="@+id/nav_whatsapp"
             android:icon="@drawable/whatsapp_logo"

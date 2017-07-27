@@ -27,290 +27,293 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
-        <ScrollView android:layout_height="match_parent"
-            android:layout_width="match_parent">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/activity_create_customer"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="com.example.ravivats.worknopsysmobile.Customer.CreateCustomer">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/cp_customers_desc_label"
-                android:layout_width="wrap_content"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_create_customer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="50dp"
-                android:text="@string/description"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.example.ravivats.worknopsysmobile.Customer.CreateCustomer">
 
-            <TextView
-                android:id="@+id/cp_customers_cust_name_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_desc_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Customer Name" />
+                <TextView
+                    android:id="@+id/cp_customers_desc_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/description"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/cp_customers_cust_name_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_desc_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Customer Name"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_cust_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_desc_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Customer Name" />
 
-            <TextView
-                android:id="@+id/cp_customers_cust_debno_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_cust_name_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Debitor Number" />
+                <EditText
+                    android:id="@+id/cp_customers_cust_name_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_desc_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Customer Name"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_cust_debno_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_cust_name_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Debitor Number"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_cust_debno_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_cust_name_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Debitor Number" />
 
-            <TextView
-                android:id="@+id/cp_customers_salutation_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_cust_debno_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Salutation" />
+                <EditText
+                    android:id="@+id/cp_customers_cust_debno_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_cust_name_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Debitor Number"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <Spinner
-                android:id="@+id/cp_customers_salutation_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_cust_debno_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="20dp"
-                android:dropDownWidth="wrap_content"
-                android:prompt="@string/salutation_prompt" />
+                <TextView
+                    android:id="@+id/cp_customers_salutation_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_cust_debno_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Salutation" />
 
-            <TextView
-                android:id="@+id/cp_customers_phone_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_salutation_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Phone" />
+                <Spinner
+                    android:id="@+id/cp_customers_salutation_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_cust_debno_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="20dp"
+                    android:dropDownWidth="wrap_content"
+                    android:prompt="@string/salutation_prompt" />
 
-            <EditText
-                android:id="@+id/cp_customers_phone_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_salutation_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Phone number"
-                android:inputType="number"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_phone_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_salutation_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Phone" />
 
-            <TextView
-                android:id="@+id/cp_customers_fax_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_phone_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Fax " />
+                <EditText
+                    android:id="@+id/cp_customers_phone_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_salutation_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Phone number"
+                    android:inputType="number"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_fax_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_phone_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Fax"
-                android:inputType="number"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_fax_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_phone_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Fax " />
 
-            <TextView
-                android:id="@+id/cp_customers_email_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_fax_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Email" />
+                <EditText
+                    android:id="@+id/cp_customers_fax_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_phone_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Fax"
+                    android:inputType="number"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_email_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_fax_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_email_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_fax_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Email" />
 
-            <TextView
-                android:id="@+id/cp_customers_website_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_email_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Website" />
+                <EditText
+                    android:id="@+id/cp_customers_email_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_fax_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_website_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_email_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Website"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_website_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_email_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Website" />
 
-            <TextView
-                android:id="@+id/cp_customers_location_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_website_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Location :"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/cp_customers_website_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_email_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Website"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/cp_customers_address_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_location_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Address" />
+                <TextView
+                    android:id="@+id/cp_customers_location_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_website_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Location :"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/cp_customers_address_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_location_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Address"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_address_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_location_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Address" />
 
-            <TextView
-                android:id="@+id/cp_customers_city_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_address_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="City" />
+                <EditText
+                    android:id="@+id/cp_customers_address_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_location_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Address"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_city_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_address_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="City"
-                android:inputType="text"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_city_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_address_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="City" />
 
-            <TextView
-                android:id="@+id/cp_customers_zip_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_city_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Zip" />
+                <EditText
+                    android:id="@+id/cp_customers_city_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_address_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="City"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_zip_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_city_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Zip"
-                android:inputType="number"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_zip_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_city_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Zip" />
 
-            <TextView
-                android:id="@+id/cp_customers_ccode_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_zip_label"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:text="Country Code" />
+                <EditText
+                    android:id="@+id/cp_customers_zip_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_city_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Zip"
+                    android:inputType="number"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/cp_customers_ccode_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_zip_label"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="15dp"
-                android:ems="8"
-                android:hint="Country Code"
-                android:inputType="number"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/cp_customers_ccode_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_zip_label"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Country Code" />
+
+                <EditText
+                    android:id="@+id/cp_customers_ccode_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_zip_label"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="8"
+                    android:hint="Country Code"
+                    android:inputType="number"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="16dp" />
 
 
-            <Button
-                android:id="@+id/cp_customers_nxt_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cp_customers_ccode_label"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="@string/next" />
+                <Button
+                    android:id="@+id/cp_customers_nxt_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cp_customers_ccode_label"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/next" />
 
-        </RelativeLayout>
+            </RelativeLayout>
         </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
 

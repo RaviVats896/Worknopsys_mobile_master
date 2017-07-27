@@ -31,11 +31,11 @@
         android:id="@+id/navDrawerTxtViewNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/navDrawerTxtViewName"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/navDrawerImageView"
-        android:layout_below="@id/navDrawerTxtViewName"
         android:text="@string/loginPersonal_numberHint"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

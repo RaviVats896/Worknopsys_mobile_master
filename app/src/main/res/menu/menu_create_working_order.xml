@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/choose_resources"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_menu_manage"
+        android:orderInCategory="100"
         android:title="@string/create_working_orders"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/logout"
         android:orderInCategory="100"

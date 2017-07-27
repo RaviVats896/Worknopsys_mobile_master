@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/create_working_orders"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:orderInCategory="100"
         android:title="@string/create_working_orders"
-        app:showAsAction="withText"/>
+        app:showAsAction="withText" />
 </menu>

@@ -5,48 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity">
+
     <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Position Location"
         android:id="@+id/config_pos_location"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textStyle="italic"
-        android:clickable="true"/>
-    <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Two columns layout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="Position Location"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <Switch
         android:id="@+id/config_two_columns"
-        android:textColor="@color/colorPrimary"
-        android:layout_below="@id/config_pos_location"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:clickable="true"/>
-    <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Project Creation Enhancement"
-        android:id="@+id/config_project_enhance"
-        android:layout_below="@id/config_two_columns"
+        android:layout_below="@id/config_pos_location"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="Two columns layout"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        android:layout_marginTop="10dp"
+        android:textStyle="italic" />
+
+    <Switch
+        android:id="@+id/config_project_enhance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/config_two_columns"
         android:layout_marginStart="10dp"
-        android:textStyle="italic"
-        android:clickable="true"/>
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:text="Project Creation Enhancement"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
     <Button
+        android:id="@+id/config_change_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Change Password"
-        android:layout_marginTop="10dp"
-        android:id="@+id/config_change_password"
         android:layout_below="@id/config_project_enhance"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Change Password" />
 </RelativeLayout>

@@ -5,138 +5,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ravivats.worknopsysmobile.WorkingOrders.TimingsEvidence">
+
     <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:id="@+id/create_wo_evidence_sDate"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:inputType="date"
-        android:hint="Work Date" />
-    <EditText
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:id="@+id/create_wo_evidence_name"
-        android:layout_below="@id/create_wo_evidence_sDate"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
-        android:inputType="text"
-        android:hint="Person Name" />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:hint="Work Date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/create_wo_evidence_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/create_wo_evidence_sDate"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:hint="Person Name"
+        android:inputType="text" />
+
+    <TextView
         android:id="@+id/create_wo_evidence_goingTimeLabel"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_wo_evidence_name"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
         android:text="Going"
-        android:textSize="19dp"
-        android:layout_below="@+id/create_wo_evidence_name" />
+        android:textSize="19dp" />
+
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="110dp"
-        android:hint="FROM TIME"
-        android:textColorHint="@color/colorAccent"
         android:id="@+id/create_wo_evidence_gTimePicker1"
-        android:layout_below="@id/create_wo_evidence_name"
-        />
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/create_wo_evidence_name"
+        android:layout_marginStart="110dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="40dp"
-        android:hint="TO TIME"
-        android:textColorHint="@color/colorAccent"
+        android:hint="FROM TIME"
+        android:textColorHint="@color/colorAccent" />
+
+    <EditText
         android:id="@+id/create_wo_evidence_gTimePicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/create_wo_evidence_name"
-        android:layout_toEndOf="@id/create_wo_evidence_gTimePicker1"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/create_wo_evidence_gTimePicker1"
+        android:hint="TO TIME"
+        android:textColorHint="@color/colorAccent" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/create_wo_evidence_workingTimeLabel"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_wo_evidence_gTimePicker1"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
         android:text="Working"
-        android:textSize="19dp"
-        android:layout_below="@+id/create_wo_evidence_gTimePicker1" />
+        android:textSize="19dp" />
+
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="110dp"
-        android:hint="FROM TIME"
-        android:textColorHint="@color/colorAccent"
         android:id="@+id/create_wo_evidence_wTimePicker1"
-        android:layout_below="@id/create_wo_evidence_gTimePicker1" />
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="40dp"
-        android:hint="TO TIME"
-        android:textColorHint="@color/colorAccent"
-        android:id="@+id/create_wo_evidence_wTimePicker2"
         android:layout_below="@id/create_wo_evidence_gTimePicker1"
-        android:layout_toEndOf="@id/create_wo_evidence_wTimePicker1"/>
-    <TextView
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="5dp"
+        android:hint="FROM TIME"
+        android:textColorHint="@color/colorAccent" />
+
+    <EditText
+        android:id="@+id/create_wo_evidence_wTimePicker2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/create_wo_evidence_gTimePicker1"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/create_wo_evidence_wTimePicker1"
+        android:hint="TO TIME"
+        android:textColorHint="@color/colorAccent" />
+
+    <TextView
         android:id="@+id/create_wo_evidence_workingBreakLabel"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_wo_evidence_wTimePicker1"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
         android:text="Break"
-        android:textSize="19dp"
-        android:layout_below="@+id/create_wo_evidence_wTimePicker1" />
+        android:textSize="19dp" />
+
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="110dp"
-        android:hint="FROM TIME"
-        android:textColorHint="@color/colorAccent"
         android:id="@+id/create_wo_evidence_bTimePicker1"
-        android:layout_below="@id/create_wo_evidence_wTimePicker1" />
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="40dp"
-        android:hint="TO TIME"
-        android:textColorHint="@color/colorAccent"
-        android:id="@+id/create_wo_evidence_bTimePicker2"
         android:layout_below="@id/create_wo_evidence_wTimePicker1"
-        android:layout_toEndOf="@id/create_wo_evidence_bTimePicker1"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_wo_evidence_returnLabel"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="7dp"
-        android:text="Return"
-        android:textSize="19dp"
-        android:layout_below="@+id/create_wo_evidence_bTimePicker1" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="5dp"
         android:hint="FROM TIME"
-        android:textColorHint="@color/colorAccent"
-        android:id="@+id/create_wo_evidence_rTimePicker1"
-        android:layout_below="@id/create_wo_evidence_bTimePicker1" />
+        android:textColorHint="@color/colorAccent" />
+
     <EditText
+        android:id="@+id/create_wo_evidence_bTimePicker2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/create_wo_evidence_wTimePicker1"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/create_wo_evidence_bTimePicker1"
         android:hint="TO TIME"
-        android:textColorHint="@color/colorAccent"
-        android:id="@+id/create_wo_evidence_rTimePicker2"
+        android:textColorHint="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/create_wo_evidence_returnLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_wo_evidence_bTimePicker1"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        android:text="Return"
+        android:textSize="19dp" />
+
+    <EditText
+        android:id="@+id/create_wo_evidence_rTimePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/create_wo_evidence_bTimePicker1"
-        android:layout_toEndOf="@id/create_wo_evidence_rTimePicker1"/>
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="5dp"
+        android:hint="FROM TIME"
+        android:textColorHint="@color/colorAccent" />
+
+    <EditText
+        android:id="@+id/create_wo_evidence_rTimePicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_wo_evidence_bTimePicker1"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/create_wo_evidence_rTimePicker1"
+        android:hint="TO TIME"
+        android:textColorHint="@color/colorAccent" />
 
 </RelativeLayout>
 
