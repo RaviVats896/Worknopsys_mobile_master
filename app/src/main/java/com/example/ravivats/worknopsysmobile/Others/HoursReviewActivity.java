@@ -60,6 +60,7 @@ public class HoursReviewActivity extends AppCompatActivity
     RequestQueue queue;
     final static String task_url = "http://worknopsys.ml/api/tasks";
     final static String customer_url = "http://worknopsys.ml/api/customers";
+    final static String project_url = "http://worknopsys.ml/api/projects";
     final static String auth_url = "http://worknopsys.ml/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
 
@@ -88,6 +89,7 @@ public class HoursReviewActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         taskMap = new HashMap<String, String>();
         customerMap = new HashMap<String, String>();
+        projectMap = new HashMap<String, String>();
         txtView1 = (TextView) findViewById(R.id.textview1);
         queue = Volley.newRequestQueue(this);
 
@@ -166,9 +168,35 @@ public class HoursReviewActivity extends AppCompatActivity
 
             }
         });
+        JsonArrayRequest projectRetRequest = new JsonArrayRequest(Request.Method.GET, project_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        //Gson gson = new Gson();
+                        //Customer currentCustomer = gson.fromJson(last.toString(), Customer.class);
+                        projectMap.put(last.getString("PName"),last.getString("_id"));
+                    }
+                    Constants.setProjectMap(projectMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtView1.setText("Error");
+
+            }
+        });
         queue.add(authRequest);
         queue.add(taskRetRequest);
         queue.add(custRetRequest);
+        queue.add(projectRetRequest);
     }
 
     @Override

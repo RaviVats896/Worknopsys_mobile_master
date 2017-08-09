@@ -27,8 +27,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
     Button createWoButton;
-    Map<String, String> taskMap, custMap;
-    ArrayList<String> taskNameList, custNameList;
+    Map<String, String> taskMap, custMap, projectMap;
+    ArrayList<String> taskNameList, custNameList, projectNameList;
     Calendar cal;
 
     @Override
@@ -47,8 +47,10 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         cal = Calendar.getInstance();
         taskMap = Constants.getTaskMap();
         custMap = Constants.getCustomerMap();
+        projectMap = Constants.getProjectMap();
         taskNameList = new ArrayList<String>();
         custNameList = new ArrayList<String>();
+        projectNameList = new ArrayList<String>();
         for (Map.Entry<String, String> pairs : taskMap.entrySet()) {
             String key = pairs.getKey(); //String value = pairs.getValue();
             taskNameList.add(key);
@@ -59,6 +61,18 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
             custNameList.add(key);
         }
 
+        for (Map.Entry<String, String> pairs : projectMap.entrySet()) {
+            String key = pairs.getKey(); //String value = pairs.getValue();
+            projectNameList.add(key);
+        }
+
+        createWoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         ArrayAdapter<String> taskSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskNameList);
         taskSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoTaskID.setAdapter(taskSpinnerAdapter);
@@ -66,6 +80,10 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         ArrayAdapter<String> custSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
         custSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoCustomerID.setAdapter(custSpinnerAdapter);
+
+        ArrayAdapter<String> projectSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectNameList);
+        projectSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        createWoProjectID.setAdapter(projectSpinnerAdapter);
 
         createWoTaskID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -83,6 +101,18 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String value = custMap.get(createWoCustomerID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, "" + value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        createWoProjectID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value = projectMap.get(createWoProjectID.getItemAtPosition(position).toString());
                 Toast.makeText(CreateWorkingOrder.this, "" + value, Toast.LENGTH_SHORT).show();
             }
 
