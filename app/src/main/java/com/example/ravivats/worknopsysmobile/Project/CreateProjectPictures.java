@@ -52,7 +52,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     ImageButton cpPicturesCameraBtn, cpPicturesUploadBtn, cpPicturesDeleteBtn;
     String userChosenTask;
     ImageView cpPicturesImageView;
-    String picLocation,picId;
+    String picLocation, picId;
     private int REQUEST_CAMERA = 2;
     private int SELECT_FILE = 1;
     private int flag;
@@ -77,7 +77,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesCameraBtn = (ImageButton) findViewById(R.id.cp_pictures_camera);
         cpPicturesUploadBtn = (ImageButton) findViewById(R.id.cp_pictures_upload);
         cpPicturesDeleteBtn = (ImageButton) findViewById(R.id.cp_pictures_delete);
-        detailsBundle=getIntent().getExtras();
+        detailsBundle = getIntent().getExtras();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Map config = new HashMap();
@@ -91,10 +91,10 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 try {
-                     picId=detailsBundle.getString("CustomerName")+"_"+detailsBundle.getString("CustomerName")
-                            +"_"+ Constants.getDate()+"_"+Constants.getTime();
-                    Log.e("picID",picId);
-                    Map m= cloudinary.uploader().upload(picLocation,ObjectUtils.asMap("public_id", picId));
+                    picId = detailsBundle.getString("CustomerName") + "_" + detailsBundle.getString("CustomerName")
+                            + "_" + Constants.getDate() + "_" + Constants.getTime();
+                    Log.e("picID", picId);
+                    Map m = cloudinary.uploader().upload(picLocation, ObjectUtils.asMap("public_id", picId));
                     Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_LONG).show();
 
                 } catch (IOException e) {
@@ -119,7 +119,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                detailsBundle.putString("PictureId",picId);
+                detailsBundle.putString("PictureId", picId);
                 Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
                 in.putExtras(detailsBundle);
                 startActivity(in);
@@ -233,8 +233,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         }
 
         fileUri = Uri.fromFile(destination);
-        picLocation=fileUri.toString().substring(7);
-        Log.e("Destination",picLocation);
+        picLocation = fileUri.toString().substring(7);
+        Log.e("Destination", picLocation);
 
 
     }
@@ -258,12 +258,12 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(CreateProjectPictures.this,MyWorkingOrders.class));
-        } else if(id==R.id.nav_facebook){
-            startActivity(new Intent(CreateProjectPictures.this,BrowserActivity.class).putExtra("choice",1));
-        } else if(id==R.id.nav_youtube){
-            startActivity(new Intent(CreateProjectPictures.this,BrowserActivity.class).putExtra("choice",2));
-        } else if(id==R.id.nav_whatsapp){
+            startActivity(new Intent(CreateProjectPictures.this, MyWorkingOrders.class));
+        } else if (id == R.id.nav_facebook) {
+            startActivity(new Intent(CreateProjectPictures.this, BrowserActivity.class).putExtra("choice", 1));
+        } else if (id == R.id.nav_youtube) {
+            startActivity(new Intent(CreateProjectPictures.this, BrowserActivity.class).putExtra("choice", 2));
+        } else if (id == R.id.nav_whatsapp) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class WorkingOrderViewAdapter extends RecyclerView
@@ -18,7 +19,7 @@ public class WorkingOrderViewAdapter extends RecyclerView
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
-        TextView weekDay, weekDate,customerName,customerAddress,projectName;
+        TextView weekDay, weekDate, customerName, customerAddress, projectName;
 
         public DataObjectHolder(View itemView) {
             super(itemView);

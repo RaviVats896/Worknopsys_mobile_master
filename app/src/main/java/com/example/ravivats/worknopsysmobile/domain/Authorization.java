@@ -1,11 +1,11 @@
 package com.example.ravivats.worknopsysmobile.domain;
 
 import java.io.Serializable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Authorization implements Serializable
-{
+public class Authorization implements Serializable {
 
     @SerializedName("_id")
     @Expose

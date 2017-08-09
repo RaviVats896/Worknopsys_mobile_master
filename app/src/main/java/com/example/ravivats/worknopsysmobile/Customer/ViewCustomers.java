@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -16,8 +17,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class ViewCustomers extends AppCompatActivity {
@@ -26,18 +29,19 @@ public class ViewCustomers extends AppCompatActivity {
     ProgressDialog dialog;
     JSONArray allCustomers;
     String selectedCustomer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_customers);
-        customersList = (ListView)findViewById(R.id.customersList);
+        customersList = (ListView) findViewById(R.id.customersList);
         customersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    selectedCustomer= allCustomers.getJSONObject(position).toString();
-                    Intent intent1= new Intent(ViewCustomers.this,CustomerDetails.class);
-                    intent1.putExtra("selectedCustomer",selectedCustomer);
+                    selectedCustomer = allCustomers.getJSONObject(position).toString();
+                    Intent intent1 = new Intent(ViewCustomers.this, CustomerDetails.class);
+                    intent1.putExtra("selectedCustomer", selectedCustomer);
                     startActivity(intent1);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -51,7 +55,7 @@ public class ViewCustomers extends AppCompatActivity {
             @Override
             public void onResponse(String string) {
                 try {
-                     allCustomers = new JSONArray(string);
+                    allCustomers = new JSONArray(string);
                     Constants.setCUSTOMERS(allCustomers);
 
                 } catch (JSONException e) {
@@ -76,9 +80,10 @@ public class ViewCustomers extends AppCompatActivity {
             JSONArray customersArray = new JSONArray(jsonString);
             ArrayList<String> al = new ArrayList();
 
-            for(int i = 0; i < customersArray.length(); ++i) {
-                if(customersArray.getJSONObject(i).getString("CName")!=null)
-                {al.add(customersArray.getJSONObject(i).getString("CName"));}
+            for (int i = 0; i < customersArray.length(); ++i) {
+                if (customersArray.getJSONObject(i).getString("CName") != null) {
+                    al.add(customersArray.getJSONObject(i).getString("CName"));
+                }
             }
 
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, al);

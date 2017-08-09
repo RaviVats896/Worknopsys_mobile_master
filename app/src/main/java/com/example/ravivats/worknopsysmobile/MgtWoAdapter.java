@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MgtWoAdapter extends RecyclerView
         .Adapter<MgtWoAdapter
-        .DataObjectHolder>{
+        .DataObjectHolder> {
     private static String LOG_TAG_MGT = "MgtWoAdapter";
     private ArrayList<WorkingOrderObject> mDataset;
     private static MgtWoAdapter.MyClickListener myClickListener;
@@ -22,7 +22,7 @@ public class MgtWoAdapter extends RecyclerView
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
-        TextView weekDayMgt, weekDateMgt,customerNameMgt,customerAddressMgt,projectNameMgt,activityMgt;
+        TextView weekDayMgt, weekDateMgt, customerNameMgt, customerAddressMgt, projectNameMgt, activityMgt;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
@@ -31,7 +31,7 @@ public class MgtWoAdapter extends RecyclerView
             customerNameMgt = (TextView) itemView.findViewById(R.id.customerNameTextMgt);
             customerAddressMgt = (TextView) itemView.findViewById(R.id.customerAddressTextMgt);
             projectNameMgt = (TextView) itemView.findViewById(R.id.projectNameTextMgt);
-            activityMgt =(TextView) itemView.findViewById(R.id.activityTextMgt);
+            activityMgt = (TextView) itemView.findViewById(R.id.activityTextMgt);
             Log.i(LOG_TAG_MGT, "Adding Listener");
             itemView.setOnClickListener(this);
         }
@@ -52,7 +52,7 @@ public class MgtWoAdapter extends RecyclerView
 
     @Override
     public MgtWoAdapter.DataObjectHolder onCreateViewHolder(ViewGroup parent,
-                                                                       int viewType) {
+                                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view_row_mgt, parent, false);
 

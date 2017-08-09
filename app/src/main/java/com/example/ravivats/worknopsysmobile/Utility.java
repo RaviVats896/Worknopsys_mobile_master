@@ -1,8 +1,5 @@
 package com.example.ravivats.worknopsysmobile;
 
-/**
- * Created by Ravi Vats on 29-12-2016.
- */
 
 import android.annotation.TargetApi;
 import android.app.Activity;

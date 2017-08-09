@@ -11,11 +11,12 @@ import android.widget.ProgressBar;
 import com.example.ravivats.worknopsysmobile.R;
 
 public class BrowserActivity extends AppCompatActivity {
-    String facebookUrl ="https://www.facebook.com/Timesnow/";
-    String youtubeUrl ="https://www.youtube.com/user/timesnowonline/";
+    String facebookUrl = "https://www.facebook.com/Timesnow/";
+    String youtubeUrl = "https://www.youtube.com/user/timesnowonline/";
     private String postUrl;
     private WebView webView;
     private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +24,11 @@ public class BrowserActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        int choice= getIntent().getIntExtra("choice",1);
-        if(choice==1){
-            postUrl=facebookUrl;
-        } else if(choice==2){
-            postUrl=youtubeUrl;
+        int choice = getIntent().getIntExtra("choice", 1);
+        if (choice == 1) {
+            postUrl = facebookUrl;
+        } else if (choice == 2) {
+            postUrl = youtubeUrl;
         }
         webView = (WebView) findViewById(R.id.webView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -39,6 +40,7 @@ public class BrowserActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(true);
     }
+
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

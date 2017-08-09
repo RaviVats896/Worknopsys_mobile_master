@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 
 public class CustomerDetails extends AppCompatActivity {
     String selectedCustomer;
-    TextView CustomerName,DebNumber,PhoneNumber,Fax,Email,Website,Address,City,Zip,CountryCode;
+    TextView CustomerName, DebNumber, PhoneNumber, Fax, Email, Website, Address, City, Zip, CountryCode;
     Customer SelectedCustomer;
     Spinner Salutation;
 
@@ -22,19 +22,19 @@ public class CustomerDetails extends AppCompatActivity {
         setContentView(R.layout.activity_customer_details);
         selectedCustomer = getIntent().getStringExtra("selectedCustomer");
         Gson gson = new Gson();
-        SelectedCustomer  = gson.fromJson(selectedCustomer, Customer.class);
+        SelectedCustomer = gson.fromJson(selectedCustomer, Customer.class);
 
-        CustomerName= (TextView) findViewById(R.id.cd_customers_cust_name_edit_text);
-        DebNumber=(TextView) findViewById(R.id.cd_customers_cust_debno_edit_text);
-        Salutation =(Spinner) findViewById(R.id.cd_customers_salutation_spinner);
-        PhoneNumber=(TextView) findViewById(R.id.cd_customers_phone_edit_text);
-        Fax=(TextView) findViewById(R.id.cd_customers_fax_edit_text);
-        Email=(TextView) findViewById(R.id.cd_customers_email_edit_text);
-        Website=(TextView) findViewById(R.id.cd_customers_website_edit_text);
-        Address=(TextView) findViewById(R.id.cd_customers_address_edit_text);
-        City=(TextView) findViewById(R.id.cd_customers_city_edit_text);
-        Zip=(TextView) findViewById(R.id.cd_customers_zip_edit_text);
-        CountryCode=(TextView) findViewById(R.id.cd_customers_ccode_edit_text);
+        CustomerName = (TextView) findViewById(R.id.cd_customers_cust_name_edit_text);
+        DebNumber = (TextView) findViewById(R.id.cd_customers_cust_debno_edit_text);
+        Salutation = (Spinner) findViewById(R.id.cd_customers_salutation_spinner);
+        PhoneNumber = (TextView) findViewById(R.id.cd_customers_phone_edit_text);
+        Fax = (TextView) findViewById(R.id.cd_customers_fax_edit_text);
+        Email = (TextView) findViewById(R.id.cd_customers_email_edit_text);
+        Website = (TextView) findViewById(R.id.cd_customers_website_edit_text);
+        Address = (TextView) findViewById(R.id.cd_customers_address_edit_text);
+        City = (TextView) findViewById(R.id.cd_customers_city_edit_text);
+        Zip = (TextView) findViewById(R.id.cd_customers_zip_edit_text);
+        CountryCode = (TextView) findViewById(R.id.cd_customers_ccode_edit_text);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.salutation_array, android.R.layout.simple_spinner_item);
@@ -45,15 +45,19 @@ public class CustomerDetails extends AppCompatActivity {
 
         CustomerName.setText(SelectedCustomer.getCName());
         DebNumber.setText(SelectedCustomer.getDebitorNumber());
-        String salutation=SelectedCustomer.getSalutation();
-        switch (salutation){
-            case "Mr": Salutation.setSelection(0);
+        String salutation = SelectedCustomer.getSalutation();
+        switch (salutation) {
+            case "Mr":
+                Salutation.setSelection(0);
                 break;
-            case "Dr": Salutation.setSelection(1);
+            case "Dr":
+                Salutation.setSelection(1);
                 break;
-            case "Mrs": Salutation.setSelection(2);
+            case "Mrs":
+                Salutation.setSelection(2);
                 break;
-            case "Ms": Salutation.setSelection(3);
+            case "Ms":
+                Salutation.setSelection(3);
                 break;
         }
         PhoneNumber.setText(SelectedCustomer.getPhone());

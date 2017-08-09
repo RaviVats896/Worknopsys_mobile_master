@@ -41,11 +41,11 @@ import com.example.ravivats.worknopsysmobile.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
+public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     public static final String CREATE_URL = "http://worknopsys.ml/api/projectapp/create";
     Button cpOrdersSubmitBtn;
-    EditText cpOrdersDatePickerButton,cpOrdersActivity,cpOrdersShortText,cpOrdersActivityStatus;
-    EditText cpOrdersTimePickerButton,cpOrdersLongtext;
+    EditText cpOrdersDatePickerButton, cpOrdersActivity, cpOrdersShortText, cpOrdersActivityStatus;
+    EditText cpOrdersTimePickerButton, cpOrdersLongtext;
     Bundle totalBundle;
     StringRequest postRequest1;
 
@@ -62,15 +62,15 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        totalBundle=getIntent().getExtras();
+        totalBundle = getIntent().getExtras();
         final RequestQueue createProjectQueue = Volley.newRequestQueue(this);
         cpOrdersSubmitBtn = (Button) findViewById(R.id.cp_orders_nxt_button);
         cpOrdersDatePickerButton = (EditText) findViewById(R.id.cp_orders_date_edit_text);
         cpOrdersTimePickerButton = (EditText) findViewById(R.id.cp_orders_time1_edit_text);
-        cpOrdersActivity=(EditText) findViewById(R.id.cp_orders_activity_edit_text);
-        cpOrdersLongtext=(EditText) findViewById(R.id.cp_orders_long_txt_edit_text);
-        cpOrdersShortText=(EditText) findViewById(R.id.cp_orders_short_txt_edit_text);
-        cpOrdersActivityStatus=(EditText) findViewById(R.id.cp_orders_activity_status_edit_text);
+        cpOrdersActivity = (EditText) findViewById(R.id.cp_orders_activity_edit_text);
+        cpOrdersLongtext = (EditText) findViewById(R.id.cp_orders_long_txt_edit_text);
+        cpOrdersShortText = (EditText) findViewById(R.id.cp_orders_short_txt_edit_text);
+        cpOrdersActivityStatus = (EditText) findViewById(R.id.cp_orders_activity_status_edit_text);
 
         cpOrdersTimePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +96,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                                 if (response.equalsIgnoreCase("true")) {
                                     Toast.makeText(CreateProjectOrders.this, "Project Creation successful!", Toast.LENGTH_LONG).show();
 
-                                } else{
+                                } else {
                                     Toast.makeText(CreateProjectOrders.this, "Project Creation failed!", Toast.LENGTH_LONG).show();
                                 }
 
@@ -160,12 +160,12 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(CreateProjectOrders.this,MyWorkingOrders.class));
-        } else if(id==R.id.nav_facebook){
-            startActivity(new Intent(CreateProjectOrders.this,BrowserActivity.class).putExtra("choice",1));
-        } else if(id==R.id.nav_youtube){
-            startActivity(new Intent(CreateProjectOrders.this,BrowserActivity.class).putExtra("choice",2));
-        } else if(id==R.id.nav_whatsapp){
+            startActivity(new Intent(CreateProjectOrders.this, MyWorkingOrders.class));
+        } else if (id == R.id.nav_facebook) {
+            startActivity(new Intent(CreateProjectOrders.this, BrowserActivity.class).putExtra("choice", 1));
+        } else if (id == R.id.nav_youtube) {
+            startActivity(new Intent(CreateProjectOrders.this, BrowserActivity.class).putExtra("choice", 2));
+        } else if (id == R.id.nav_whatsapp) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));
@@ -197,14 +197,14 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Log.v("Date",year+"  "+month+"  "+dayOfMonth);
+        Log.v("Date", year + "  " + month + "  " + dayOfMonth);
         cpOrdersDatePickerButton.setText(new StringBuilder().append(dayOfMonth).append("/")
-                .append(month+1).append("/").append(year));
+                .append(month + 1).append("/").append(year));
     }
 
     @Override
-    public void  onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Log.v("Time",hourOfDay+"  "+minute);
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Log.v("Time", hourOfDay + "  " + minute);
         cpOrdersTimePickerButton.setText(new StringBuilder().append(hourOfDay).append(":")
                 .append(minute));
     }

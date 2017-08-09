@@ -21,42 +21,43 @@ import java.util.Map;
 
 public class CreateCustomerBankDetails extends AppCompatActivity {
     public static final String REGISTER_URL = "http://worknopsys.ml/api/customers/create";
-    EditText ccPostboxName,ccPostboxCity,ccPostboxZip,ccBankName,ccBankCode,ccBankAccount,ccBankUser,ccBankIBAN,ccBankBIC,ccBankCurrency;
-    String  PostboxName,PostboxCity,PostboxZip,BankName,BankCode,BankAccount,BankUser,BankIBAN,BankBIC,BankCurrency;
+    EditText ccPostboxName, ccPostboxCity, ccPostboxZip, ccBankName, ccBankCode, ccBankAccount, ccBankUser, ccBankIBAN, ccBankBIC, ccBankCurrency;
+    String PostboxName, PostboxCity, PostboxZip, BankName, BankCode, BankAccount, BankUser, BankIBAN, BankBIC, BankCurrency;
     Button createCustomerBtn;
     Bundle customerDetails;
     StringRequest postRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_customer_bank_details);
-        ccPostboxName=(EditText) findViewById(R.id.cp_customers_bank_street_edit_text);
-        ccPostboxCity=(EditText) findViewById(R.id.cp_customers_bank_city_edit_text);
-        ccPostboxZip=(EditText) findViewById(R.id.cp_customers_bank_zip_edit_text);
-        ccBankName=(EditText) findViewById(R.id.cp_customers_bank_name_edit_text);
-        ccBankCode=(EditText) findViewById(R.id.cp_customers_bank_code_edit_text);
-        ccBankAccount=(EditText) findViewById(R.id.cp_customers_bank_account_edit_text);
-        ccBankUser=(EditText) findViewById(R.id.cp_customers_bank_user_edit_text);
-        ccBankIBAN=(EditText) findViewById(R.id.cp_customers_bank_iban_edit_text);
-        ccBankBIC=(EditText) findViewById(R.id.cp_customers_bank_bic_edit_text);
-        ccBankCurrency=(EditText) findViewById(R.id.cp_customers_bank_currency_edit_text);
-        createCustomerBtn=(Button) findViewById(R.id.cp_customers_bank_nxt_btn);
+        ccPostboxName = (EditText) findViewById(R.id.cp_customers_bank_street_edit_text);
+        ccPostboxCity = (EditText) findViewById(R.id.cp_customers_bank_city_edit_text);
+        ccPostboxZip = (EditText) findViewById(R.id.cp_customers_bank_zip_edit_text);
+        ccBankName = (EditText) findViewById(R.id.cp_customers_bank_name_edit_text);
+        ccBankCode = (EditText) findViewById(R.id.cp_customers_bank_code_edit_text);
+        ccBankAccount = (EditText) findViewById(R.id.cp_customers_bank_account_edit_text);
+        ccBankUser = (EditText) findViewById(R.id.cp_customers_bank_user_edit_text);
+        ccBankIBAN = (EditText) findViewById(R.id.cp_customers_bank_iban_edit_text);
+        ccBankBIC = (EditText) findViewById(R.id.cp_customers_bank_bic_edit_text);
+        ccBankCurrency = (EditText) findViewById(R.id.cp_customers_bank_currency_edit_text);
+        createCustomerBtn = (Button) findViewById(R.id.cp_customers_bank_nxt_btn);
         final RequestQueue createCustomerQueue = Volley.newRequestQueue(this);
-        customerDetails=new Bundle();
-        customerDetails=getIntent().getExtras();
+        customerDetails = new Bundle();
+        customerDetails = getIntent().getExtras();
         createCustomerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PostboxName=ccPostboxName.getText().toString().trim();
-                PostboxCity=ccPostboxCity.getText().toString().trim();
-                PostboxZip=ccPostboxZip.getText().toString().trim();
-                BankName=ccBankName.getText().toString().trim();
-                BankCode=ccBankName.getText().toString().trim();
-                BankAccount=ccBankName.getText().toString().trim();
-                BankUser=ccBankName.getText().toString().trim();
-                BankIBAN=ccBankName.getText().toString().trim();
-                BankBIC=ccBankName.getText().toString().trim();
-                BankCurrency=ccBankName.getText().toString().trim();
+                PostboxName = ccPostboxName.getText().toString().trim();
+                PostboxCity = ccPostboxCity.getText().toString().trim();
+                PostboxZip = ccPostboxZip.getText().toString().trim();
+                BankName = ccBankName.getText().toString().trim();
+                BankCode = ccBankName.getText().toString().trim();
+                BankAccount = ccBankName.getText().toString().trim();
+                BankUser = ccBankName.getText().toString().trim();
+                BankIBAN = ccBankName.getText().toString().trim();
+                BankBIC = ccBankName.getText().toString().trim();
+                BankCurrency = ccBankName.getText().toString().trim();
                 postRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                         new Response.Listener<String>() {
                             @Override
@@ -64,7 +65,7 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                                 if (response.equalsIgnoreCase("created successfuly")) {
                                     Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation successful!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(CreateCustomerBankDetails.this, ViewCustomers.class));
-                                } else{
+                                } else {
                                     Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation failed!", Toast.LENGTH_LONG).show();
                                 }
 
@@ -89,7 +90,7 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                         params.put("cphone", customerDetails.getString("cphone"));
                         params.put("cfax", customerDetails.getString("cfax"));
                         params.put("cemail", customerDetails.getString("cemail"));
-                        params.put("cwebsite",customerDetails.getString("cwebsite"));
+                        params.put("cwebsite", customerDetails.getString("cwebsite"));
                         params.put("cacity", customerDetails.getString("cacity"));
                         params.put("caadd", customerDetails.getString("caadd"));
                         params.put("capostcode", customerDetails.getString("capostcode"));

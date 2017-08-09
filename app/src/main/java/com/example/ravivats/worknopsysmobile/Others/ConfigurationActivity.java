@@ -40,18 +40,18 @@ public class ConfigurationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuration);
         configProjectEnhance = (Switch) findViewById(R.id.config_project_enhance);
         configPosLocation = (Switch) findViewById(R.id.config_pos_location);
-        changePassword =(Button) findViewById(R.id.config_change_password);
+        changePassword = (Button) findViewById(R.id.config_change_password);
         configPosLocation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) Constants.setPosLocation(true);
+                if (isChecked) Constants.setPosLocation(true);
                 else Constants.setPosLocation(false);
             }
         });
         configProjectEnhance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) Constants.setProjEnhance(true);
+                if (isChecked) Constants.setProjEnhance(true);
                 else Constants.setProjEnhance(false);
             }
         });
@@ -69,7 +69,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                 oldPass.setHint("Old Password");
                 newPass.setHint("New Password");
                 confirmPass.setHint("Confirm Password");
-                LinearLayout ll=new LinearLayout(ConfigurationActivity.this);
+                LinearLayout ll = new LinearLayout(ConfigurationActivity.this);
                 ll.setOrientation(LinearLayout.VERTICAL);
                 ll.addView(oldPass);
                 ll.addView(newPass);
@@ -79,7 +79,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 final RequestQueue passwordChangeQueue = Volley.newRequestQueue(ConfigurationActivity.this);
-                                if(oldPass.getText().toString().equals(Constants.getEMPLOYEE().getPassword()) &&  newPass.getText().toString().equals(confirmPass.getText().toString())) {
+                                if (oldPass.getText().toString().equals(Constants.getEMPLOYEE().getPassword()) && newPass.getText().toString().equals(confirmPass.getText().toString())) {
                                     changePassRequest = new StringRequest(Request.Method.POST, CHANGE_PASS_URL,
                                             new Response.Listener<String>() {
                                                 @Override
@@ -104,12 +104,14 @@ public class ConfigurationActivity extends AppCompatActivity {
                                             Map<String, String> params = new HashMap<String, String>();
                                             params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
                                             params.put(KEY_PASSWORD, oldPass.getText().toString());
-                                            params.put(KEY_NEW,confirmPass.getText().toString());
+                                            params.put(KEY_NEW, confirmPass.getText().toString());
                                             return params;
                                         }
                                     };
                                     passwordChangeQueue.add(changePassRequest);
-                                } else{ Toast.makeText(ConfigurationActivity.this, "Wrong Password credentials. ", Toast.LENGTH_LONG).show();}
+                                } else {
+                                    Toast.makeText(ConfigurationActivity.this, "Wrong Password credentials. ", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                 alertDialog.setNegativeButton("Cancel",

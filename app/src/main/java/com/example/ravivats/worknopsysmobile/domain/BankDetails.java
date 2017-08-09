@@ -2,11 +2,11 @@
 package com.example.ravivats.worknopsysmobile.domain;
 
 import java.io.Serializable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BankDetails implements Serializable
-{
+public class BankDetails implements Serializable {
 
     @SerializedName("Bank")
     @Expose

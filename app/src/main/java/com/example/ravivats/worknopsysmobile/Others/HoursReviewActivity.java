@@ -34,6 +34,7 @@ import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
+import com.example.ravivats.worknopsysmobile.domain.Customer;
 import com.example.ravivats.worknopsysmobile.domain.Task;
 import com.google.gson.Gson;
 
@@ -50,7 +51,7 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
-    Map<String, String> taskMap;
+    Map<String, String> taskMap, customerMap, projectMap;
     TextView navDrawerNumber;
     TextView navDrawerName;
     TextView txtView1;
@@ -86,6 +87,7 @@ public class HoursReviewActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         taskMap = new HashMap<String, String>();
+        customerMap = new HashMap<String, String>();
         txtView1 = (TextView) findViewById(R.id.textview1);
         queue = Volley.newRequestQueue(this);
 
@@ -139,8 +141,34 @@ public class HoursReviewActivity extends AppCompatActivity
 
             }
         });
+        JsonArrayRequest custRetRequest = new JsonArrayRequest(Request.Method.GET, customer_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        Gson gson = new Gson();
+                        Customer currentCustomer = gson.fromJson(last.toString(), Customer.class);
+                        customerMap.put(currentCustomer.getSalutation()+" "+currentCustomer.getCName(), currentCustomer.getId());
+                    }
+                    Constants.setCustomerMap(customerMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtView1.setText("Error");
+
+            }
+        });
         queue.add(authRequest);
         queue.add(taskRetRequest);
+        queue.add(custRetRequest);
     }
 
     @Override

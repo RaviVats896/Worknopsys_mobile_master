@@ -33,15 +33,16 @@ import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
-    EditText cpDetailsStartDatePickerBtn,cpDetailsCustName,cpDetailsProjName,cpDetailsStreet,cpDetailsCity,cpDetailsZip;
+    EditText cpDetailsStartDatePickerBtn, cpDetailsCustName, cpDetailsProjName, cpDetailsStreet, cpDetailsCity, cpDetailsZip;
     Button cpDetailsNxtBtn;
-    EditText cpDetailsFax,cpDetailsContact,cpDetailsEmail;
+    EditText cpDetailsFax, cpDetailsContact, cpDetailsEmail;
     Spinner salutationSpin;
     String projSalutation;
     Spinner cpDetailsProStatusSpinner;
     String ProjectStatus;
-    String status[]={"In process","Completed"};
-    String salutations[]={"Mr","Dr","Mrs","Ms"};
+    String status[] = {"In process", "Completed"};
+    String salutations[] = {"Mr", "Dr", "Mrs", "Ms"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,16 +60,16 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         cpDetailsNxtBtn = (Button) findViewById(R.id.cp_details_nxt_btn);
         cpDetailsStartDatePickerBtn = (EditText) findViewById(R.id.cp_details_st_date_edit_text);
         cpDetailsProStatusSpinner = (Spinner) findViewById(R.id.cp_details_project_status_spinner);
-        cpDetailsCustName =(EditText) findViewById(R.id.cp_details_cust_name_edit_text);
-        cpDetailsProjName= (EditText) findViewById(R.id.cp_details_pro_name_edit_text);
-        cpDetailsStreet= (EditText) findViewById(R.id.cp_details_street_edit_text);
-        cpDetailsCity=(EditText) findViewById(R.id.cp_details_city_edit_text);
-        cpDetailsZip=(EditText) findViewById(R.id.cp_details_zip_edit_text);
-        cpDetailsFax =(EditText) findViewById(R.id.cp_details_fax_edit_text);
-        cpDetailsEmail=(EditText) findViewById(R.id.cp_details_email_edit_text);
-        cpDetailsContact=(EditText) findViewById(R.id.cp_details_contact_edit_text);
-        Authorization auth=Constants.getAUTH();
-        if(auth.getAdmEmpProjCreate()) {
+        cpDetailsCustName = (EditText) findViewById(R.id.cp_details_cust_name_edit_text);
+        cpDetailsProjName = (EditText) findViewById(R.id.cp_details_pro_name_edit_text);
+        cpDetailsStreet = (EditText) findViewById(R.id.cp_details_street_edit_text);
+        cpDetailsCity = (EditText) findViewById(R.id.cp_details_city_edit_text);
+        cpDetailsZip = (EditText) findViewById(R.id.cp_details_zip_edit_text);
+        cpDetailsFax = (EditText) findViewById(R.id.cp_details_fax_edit_text);
+        cpDetailsEmail = (EditText) findViewById(R.id.cp_details_email_edit_text);
+        cpDetailsContact = (EditText) findViewById(R.id.cp_details_contact_edit_text);
+        Authorization auth = Constants.getAUTH();
+        if (auth.getAdmEmpProjCreate()) {
             cpDetailsNxtBtn.setClickable(false);
         }
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -80,7 +81,7 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 projSalutation = salutations[position];
-             }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -115,19 +116,23 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(CreateProjectDetails.this, CreateProjectPictures.class);
-                if(ProjectStatus==null){ProjectStatus=status[0];}
-                in.putExtra("CustomerName",cpDetailsCustName.getText().toString());
-                in.putExtra("ProjectName",cpDetailsProjName.getText().toString());
-                in.putExtra("ProjectStartDate",cpDetailsStartDatePickerBtn.getText().toString());
-                in.putExtra("StreetDetails",cpDetailsStreet.getText().toString());
-                in.putExtra("StreetCity",cpDetailsCity.getText().toString());
-                in.putExtra("StreetZip",cpDetailsZip.getText().toString());
-                in.putExtra("ProjectStatus",ProjectStatus);
-                if(projSalutation==null){ projSalutation=salutations[0];}
-                in.putExtra("Salutation",projSalutation);
-                in.putExtra("Fax",cpDetailsFax.getText().toString());
-                in.putExtra("Email",cpDetailsEmail.getText().toString());
-                in.putExtra("Contact",cpDetailsContact.getText().toString());
+                if (ProjectStatus == null) {
+                    ProjectStatus = status[0];
+                }
+                in.putExtra("CustomerName", cpDetailsCustName.getText().toString());
+                in.putExtra("ProjectName", cpDetailsProjName.getText().toString());
+                in.putExtra("ProjectStartDate", cpDetailsStartDatePickerBtn.getText().toString());
+                in.putExtra("StreetDetails", cpDetailsStreet.getText().toString());
+                in.putExtra("StreetCity", cpDetailsCity.getText().toString());
+                in.putExtra("StreetZip", cpDetailsZip.getText().toString());
+                in.putExtra("ProjectStatus", ProjectStatus);
+                if (projSalutation == null) {
+                    projSalutation = salutations[0];
+                }
+                in.putExtra("Salutation", projSalutation);
+                in.putExtra("Fax", cpDetailsFax.getText().toString());
+                in.putExtra("Email", cpDetailsEmail.getText().toString());
+                in.putExtra("Contact", cpDetailsContact.getText().toString());
                 startActivity(in);
             }
         });
@@ -148,18 +153,18 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Authorization auth1=Constants.getAUTH();
+        Authorization auth1 = Constants.getAUTH();
         int id = item.getItemId();
 
         if (id == R.id.nav_daily_overview) {
             // Handle the camera action
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(CreateProjectDetails.this,MyWorkingOrders.class));
-        } else if(id==R.id.nav_facebook){
-            startActivity(new Intent(CreateProjectDetails.this,BrowserActivity.class).putExtra("choice",1));
-        } else if(id==R.id.nav_youtube){
-            startActivity(new Intent(CreateProjectDetails.this,BrowserActivity.class).putExtra("choice",2));
-        } else if(id==R.id.nav_whatsapp){
+            startActivity(new Intent(CreateProjectDetails.this, MyWorkingOrders.class));
+        } else if (id == R.id.nav_facebook) {
+            startActivity(new Intent(CreateProjectDetails.this, BrowserActivity.class).putExtra("choice", 1));
+        } else if (id == R.id.nav_youtube) {
+            startActivity(new Intent(CreateProjectDetails.this, BrowserActivity.class).putExtra("choice", 2));
+        } else if (id == R.id.nav_whatsapp) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));
@@ -192,12 +197,14 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         cpDetailsStartDatePickerBtn.setText(new StringBuilder().append(dayOfMonth).append("/")
-                .append(month+1).append("/").append(year));
+                .append(month + 1).append("/").append(year));
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
 }
