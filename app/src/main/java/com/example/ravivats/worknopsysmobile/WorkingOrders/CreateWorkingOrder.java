@@ -6,14 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -21,6 +27,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
     Button createWoButton;
+    Map<String, String> taskMap;
+    ArrayList<String> taskNameList;
     Calendar cal;
 
     @Override
@@ -28,14 +36,37 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_working_order);
 
-        createWoProjectID = (Spinner) findViewById(R.id.create_wo_editText_pID);
+        createWoProjectID = (Spinner) findViewById(R.id.create_wo_spinner_pID);
         createWoStartDate = (EditText) findViewById(R.id.create_wo_editText_sDate);
         createWoAddress = (EditText) findViewById(R.id.create_wo_editText_address);
-        createWoTaskID = (Spinner) findViewById(R.id.create_wo_editText_tID);
-        createWoCustomerID = (Spinner) findViewById(R.id.create_wo_editText_cID);
+        createWoTaskID = (Spinner) findViewById(R.id.create_wo_spinner_tID);
+        createWoCustomerID = (Spinner) findViewById(R.id.create_wo_spinner_cID);
         createWoResources = (EditText) findViewById(R.id.create_wo_editText_resources);
         createWoButton = (Button) findViewById(R.id.create_wo_final_button);
+
         cal = Calendar.getInstance();
+        taskMap = Constants.getTaskMap();
+        taskNameList = new ArrayList<String>();
+        for (Map.Entry<String, String> pairs : taskMap.entrySet()) {
+            String key = pairs.getKey(); //String value = pairs.getValue();
+            taskNameList.add(key);
+        }
+        ArrayAdapter<String> taskSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskNameList);
+        taskSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        createWoTaskID.setAdapter(taskSpinnerAdapter);
+
+        createWoTaskID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value=taskMap.get(createWoTaskID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, ""+value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         createWoStartDate.setOnClickListener(new View.OnClickListener() {
             @Override

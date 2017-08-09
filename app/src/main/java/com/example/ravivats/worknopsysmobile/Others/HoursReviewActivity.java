@@ -23,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
@@ -33,7 +34,13 @@ import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
+import com.example.ravivats.worknopsysmobile.domain.Task;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,13 +50,15 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
+    Map<String, String> taskMap;
     TextView navDrawerNumber;
     TextView navDrawerName;
     TextView txtView1;
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
-    final static String url = "http://worknopsys.ml/api/tasks";
+    final static String task_url = "http://worknopsys.ml/api/tasks";
+    final static String customer_url = "http://worknopsys.ml/api/customers";
     final static String auth_url = "http://worknopsys.ml/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
 
@@ -76,6 +85,7 @@ public class HoursReviewActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        taskMap = new HashMap<String, String>();
         txtView1 = (TextView) findViewById(R.id.textview1);
         queue = Volley.newRequestQueue(this);
 
@@ -83,9 +93,9 @@ public class HoursReviewActivity extends AppCompatActivity
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        String response1=response.replace("[","").replace("]","").trim();
+                        String response1 = response.replace("[", "").replace("]", "").trim();
                         Gson gson = new Gson();
-                        Authorization auth= gson.fromJson(response1, Authorization.class);
+                        Authorization auth = gson.fromJson(response1, Authorization.class);
                         Constants.setAUTH(auth);
                     }
                 },
@@ -104,7 +114,33 @@ public class HoursReviewActivity extends AppCompatActivity
             }
 
         };
+        JsonArrayRequest taskRetRequest = new JsonArrayRequest(Request.Method.GET, task_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        Gson gson = new Gson();
+                        Task currentTask = gson.fromJson(last.toString(), Task.class);
+                        taskMap.put(currentTask.getTask(), currentTask.getId());
+                    }
+                    Constants.setTaskMap(taskMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtView1.setText("Error");
+
+            }
+        });
         queue.add(authRequest);
+        queue.add(taskRetRequest);
     }
 
     @Override
@@ -170,13 +206,12 @@ public class HoursReviewActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_daily_overview) {
         } else if (id == R.id.nav_working_orders) {
-            startActivity(new Intent(HoursReviewActivity.this,MyWorkingOrders.class));
-        } else if(id==R.id.nav_facebook){
-            startActivity(new Intent(HoursReviewActivity.this,BrowserActivity.class).putExtra("choice",1));
-        } else if(id==R.id.nav_youtube){
-            startActivity(new Intent(HoursReviewActivity.this,BrowserActivity.class).putExtra("choice",2));
-        }
-        else if(id==R.id.nav_whatsapp){
+            startActivity(new Intent(HoursReviewActivity.this, MyWorkingOrders.class));
+        } else if (id == R.id.nav_facebook) {
+            startActivity(new Intent(HoursReviewActivity.this, BrowserActivity.class).putExtra("choice", 1));
+        } else if (id == R.id.nav_youtube) {
+            startActivity(new Intent(HoursReviewActivity.this, BrowserActivity.class).putExtra("choice", 2));
+        } else if (id == R.id.nav_whatsapp) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_whatsapp));

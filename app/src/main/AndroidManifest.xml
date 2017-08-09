@@ -77,8 +77,9 @@
         <activity
             android:name=".WorkingOrders.ManagementWorkingOrders"
             android:label="Manage Working Orders" />
-        <activity android:name=".WorkingOrders.TimingsEvidence"
-            android:label="Evidence"/>
+        <activity
+            android:name=".WorkingOrders.TimingsEvidence"
+            android:label="Evidence" />
 
         <meta-data
             android:name="CLOUDINARY_URL"
