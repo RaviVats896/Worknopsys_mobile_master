@@ -22,6 +22,7 @@
     <string name="refresh">Refresh</string>
     <string name="share_whatsapp">Download the Worknopsys app to seamlessly manage your work.For more details, visit http://worknopsys.ml/ </string>
     <string name="create_working_orders">Create Working Order</string>
+    <string name="preference_file_key">com.example.ravivats.worknopsysmobile.preference_file_key</string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>

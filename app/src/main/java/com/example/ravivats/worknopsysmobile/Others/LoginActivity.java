@@ -1,6 +1,8 @@
 package com.example.ravivats.worknopsysmobile.Others;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     static final String KEY_USERNAME = "employeephone";
     static final String KEY_PASSWORD = "employeepassword";
     Switch locationSwitch;
+    String h1, h2;
     EditText loginPersonalNoEditText;
     EditText loginPasswordEditText;
     Button loginBtn;
@@ -52,6 +55,16 @@ public class LoginActivity extends AppCompatActivity {
         loginPersonalNoEditText.getText().clear();
         loginPasswordEditText.getText().clear();
         locationSwitch.setChecked(false);
+        Context context = getApplicationContext();
+        final SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        h1 = sharedPref.getString(KEY_USERNAME, "--");
+        if (!h1.equals("--")) {
+            loginPersonalNoEditText.setText(h1);
+        }
+        h2 = sharedPref.getString(KEY_PASSWORD, "--");
+        if (!h1.equals("--")) {
+            loginPasswordEditText.setText(h2);
+        }
         locationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -70,6 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         final String employeePhone = loginPersonalNoEditText.getText().toString().trim();
                         final String employeePassword = loginPasswordEditText.getText().toString().trim();
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        if (h1.equals("--")){
+                        editor.putString(KEY_USERNAME, employeePhone);
+                        editor.putString(KEY_PASSWORD, employeePassword);
+                        editor.apply();}
                         stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                                 new Response.Listener<String>() {
                                     @Override
