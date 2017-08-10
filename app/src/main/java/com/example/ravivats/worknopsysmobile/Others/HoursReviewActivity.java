@@ -60,7 +60,7 @@ public class HoursReviewActivity extends AppCompatActivity
     RequestQueue queue;
     final static String task_url = "http://worknopsys.ml/api/tasks";
     final static String customer_url = "http://worknopsys.ml/api/customers";
-    final static String project_url = "http://worknopsys.ml/api/projects";
+    final static String project_url = "http://worknopsys.ml/api/projectapp";
     final static String auth_url = "http://worknopsys.ml/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
 
@@ -177,7 +177,7 @@ public class HoursReviewActivity extends AppCompatActivity
                         JSONObject last = response.getJSONObject(i);
                         //Gson gson = new Gson();
                         //Customer currentCustomer = gson.fromJson(last.toString(), Customer.class);
-                        projectMap.put(last.getString("PName"),last.getString("_id"));
+                        projectMap.put(last.getString("ProjectName"),last.getString("_id"));
                     }
                     Constants.setProjectMap(projectMap);
 
