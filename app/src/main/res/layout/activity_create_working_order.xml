@@ -33,7 +33,7 @@
         android:layout_below="@id/create_wo_editText_address"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Project ID" />
+        android:text="Project Name" />
 
     <Spinner
         android:id="@+id/create_wo_spinner_pID"
@@ -51,7 +51,7 @@
         android:layout_below="@id/create_wo_spinner_pID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Task ID" />
+        android:text="Task Name" />
 
     <Spinner
         android:id="@+id/create_wo_spinner_tID"
@@ -70,7 +70,7 @@
         android:layout_below="@id/create_wo_spinner_tID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Customer ID" />
+        android:text="Customer Name" />
 
     <Spinner
         android:id="@+id/create_wo_spinner_cID"

@@ -1,6 +1,7 @@
 package com.example.ravivats.worknopsysmobile.WorkingOrders;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,22 +15,31 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
+    static final String createWO_URL = "http://worknopsys.ml/api/woapp/create";
     EditText createWoStartDate, createWoAddress, createWoResources;
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
     Button createWoButton;
+    String taskValue, projectValue, customerValue;
     Map<String, String> taskMap, custMap, projectMap;
     ArrayList<String> taskNameList, custNameList, projectNameList;
     Calendar cal;
+    StringRequest createWORequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +53,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoCustomerID = (Spinner) findViewById(R.id.create_wo_spinner_cID);
         createWoResources = (EditText) findViewById(R.id.create_wo_editText_resources);
         createWoButton = (Button) findViewById(R.id.create_wo_final_button);
-
+        final RequestQueue requestWOQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
         taskMap = Constants.getTaskMap();
         custMap = Constants.getCustomerMap();
@@ -69,6 +79,43 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (createWoStartDate.getText().toString().equals("") || createWoAddress.getText().toString().equals("") || createWoResources.getText().toString().equals("")) {
+                    Toast.makeText(CreateWorkingOrder.this, "Please fill all details.", Toast.LENGTH_SHORT).show();
+                } else {
+                    final String startDate = createWoStartDate.getText().toString();
+                    final String address = createWoAddress.getText().toString();
+                    final String resources = createWoResources.getText().toString();
+                    createWORequest = new StringRequest(Request.Method.POST, createWO_URL,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(CreateWorkingOrder.this, "Working order creation successful!" + response, Toast.LENGTH_LONG).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    error.printStackTrace();
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("startdate", startDate);
+                            params.put("task", taskValue);
+                            params.put("project", projectValue);
+                            params.put("address", address);
+                            params.put("customer", customerValue);
+                            params.put("employee", Constants.getEMPLOYEE().getId());
+                            params.put("resources", resources);
+
+                            return params;
+                        }
+
+                    };
+
+                    requestWOQueue.add(createWORequest);
+                }
 
             }
         });
@@ -88,8 +135,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoTaskID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = taskMap.get(createWoTaskID.getItemAtPosition(position).toString());
-                Toast.makeText(CreateWorkingOrder.this, "" + value, Toast.LENGTH_SHORT).show();
+                taskValue = taskMap.get(createWoTaskID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, "" + taskValue, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -100,8 +147,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoCustomerID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = custMap.get(createWoCustomerID.getItemAtPosition(position).toString());
-                Toast.makeText(CreateWorkingOrder.this, "" + value, Toast.LENGTH_SHORT).show();
+                customerValue = custMap.get(createWoCustomerID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, "" + customerValue, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -112,8 +159,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoProjectID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = projectMap.get(createWoProjectID.getItemAtPosition(position).toString());
-                Toast.makeText(CreateWorkingOrder.this, "" + value, Toast.LENGTH_SHORT).show();
+                projectValue = projectMap.get(createWoProjectID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, "" + projectValue, Toast.LENGTH_SHORT).show();
             }
 
             @Override
