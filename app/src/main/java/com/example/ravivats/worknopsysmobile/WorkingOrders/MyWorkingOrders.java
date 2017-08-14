@@ -85,6 +85,7 @@ public class MyWorkingOrders extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
+                startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position",position));
             }
         });
     }

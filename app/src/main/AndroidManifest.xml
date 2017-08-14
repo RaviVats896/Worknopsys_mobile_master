@@ -85,6 +85,7 @@
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://123456789012345:abcdeghijklmnopqrstuvwxyz12@n07t21i7" />
 
+        <activity android:name=".WorkingOrders.MyWorkingOrderDetails"/>
     </application>
 
 </manifest>
