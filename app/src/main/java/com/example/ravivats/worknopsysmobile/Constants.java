@@ -4,10 +4,12 @@ import android.support.annotation.BoolRes;
 
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
+import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
 import org.json.JSONArray;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Map;
@@ -15,23 +17,49 @@ import java.util.Map;
 public class Constants {
 
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
-    private static Map<String, String> taskMap;
-    private static Map<String, String> projectMap;
-    private static Map<String, String> customerMap;
+    private static Map<String, String> taskMap, taskInvMap;
+    private static Map<String, String> projectMap, projectInvMap;
+    private static Map<String, String> customerMap, customerInvMap;
+    private static ArrayList<WorkingOrder> workingOrders;
     private static Boolean posLocation;
     private static Boolean projEnhance;
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
-    private static String evidenceWorkDate;
-    private static String evidenceGTime1;
-    private static String evidenceGTime2;
-    private static String evidenceWTime1;
-    private static String evidenceWTime2;
-    private static String evidenceBTime1;
-    private static String evidenceBTime2;
-    private static String evidenceRTime1;
-    private static String evidenceRTime2;
+    private static String evidenceWorkDate, evidenceGTime1, evidenceGTime2, evidenceWTime1, evidenceWTime2;
+    private static String evidenceBTime1, evidenceBTime2, evidenceRTime1, evidenceRTime2;
+
+    public static Map<String, String> getCustomerInvMap() {
+        return customerInvMap;
+    }
+
+    public static void setCustomerInvMap(Map<String, String> customerInvMap) {
+        Constants.customerInvMap = customerInvMap;
+    }
+
+    public static Map<String, String> getProjectInvMap() {
+        return projectInvMap;
+    }
+
+    public static void setProjectInvMap(Map<String, String> projectInvMap) {
+        Constants.projectInvMap = projectInvMap;
+    }
+
+    public static Map<String, String> getTaskInvMap() {
+        return taskInvMap;
+    }
+
+    public static void setTaskInvMap(Map<String, String> taskInvMap) {
+        Constants.taskInvMap = taskInvMap;
+    }
+
+    public static ArrayList<WorkingOrder> getWorkingOrders() {
+        return workingOrders;
+    }
+
+    public static void setWorkingOrders(ArrayList<WorkingOrder> workingOrders) {
+        Constants.workingOrders = workingOrders;
+    }
 
     public static Map<String, String> getCustomerMap() {
         return customerMap;

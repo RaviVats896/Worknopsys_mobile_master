@@ -15,8 +15,10 @@ import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrderViewAdapter;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class MyWorkingOrders extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -24,11 +26,17 @@ public class MyWorkingOrders extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "MyWorkingOrders";
     FloatingActionButton createWO;
-
+    ArrayList<WorkingOrder> workingOrders;
+    Map<String, String> taskInvMap, custInvMap, projectInvMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_working_orders);
+        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = Constants.getWorkingOrders();
+        taskInvMap = Constants.getTaskInvMap();
+        custInvMap = Constants.getCustomerInvMap();
+        projectInvMap = Constants.getProjectInvMap();
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -42,7 +50,6 @@ public class MyWorkingOrders extends AppCompatActivity {
                 startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
             }
         });
-
         Constants.setEvidenceWTime1("--:--");
         Constants.setEvidenceWTime2("--:--");
         Constants.setEvidenceBTime1("--:--");
@@ -84,8 +91,9 @@ public class MyWorkingOrders extends AppCompatActivity {
 
     private ArrayList<WorkingOrderObject> getDataSet() {
         ArrayList results = new ArrayList<WorkingOrderObject>();
-        for (int index = 0; index < 6; index++) {
-            WorkingOrderObject obj = new WorkingOrderObject("Saturday ,", "17th December 2016", "Monteu Las Vegas Road", "Monteu SA", "Sankt, 22, 6989A");
+        for (int index = 0; index < workingOrders.size(); index++) {
+            WorkingOrder workingOrder = workingOrders.get(index);
+            WorkingOrderObject obj = new WorkingOrderObject(taskInvMap.get(workingOrder.getTask()), workingOrder.getStartDate(),projectInvMap.get(workingOrder.getProject()),  custInvMap.get(workingOrder.getCustomer()), workingOrder.getAddress());
             results.add(index, obj);
         }
         return results;

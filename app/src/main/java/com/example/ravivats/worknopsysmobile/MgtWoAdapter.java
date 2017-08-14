@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class MgtWoAdapter extends RecyclerView
@@ -62,7 +60,7 @@ public class MgtWoAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(MgtWoAdapter.DataObjectHolder holder, int position) {
-        holder.weekDayMgt.setText(mDataset.get(position).getmWeekDay());
+        holder.weekDayMgt.setText(mDataset.get(position).getmTask());
         holder.weekDateMgt.setText(mDataset.get(position).getmWeekDate());
         holder.projectNameMgt.setText(mDataset.get(position).getmProjectName());
         holder.activityMgt.setText(mDataset.get(position).getmActivity());

@@ -19,7 +19,7 @@
             android:layout_height="fill_parent">
 
             <TextView
-                android:id="@+id/weekDayText"
+                android:id="@+id/taskText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_toEndOf="@+id/weekDayText"
+                android:layout_toEndOf="@+id/taskText"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="italic" />
 
@@ -38,7 +38,7 @@
                 android:id="@+id/projectNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/weekDayText"
+                android:layout_below="@id/taskText"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp" />
 

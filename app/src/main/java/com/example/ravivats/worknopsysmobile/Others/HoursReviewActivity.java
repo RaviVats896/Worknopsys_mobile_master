@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,17 +32,20 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 import com.example.ravivats.worknopsysmobile.domain.Customer;
 import com.example.ravivats.worknopsysmobile.domain.Task;
+import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +55,7 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
-    Map<String, String> taskMap, customerMap, projectMap;
+    Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap;
     TextView navDrawerNumber;
     TextView navDrawerName;
     TextView txtView1;
@@ -63,6 +67,7 @@ public class HoursReviewActivity extends AppCompatActivity
     final static String project_url = "http://worknopsys.ml/api/projectapp";
     final static String auth_url = "http://worknopsys.ml/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
+    final static String wo_url = "http://worknopsys.ml/api/woapp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,9 @@ public class HoursReviewActivity extends AppCompatActivity
         taskMap = new HashMap<String, String>();
         customerMap = new HashMap<String, String>();
         projectMap = new HashMap<String, String>();
+        taskInvMap = new HashMap<String, String>();
+        customerInvMap = new HashMap<String, String>();
+        projectInvMap = new HashMap<String, String>();
         txtView1 = (TextView) findViewById(R.id.textview1);
         queue = Volley.newRequestQueue(this);
 
@@ -128,8 +136,10 @@ public class HoursReviewActivity extends AppCompatActivity
                         Gson gson = new Gson();
                         Task currentTask = gson.fromJson(last.toString(), Task.class);
                         taskMap.put(currentTask.getTask(), currentTask.getId());
+                        taskInvMap.put(currentTask.getId(), currentTask.getTask());
                     }
                     Constants.setTaskMap(taskMap);
+                    Constants.setTaskInvMap(taskInvMap);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -152,9 +162,11 @@ public class HoursReviewActivity extends AppCompatActivity
                         JSONObject last = response.getJSONObject(i);
                         Gson gson = new Gson();
                         Customer currentCustomer = gson.fromJson(last.toString(), Customer.class);
-                        customerMap.put(currentCustomer.getSalutation()+" "+currentCustomer.getCName(), currentCustomer.getId());
+                        customerMap.put(currentCustomer.getSalutation() + " " + currentCustomer.getCName(), currentCustomer.getId());
+                        customerInvMap.put(currentCustomer.getId(), currentCustomer.getSalutation() + " " + currentCustomer.getCName());
                     }
                     Constants.setCustomerMap(customerMap);
+                    Constants.setCustomerInvMap(customerInvMap);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -177,9 +189,36 @@ public class HoursReviewActivity extends AppCompatActivity
                         JSONObject last = response.getJSONObject(i);
                         //Gson gson = new Gson();
                         //Customer currentCustomer = gson.fromJson(last.toString(), Customer.class);
-                        projectMap.put(last.getString("ProjectName"),last.getString("_id"));
+                        projectMap.put(last.getString("ProjectName"), last.getString("_id"));
+                        projectInvMap.put(last.getString("_id"), last.getString("ProjectName"));
                     }
                     Constants.setProjectMap(projectMap);
+                    Constants.setProjectInvMap(projectInvMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                txtView1.setText("Error");
+            }
+        });
+        JsonArrayRequest woRetRequest = new JsonArrayRequest(Request.Method.GET, wo_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    ArrayList<WorkingOrder> results = new ArrayList<WorkingOrder>();
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        Gson gson = new Gson();
+                        WorkingOrder workingOrder = gson.fromJson(last.toString(), WorkingOrder.class);
+                        results.add(i, workingOrder);
+                    }
+                    Constants.setWorkingOrders(results);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -197,6 +236,7 @@ public class HoursReviewActivity extends AppCompatActivity
         queue.add(taskRetRequest);
         queue.add(custRetRequest);
         queue.add(projectRetRequest);
+        queue.add(woRetRequest);
     }
 
     @Override

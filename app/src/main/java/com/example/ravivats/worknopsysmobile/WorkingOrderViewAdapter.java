@@ -19,12 +19,12 @@ public class WorkingOrderViewAdapter extends RecyclerView
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
-        TextView weekDay, weekDate, customerName, customerAddress, projectName;
+        TextView task, weekDate, customerName, customerAddress, projectName;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             weekDate = (TextView) itemView.findViewById(R.id.weekDateText);
-            weekDay = (TextView) itemView.findViewById(R.id.weekDayText);
+            task = (TextView) itemView.findViewById(R.id.taskText);
             customerName = (TextView) itemView.findViewById(R.id.customerNameText);
             customerAddress = (TextView) itemView.findViewById(R.id.customerAddressText);
             projectName = (TextView) itemView.findViewById(R.id.projectNameText);
@@ -58,7 +58,7 @@ public class WorkingOrderViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.weekDay.setText(mDataset.get(position).getmWeekDay());
+        holder.task.setText(mDataset.get(position).getmTask());
         holder.weekDate.setText(mDataset.get(position).getmWeekDate());
         holder.projectName.setText(mDataset.get(position).getmProjectName());
         holder.customerName.setText(mDataset.get(position).getmCustomerName());

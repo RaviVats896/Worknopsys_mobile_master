@@ -1,7 +1,7 @@
 package com.example.ravivats.worknopsysmobile;
 
 public class WorkingOrderObject {
-    private String mWeekDay;
+    private String mTask;
     private String mWeekDate;
     private String mProjectName;
     private String mActivity;
@@ -9,7 +9,7 @@ public class WorkingOrderObject {
     private String mCustomerAddress;
 
     public WorkingOrderObject(String wDay, String wDate, String pName, String cName, String cAddress) {
-        mWeekDay = wDay;
+        mTask = wDay;
         mWeekDate = wDate;
         mProjectName = pName;
         mCustomerName = cName;
@@ -17,7 +17,7 @@ public class WorkingOrderObject {
     }
 
     public WorkingOrderObject(String wDay, String wDate, String pName, String activity, String cName, String cAddress) {
-        mWeekDay = wDay;
+        mTask = wDay;
         mWeekDate = wDate;
         mProjectName = pName;
         mActivity = activity;
@@ -25,12 +25,12 @@ public class WorkingOrderObject {
         mCustomerAddress = cAddress;
     }
 
-    public String getmWeekDay() {
-        return mWeekDay;
+    public String getmTask() {
+        return mTask;
     }
 
-    public void setmWeekDay(String mWeekDay) {
-        this.mWeekDay = mWeekDay;
+    public void setmTask(String mTask) {
+        this.mTask = mTask;
     }
 
     public String getmWeekDate() {
