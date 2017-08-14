@@ -24,7 +24,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="5dp"
         android:hint="Address"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/create_wo_spinner_pID_label"
@@ -89,8 +89,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="7dp"
         android:layout_marginTop="10dp"
-        android:inputType="text"
-        android:hint="Resources" />
+        android:hint="Resources"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/create_wo_final_button"
