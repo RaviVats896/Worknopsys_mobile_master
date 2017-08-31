@@ -6,7 +6,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
 import android.view.Menu;
@@ -16,8 +24,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TimingsEvidence extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
@@ -27,11 +38,17 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
             evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate;
     Calendar cal;
+    static final String TIMINGS_URL = "http://worknopsys.ml/api/employees/";
+    StringRequest timingsRequest;
+    Button timingsSubmitButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timings_evidence);
+
+        timingsSubmitButton = (Button) findViewById(R.id.create_wo_evidence_timingsApiSubmitButton);
         evidenceWorkDate = (EditText) findViewById(R.id.create_wo_evidence_sDate);
         evidenceGTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_gTimePicker1);
         evidenceGTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_gTimePicker2);
@@ -42,6 +59,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceRTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker1);
         evidenceRTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker2);
 
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
 
         evidenceWorkDate.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +220,40 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             }
         };
 
+        timingsSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timingsRequest = new StringRequest(Request.Method.POST, TIMINGS_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if (response.equalsIgnoreCase("true")) {
+                                    Toast.makeText(TimingsEvidence.this, "Timings Submission Successful.", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
+                                } else if (response.equalsIgnoreCase("false")) {
+                                    Toast.makeText(TimingsEvidence.this, "Timings Submission failed!", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(TimingsEvidence.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                error.printStackTrace();
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("username", "employeePhone");
+                        return params;
+                    }
 
+                };
+                requestQueue.add(timingsRequest);
+
+            }
+        });
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

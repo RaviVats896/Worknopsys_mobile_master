@@ -44,7 +44,7 @@
         android:layout_below="@id/create_wo_evidence_name"
         android:layout_marginStart="110dp"
         android:layout_marginTop="5dp"
-        android:hint="FROM TIME"
+        android:hint="@string/from_time"
         android:textColorHint="@color/colorAccent" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/create_wo_evidence_gTimePicker1"
-        android:hint="TO TIME"
+        android:hint="@string/to_time"
         android:textColorHint="@color/colorAccent" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:layout_below="@id/create_wo_evidence_gTimePicker1"
         android:layout_marginStart="110dp"
         android:layout_marginTop="5dp"
-        android:hint="FROM TIME"
+        android:hint="@string/from_time"
         android:textColorHint="@color/colorAccent" />
 
     <EditText
@@ -86,7 +86,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/create_wo_evidence_wTimePicker1"
-        android:hint="TO TIME"
+        android:hint="@string/to_time"
         android:textColorHint="@color/colorAccent" />
 
     <TextView
@@ -106,7 +106,7 @@
         android:layout_below="@id/create_wo_evidence_wTimePicker1"
         android:layout_marginStart="110dp"
         android:layout_marginTop="5dp"
-        android:hint="FROM TIME"
+        android:hint="@string/from_time"
         android:textColorHint="@color/colorAccent" />
 
     <EditText
@@ -117,7 +117,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/create_wo_evidence_bTimePicker1"
-        android:hint="TO TIME"
+        android:hint="@string/to_time"
         android:textColorHint="@color/colorAccent" />
 
     <TextView
@@ -137,7 +137,7 @@
         android:layout_below="@id/create_wo_evidence_bTimePicker1"
         android:layout_marginStart="110dp"
         android:layout_marginTop="5dp"
-        android:hint="FROM TIME"
+        android:hint="@string/from_time"
         android:textColorHint="@color/colorAccent" />
 
     <EditText
@@ -148,8 +148,18 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/create_wo_evidence_rTimePicker1"
-        android:hint="TO TIME"
+        android:hint="@string/to_time"
         android:textColorHint="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/create_wo_evidence_timingsApiSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/create_wo_evidence_rTimePicker2"
+        android:layout_marginTop="10dp"
+        />
+
 
 </RelativeLayout>
 
