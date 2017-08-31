@@ -32,15 +32,15 @@ import java.util.Map;
 
 public class TimingsEvidence extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    static final String TIMINGS_URL = "http://worknopsys.ml/api/timings/create";
+    Calendar cal;
+    StringRequest timingsRequest;
+    Button timingsSubmitButton;
     TimePickerDialog.OnTimeSetListener evidenceGTime1Listener, evidenceGTime2Listener, evidenceWTime1Listener,
             evidenceWTime2Listener, evidenceBTime1Listener, evidenceBTime2Listener, evidenceRTime1Listener, evidenceRTime2Listener;
     DatePickerDialog.OnDateSetListener evidenceWorkDateListener;
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
             evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate;
-    Calendar cal;
-    static final String TIMINGS_URL = "http://worknopsys.ml/api/employees/";
-    StringRequest timingsRequest;
-    Button timingsSubmitButton;
 
 
     @Override
@@ -277,7 +277,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.create_wo_evidence_send) {
-            startActivity(new Intent(TimingsEvidence.this, CreateWorkingOrder.class));
+            Toast.makeText(this, "Tap submit to save timings evidence.", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.create_wo_evidence_discard) {
             Constants.setEvidenceWTime1("--:--");
             Constants.setEvidenceWTime2("--:--");
@@ -288,9 +288,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             Constants.setEvidenceRTime1("--:--");
             Constants.setEvidenceRTime2("--:--");
             Constants.setEvidenceWorkDate("--/--/----");
-            startActivity(new Intent(TimingsEvidence.this, CreateWorkingOrder.class));
-        } else if (id == R.id.create_wo_evidence_logout) {
-
+            startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
         }
         return super.onOptionsItemSelected(item);
     }

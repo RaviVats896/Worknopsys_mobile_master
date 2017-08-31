@@ -156,6 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:text="@string/submit"
         android:layout_below="@id/create_wo_evidence_rTimePicker2"
         android:layout_marginTop="10dp"
         />
