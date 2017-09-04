@@ -47,7 +47,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
 
         editWOResources.setText("Resources: " + workingOrder.getResources());
         editWOStartDate.setText("Date: " + workingOrder.getStartDate());
-        editWOAddress.setText("Address: "+workingOrder.getAddress());
+        editWOAddress.setText("Address: " + workingOrder.getAddress());
         editWOProjectName.setText(projectInvMap.get(workingOrder.getProject()));
         editWOCustomerName.setText(custInvMap.get(workingOrder.getCustomer()));
         editWOTaskName.setText(taskInvMap.get(workingOrder.getTask()));
@@ -62,8 +62,14 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         editWOTimingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyWorkingOrderDetails.this,TimingsEvidence.class));
+                startActivity(new Intent(MyWorkingOrderDetails.this, TimingsEvidence.class).putExtra("woPosition", workingOrderIndex));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MyWorkingOrderDetails.this, MyWorkingOrders.class));
     }
 }

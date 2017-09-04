@@ -89,7 +89,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    Toast.makeText(CreateWorkingOrder.this, "Working order creation successful!" + response, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateWorkingOrder.this, "Working order creation successful!" + response, Toast.LENGTH_SHORT).show();
                                 }
                             },
                             new Response.ErrorListener() {

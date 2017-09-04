@@ -95,10 +95,10 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                             + "_" + Constants.getDate() + "_" + Constants.getTime();
                     Log.e("picID", picId);
                     Map m = cloudinary.uploader().upload(picLocation, ObjectUtils.asMap("public_id", picId));
-                    Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
 
                 } catch (IOException e) {
-                    Toast.makeText(CreateProjectPictures.this, "Upload failed. Check your internet connection.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateProjectPictures.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 

@@ -63,10 +63,10 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 if (response.equalsIgnoreCase("created successfuly")) {
-                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation successful!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation successful!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(CreateCustomerBankDetails.this, ViewCustomers.class));
                                 } else {
-                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation failed!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateCustomerBankDetails.this, "Customer Creation failed!", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -75,7 +75,7 @@ public class CreateCustomerBankDetails extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 error.printStackTrace();
-                                Toast.makeText(CreateCustomerBankDetails.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CreateCustomerBankDetails.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                             }
                         }) {
                     @Override

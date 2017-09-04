@@ -85,9 +85,9 @@ public class ConfigurationActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onResponse(String response) {
                                                     if (response.equalsIgnoreCase("successful")) {
-                                                        Toast.makeText(ConfigurationActivity.this, "Password change successful!", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(ConfigurationActivity.this, "Password change successful!", Toast.LENGTH_SHORT).show();
                                                     } else if (response.equalsIgnoreCase("false")) {
-                                                        Toast.makeText(ConfigurationActivity.this, "Password change failed!", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(ConfigurationActivity.this, "Password change failed!", Toast.LENGTH_SHORT).show();
                                                     }
 
                                                 }
@@ -96,7 +96,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onErrorResponse(VolleyError error) {
                                                     error.printStackTrace();
-                                                    Toast.makeText(ConfigurationActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(ConfigurationActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                                                 }
                                             }) {
                                         @Override
@@ -110,7 +110,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                                     };
                                     passwordChangeQueue.add(changePassRequest);
                                 } else {
-                                    Toast.makeText(ConfigurationActivity.this, "Wrong Password credentials. ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ConfigurationActivity.this, "Wrong Password credentials. ", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

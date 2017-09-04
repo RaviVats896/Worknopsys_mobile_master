@@ -26,6 +26,7 @@
     <string name="to_time">TO</string>
     <string name="from_time">FROM</string>
     <string name="submit">SUBMIT</string>
+    <string name="default_timing">00:00</string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>

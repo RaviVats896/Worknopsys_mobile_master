@@ -80,7 +80,7 @@ public class HoursReviewActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
             }
         });
@@ -344,7 +344,7 @@ public class HoursReviewActivity extends AppCompatActivity
                             Toast.makeText(HoursReviewActivity.this, "Logout successful.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(HoursReviewActivity.this, LoginActivity.class));
                         } else if (response.equalsIgnoreCase("false")) {
-                            Toast.makeText(HoursReviewActivity.this, "Logout failed.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HoursReviewActivity.this, "Logout failed.", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -353,7 +353,7 @@ public class HoursReviewActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Toast.makeText(HoursReviewActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(HoursReviewActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override

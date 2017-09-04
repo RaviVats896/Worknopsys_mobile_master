@@ -93,10 +93,10 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(String response) {
                                         if (response.equalsIgnoreCase("true")) {
-                                            Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(LoginActivity.this, HoursReviewActivity.class));
                                         } else if (response.equalsIgnoreCase("false")) {
-                                            Toast.makeText(LoginActivity.this, "Login failed! Please check login credentials.", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(LoginActivity.this, "Login failed! Please check login credentials.", Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         error.printStackTrace();
-                                        Toast.makeText(LoginActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(LoginActivity.this, CreateWorkingOrder.class));
                                     }
                                 }) {

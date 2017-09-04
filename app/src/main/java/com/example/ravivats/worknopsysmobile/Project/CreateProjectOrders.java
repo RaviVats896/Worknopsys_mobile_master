@@ -94,10 +94,10 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                             @Override
                             public void onResponse(String response) {
                                 if (response.equalsIgnoreCase("true")) {
-                                    Toast.makeText(CreateProjectOrders.this, "Project Creation successful!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateProjectOrders.this, "Project Creation successful!", Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Toast.makeText(CreateProjectOrders.this, "Project Creation failed!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateProjectOrders.this, "Project Creation failed!", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -106,7 +106,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 error.printStackTrace();
-                                Toast.makeText(CreateProjectOrders.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CreateProjectOrders.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                             }
                         }) {
                     @Override

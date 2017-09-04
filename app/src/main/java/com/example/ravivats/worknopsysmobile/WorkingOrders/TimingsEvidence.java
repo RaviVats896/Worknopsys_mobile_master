@@ -16,6 +16,7 @@ import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,12 +38,14 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
     Calendar cal;
     StringRequest timingsRequest;
     Button timingsSubmitButton;
+    ArrayList<WorkingOrder> workingOrders;
+    WorkingOrder workingOrder;
     TimePickerDialog.OnTimeSetListener evidenceGTime1Listener, evidenceGTime2Listener, evidenceWTime1Listener,
             evidenceWTime2Listener, evidenceBTime1Listener, evidenceBTime2Listener, evidenceRTime1Listener, evidenceRTime2Listener;
     DatePickerDialog.OnDateSetListener evidenceWorkDateListener;
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
-            evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate;
-
+            evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate, evidencePersonName;
+    int workingOrderIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
 
         timingsSubmitButton = (Button) findViewById(R.id.create_wo_evidence_timingsApiSubmitButton);
         evidenceWorkDate = (EditText) findViewById(R.id.create_wo_evidence_sDate);
+        evidencePersonName = (EditText) findViewById(R.id.create_wo_evidence_name);
         evidenceGTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_gTimePicker1);
         evidenceGTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_gTimePicker2);
         evidenceWTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_wTimePicker1);
@@ -58,6 +63,22 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceBTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_bTimePicker2);
         evidenceRTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker1);
         evidenceRTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker2);
+
+        evidenceGTimePicker1.setText(R.string.default_timing);
+        evidenceGTimePicker2.setText(R.string.default_timing);
+        evidenceWTimePicker1.setText(R.string.default_timing);
+        evidenceWTimePicker2.setText(R.string.default_timing);
+        evidenceRTimePicker1.setText(R.string.default_timing);
+        evidenceRTimePicker2.setText(R.string.default_timing);
+        evidenceBTimePicker1.setText(R.string.default_timing);
+        evidenceBTimePicker2.setText(R.string.default_timing);
+
+
+        workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
+        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = Constants.getWorkingOrders();
+        workingOrder = workingOrders.get(workingOrderIndex);
+
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
@@ -223,37 +244,58 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         timingsSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timingsRequest = new StringRequest(Request.Method.POST, TIMINGS_URL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                if (response.equalsIgnoreCase("true")) {
-                                    Toast.makeText(TimingsEvidence.this, "Timings Submission Successful.", Toast.LENGTH_LONG).show();
+                if (isEntryMade()) {
+                    timingsRequest = new StringRequest(Request.Method.POST, TIMINGS_URL,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(TimingsEvidence.this, "Response is:" + response, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
-                                } else if (response.equalsIgnoreCase("false")) {
-                                    Toast.makeText(TimingsEvidence.this, "Timings Submission failed!", Toast.LENGTH_LONG).show();
                                 }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(TimingsEvidence.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_LONG).show();
-                                error.printStackTrace();
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("username", "employeePhone");
-                        return params;
-                    }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(TimingsEvidence.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+                                    error.printStackTrace();
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("employee", Constants.getEMPLOYEE().getId());
+                            params.put("wo", workingOrder.getId());
+                            params.put("resource", workingOrder.getResources());
+                            params.put("startdate", workingOrder.getStartDate());
+                            params.put("workdate", evidenceWorkDate.getText().toString());
+                            params.put("pname", evidencePersonName.getText().toString());
+                            params.put("gfrom", evidenceGTimePicker1.getText().toString());
+                            params.put("gto", evidenceGTimePicker2.getText().toString());
+                            params.put("wfrom", evidenceWTimePicker1.getText().toString());
+                            params.put("wto", evidenceWTimePicker2.getText().toString());
+                            params.put("bfrom", evidenceBTimePicker1.getText().toString());
+                            params.put("bto", evidenceBTimePicker2.getText().toString());
+                            params.put("rfrom", evidenceRTimePicker1.getText().toString());
+                            params.put("rto", evidenceRTimePicker2.getText().toString());
+                            return params;
+                        }
 
-                };
-                requestQueue.add(timingsRequest);
-
+                    };
+                    requestQueue.add(timingsRequest);
+                } else {
+                    Toast.makeText(TimingsEvidence.this, "Please enter details in all fields.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    public boolean isEntryMade() {
+        if (evidenceWorkDate.getText() != null && !evidenceWorkDate.getText().toString().equals("")) {
+            if (evidencePersonName.getText() != null && !evidencePersonName.getText().toString().equals("")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -279,15 +321,15 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         if (id == R.id.create_wo_evidence_send) {
             Toast.makeText(this, "Tap submit to save timings evidence.", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.create_wo_evidence_discard) {
-            Constants.setEvidenceWTime1("--:--");
-            Constants.setEvidenceWTime2("--:--");
-            Constants.setEvidenceBTime1("--:--");
-            Constants.setEvidenceBTime2("--:--");
-            Constants.setEvidenceGTime1("--:--");
-            Constants.setEvidenceGTime2("--:--");
-            Constants.setEvidenceRTime1("--:--");
-            Constants.setEvidenceRTime2("--:--");
-            Constants.setEvidenceWorkDate("--/--/----");
+            Constants.setEvidenceWTime1(getString(R.string.default_timing));
+            Constants.setEvidenceWTime2(getString(R.string.default_timing));
+            Constants.setEvidenceBTime1(getString(R.string.default_timing));
+            Constants.setEvidenceBTime2(getString(R.string.default_timing));
+            Constants.setEvidenceGTime1(getString(R.string.default_timing));
+            Constants.setEvidenceGTime2(getString(R.string.default_timing));
+            Constants.setEvidenceRTime1(getString(R.string.default_timing));
+            Constants.setEvidenceRTime2(getString(R.string.default_timing));
+            Constants.setEvidenceWorkDate("12/12/2017");
             startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
         }
         return super.onOptionsItemSelected(item);
