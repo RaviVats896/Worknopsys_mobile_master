@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateCustomerBankDetails extends AppCompatActivity {
-    public static final String REGISTER_URL = "http://worknopsys.ml/api/customers/create";
+    public static final String REGISTER_URL = "http://worknopsys.ml:5000/api/customers/create";
     EditText ccPostboxName, ccPostboxCity, ccPostboxZip, ccBankName, ccBankCode, ccBankAccount, ccBankUser, ccBankIBAN, ccBankBIC, ccBankCurrency;
     String PostboxName, PostboxCity, PostboxZip, BankName, BankCode, BankAccount, BankUser, BankIBAN, BankBIC, BankCurrency;
     Button createCustomerBtn;

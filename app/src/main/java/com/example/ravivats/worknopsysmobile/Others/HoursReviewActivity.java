@@ -62,12 +62,12 @@ public class HoursReviewActivity extends AppCompatActivity
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
-    final static String task_url = "http://worknopsys.ml/api/tasks";
-    final static String customer_url = "http://worknopsys.ml/api/customers";
-    final static String project_url = "http://worknopsys.ml/api/projectapp";
-    final static String auth_url = "http://worknopsys.ml/api/auth/user";
-    final static String LOGOUT_URL = "http://worknopsys.ml/api/employees/logout";
-    final static String wo_url = "http://worknopsys.ml/api/woapp";
+    final static String task_url = "http://worknopsys.ml:5000/api/tasks";
+    final static String customer_url = "http://worknopsys.ml:5000/api/customers";
+    final static String project_url = "http://worknopsys.ml:5000/api/projectapp";
+    final static String auth_url = "http://worknopsys.ml:5000/api/auth/user";
+    final static String LOGOUT_URL = "http://worknopsys.ml:5000/api/employees/logout";
+    final static String wo_url = "http://worknopsys.ml:5000/api/woapp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

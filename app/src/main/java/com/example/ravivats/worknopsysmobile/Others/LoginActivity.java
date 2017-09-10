@@ -32,8 +32,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    static final String REGISTER_URL = "http://worknopsys.ml/api/employees/auth";
-    static final String EMPLOYEE_URL = "http://worknopsys.ml/api/employees/";
+    static final String REGISTER_URL = "http://worknopsys.ml:5000/api/employees/auth";
+    static final String EMPLOYEE_URL = "http://worknopsys.ml:5000/api/employees/";
     static final String KEY_USERNAME = "employeephone";
     static final String KEY_PASSWORD = "employeepassword";
     Switch locationSwitch;

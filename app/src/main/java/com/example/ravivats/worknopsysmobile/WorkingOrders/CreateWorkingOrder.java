@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    static final String createWO_URL = "http://worknopsys.ml/api/woapp/create";
+    static final String createWO_URL = "http://worknopsys.ml:5000/api/woapp/create";
     EditText createWoStartDate, createWoAddress, createWoResources;
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;

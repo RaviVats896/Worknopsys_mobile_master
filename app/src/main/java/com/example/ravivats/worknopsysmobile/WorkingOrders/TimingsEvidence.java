@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class TimingsEvidence extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    static final String TIMINGS_URL = "http://worknopsys.ml/api/timings/create";
+    static final String TIMINGS_URL = "http://worknopsys.ml:5000/api/timings/create";
     Calendar cal;
     StringRequest timingsRequest;
     Button timingsSubmitButton;
