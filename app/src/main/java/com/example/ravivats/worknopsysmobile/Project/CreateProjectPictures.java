@@ -53,10 +53,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     String userChosenTask;
     ImageView cpPicturesImageView;
     String picLocation, picId;
-    private int REQUEST_CAMERA = 2;
-    private int SELECT_FILE = 1;
-    private int flag;
-    private static final String TAG = "AddBook";
+    private int REQUEST_CAMERA = 2, SELECT_FILE = 1, flag;
+    private static final String TAG = "CPPictures";
     private Uri fileUri;
 
     @Override
@@ -125,7 +123,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                 startActivity(in);
             }
         });
-
     }
 
     private void selectImage() {
@@ -189,8 +186,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             try {
                 bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
                 getUri(bm);
-
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -201,7 +196,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
 
 
     private void onCaptureImageResult(Intent data) {
-
         // Bitmap bitmap = cpPicturesImageView.getDrawingCache();
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         //Bitmap b = Bitmap.createScaledBitmap(thumbnail, 150, 150, false);
@@ -235,8 +229,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         fileUri = Uri.fromFile(destination);
         picLocation = fileUri.toString().substring(7);
         Log.e("Destination", picLocation);
-
-
     }
 
     @Override
@@ -285,7 +277,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateProjectPictures.this, AboutActivity.class));
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

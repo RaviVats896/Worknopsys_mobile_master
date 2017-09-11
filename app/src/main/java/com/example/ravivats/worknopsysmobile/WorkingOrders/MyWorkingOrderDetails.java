@@ -55,7 +55,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         editWOResourcesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MyWorkingOrderDetails.this, WOResources.class).putExtra("woPosition", workingOrderIndex));
             }
         });
 

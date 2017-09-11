@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.example.ravivats.worknopsysmobile.WorkingOrders.WOResources">
+
+        <ImageButton
+            android:id="@+id/wo_resources_camera1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_menu_camera" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_upload1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_camera1"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_cloud_upload_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_delete1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_upload1"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_delete_black_24dp" />
+
+        <ImageView
+            android:id="@+id/wo_resources_ImageView1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/wo_resources_camera1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wo_resources_description1"
+            android:hint="Description 1"
+
+            android:inputType="text"
+            android:layout_toEndOf="@id/wo_resources_camera1"
+            android:layout_below="@id/wo_resources_upload1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_camera2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/wo_resources_delete1"
+            android:src="@drawable/ic_menu_camera" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_upload2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_camera2"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_cloud_upload_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_delete2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_upload2"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_delete_black_24dp" />
+
+        <ImageView
+            android:id="@+id/wo_resources_ImageView2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/wo_resources_delete1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/wo_resources_camera2" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wo_resources_description2"
+            android:hint="Description 2"
+            android:inputType="text"
+            android:layout_toEndOf="@id/wo_resources_camera2"
+            android:layout_below="@id/wo_resources_upload2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_camera3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/wo_resources_delete2"
+            android:src="@drawable/ic_menu_camera" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_upload3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_camera3"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_cloud_upload_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/wo_resources_delete3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_upload3"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_delete_black_24dp" />
+
+        <ImageView
+            android:id="@+id/wo_resources_ImageView3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/wo_resources_delete2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/wo_resources_camera3" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wo_resources_description3"
+            android:hint="Description 3"
+            android:inputType="text"
+            android:layout_toEndOf="@id/wo_resources_camera3"
+            android:layout_below="@id/wo_resources_upload3"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp" />
+
+        <Button
+            android:id="@+id/wo_resources_nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/wo_resources_delete3"
+            android:layout_marginTop="20dp"
+            android:text="NEXT" />
+
+    </RelativeLayout>
+</ScrollView>
