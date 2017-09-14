@@ -10,11 +10,33 @@
         android:layout_height="wrap_content"
         tools:context="com.example.ravivats.worknopsysmobile.WorkingOrders.WOResources">
 
+        <EditText
+            android:id="@+id/wo_resources_wDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:hint="Work Date"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/wo_resources_pName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wo_resources_wDate"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:hint="Person Name"
+            android:inputType="text" />
+
         <ImageButton
             android:id="@+id/wo_resources_camera1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_below="@id/wo_resources_pName"
             android:src="@drawable/ic_menu_camera" />
 
         <ImageButton
@@ -42,23 +64,23 @@
             android:layout_toEndOf="@id/wo_resources_camera1" />
 
         <EditText
+            android:id="@+id/wo_resources_description1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wo_resources_description1"
-            android:hint="Description 1"
-
-            android:inputType="text"
-            android:layout_toEndOf="@id/wo_resources_camera1"
             android:layout_below="@id/wo_resources_upload1"
+
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp" />
+            android:layout_toEndOf="@id/wo_resources_camera1"
+            android:hint="Description 1"
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/wo_resources_camera2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_below="@id/wo_resources_delete1"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_menu_camera" />
 
         <ImageButton
@@ -87,22 +109,22 @@
             android:layout_toEndOf="@id/wo_resources_camera2" />
 
         <EditText
+            android:id="@+id/wo_resources_description2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wo_resources_description2"
-            android:hint="Description 2"
-            android:inputType="text"
-            android:layout_toEndOf="@id/wo_resources_camera2"
             android:layout_below="@id/wo_resources_upload2"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp" />
+            android:layout_toEndOf="@id/wo_resources_camera2"
+            android:hint="Description 2"
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/wo_resources_camera3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_below="@id/wo_resources_delete2"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_menu_camera" />
 
         <ImageButton
@@ -131,23 +153,23 @@
             android:layout_toEndOf="@id/wo_resources_camera3" />
 
         <EditText
+            android:id="@+id/wo_resources_description3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wo_resources_description3"
-            android:hint="Description 3"
-            android:inputType="text"
-            android:layout_toEndOf="@id/wo_resources_camera3"
             android:layout_below="@id/wo_resources_upload3"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp" />
+            android:layout_toEndOf="@id/wo_resources_camera3"
+            android:hint="Description 3"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/wo_resources_nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/wo_resources_delete3"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:text="NEXT" />
 
