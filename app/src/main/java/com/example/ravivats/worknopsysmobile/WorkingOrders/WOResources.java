@@ -217,9 +217,6 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         woResourcesNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] rList= {picLocation1, picLocation2,picLocation3};
-                String[] rDescriptionList= {woResourcesImageDesc1.getText().toString(),woResourcesImageDesc2.getText().toString(),
-                        woResourcesImageDesc3.getText().toString()};
                 resourcesRequest = new StringRequest(Request.Method.POST, RESOURCES_URL,
                         new Response.Listener<String>() {
                             @Override
