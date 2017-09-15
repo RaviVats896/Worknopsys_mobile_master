@@ -17,13 +17,29 @@ import java.util.Map;
 public class Constants {
 
     final static String LOGOUT_URL = "http://worknopsys.ml:5000/api/employees/logout";
-    private static Map<String, String> taskMap, taskInvMap, projectMap, projectInvMap, customerMap, customerInvMap;
+    private static Map<String, String> taskMap, taskInvMap, projectMap, projectInvMap, customerMap, customerInvMap, resourceMap, resourceInvMap;
     private static ArrayList<WorkingOrder> workingOrders;
     private static Boolean posLocation, projEnhance;
     private static Employee EMPLOYEE;
     private static Authorization AUTH;
     private static JSONArray CUSTOMERS;
     private static String evidenceWorkDate, evidenceGTime1, evidenceGTime2, evidenceWTime1, evidenceWTime2, evidenceBTime1, evidenceBTime2, evidenceRTime1, evidenceRTime2;
+
+    public static Map<String, String> getResourceInvMap() {
+        return resourceInvMap;
+    }
+
+    public static void setResourceInvMap(Map<String, String> resourceInvMap) {
+        Constants.resourceInvMap = resourceInvMap;
+    }
+
+    public static Map<String, String> getResourceMap() {
+        return resourceMap;
+    }
+
+    public static void setResourceMap(Map<String, String> resourceMap) {
+        Constants.resourceMap = resourceMap;
+    }
 
     public static Map<String, String> getCustomerInvMap() {
         return customerInvMap;

@@ -81,22 +81,29 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp" />
 
-    <EditText
-        android:id="@+id/create_wo_editText_resources"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/create_wo_spinner_rID_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/create_wo_spinner_cID"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:hint="Resources"
-        android:inputType="text" />
+        android:text="Resources" />
+
+    <Spinner
+        android:id="@+id/create_wo_spinner_rID"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/create_wo_spinner_cID"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp" />
 
     <Button
         android:id="@+id/create_wo_final_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/create_wo_editText_resources"
+        android:layout_below="@id/create_wo_spinner_rID_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Create Working Order" />

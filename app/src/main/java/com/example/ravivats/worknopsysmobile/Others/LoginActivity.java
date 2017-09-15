@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -24,8 +25,11 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder;
 import com.example.ravivats.worknopsysmobile.domain.Employee;
+import com.example.ravivats.worknopsysmobile.domain.Task;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -34,8 +38,10 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     static final String REGISTER_URL = "http://worknopsys.ml:5000/api/employees/auth";
     static final String EMPLOYEE_URL = "http://worknopsys.ml:5000/api/employees/";
+    static final String RESOURCES_URL = "http://worknopsys.ml:5000/api/resources";
     static final String KEY_USERNAME = "employeephone";
     static final String KEY_PASSWORD = "employeepassword";
+    Map<String, String> resourceMap, resourceInvMap;
     Switch locationSwitch;
     String h1, h2;
     EditText loginPersonalNoEditText;
@@ -55,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         loginPersonalNoEditText.getText().clear();
         loginPasswordEditText.getText().clear();
         locationSwitch.setChecked(false);
+        resourceMap = new HashMap<String, String>();
+        resourceInvMap = new HashMap<String, String>();
         Context context = getApplicationContext();
         final SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         h1 = sharedPref.getString(KEY_USERNAME, "--");
@@ -84,10 +92,11 @@ public class LoginActivity extends AppCompatActivity {
                         final String employeePhone = loginPersonalNoEditText.getText().toString().trim();
                         final String employeePassword = loginPasswordEditText.getText().toString().trim();
                         SharedPreferences.Editor editor = sharedPref.edit();
-                        if (h1.equals("--")){
-                        editor.putString(KEY_USERNAME, employeePhone);
-                        editor.putString(KEY_PASSWORD, employeePassword);
-                        editor.apply();}
+                        if (h1.equals("--")) {
+                            editor.putString(KEY_USERNAME, employeePhone);
+                            editor.putString(KEY_PASSWORD, employeePassword);
+                            editor.apply();
+                        }
                         stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                                 new Response.Listener<String>() {
                                     @Override
@@ -129,17 +138,35 @@ public class LoginActivity extends AppCompatActivity {
                                         Constants.setEMPLOYEE(emp);
                                     }
                                 }, new Response.ErrorListener() {
-
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-
-
                                     }
                                 });
+                        JsonArrayRequest resourceRequest = new JsonArrayRequest(Request.Method.GET, RESOURCES_URL, null, new Response.Listener<JSONArray>() {
+
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                try {
+                                    for (int i = 0; i < response.length(); i++) {
+                                        JSONObject last = response.getJSONObject(i);
+                                        resourceMap.put(last.getString("RNR"),last.getString("_id"));
+                                        resourceInvMap.put(last.getString("_id"),last.getString("RNR"));
+                                    }
+                                    Constants.setResourceMap(resourceMap);
+                                    Constants.setResourceInvMap(resourceInvMap);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
 
                         requestQueue.add(stringRequest);
                         requestQueue.add(jsEmpRequest);
-
+                        requestQueue.add(resourceRequest);
                     }
                 });
     }

@@ -22,7 +22,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
     int workingOrderIndex;
     TextView editWOResources, editWOCustomerName, editWOTaskName, editWOProjectName, editWOStartDate, editWOAddress;
     Button editWOTimingsBtn, editWOResourcesBtn;
-    Map<String, String> taskInvMap, custInvMap, projectInvMap;
+    Map<String, String> taskInvMap, custInvMap, projectInvMap, resourceInvMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         taskInvMap = Constants.getTaskInvMap();
         custInvMap = Constants.getCustomerInvMap();
         projectInvMap = Constants.getProjectInvMap();
+        resourceInvMap = Constants.getResourceInvMap();
 
         editWOResources = (TextView) findViewById(R.id.edit_wo_editText_resources);
         editWOCustomerName = (TextView) findViewById(R.id.edit_wo_spinner_cID);
@@ -45,7 +46,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         editWOResourcesBtn = (Button) findViewById(R.id.edit_wo_resources_button);
         editWOTimingsBtn = (Button) findViewById(R.id.edit_wo_timings_button);
 
-        editWOResources.setText("Resources: " + workingOrder.getResources());
+        editWOResources.setText("Resources: " + resourceInvMap.get(workingOrder.getResources()));
         editWOStartDate.setText("Date: " + workingOrder.getStartDate());
         editWOAddress.setText("Address: " + workingOrder.getAddress());
         editWOProjectName.setText(projectInvMap.get(workingOrder.getProject()));

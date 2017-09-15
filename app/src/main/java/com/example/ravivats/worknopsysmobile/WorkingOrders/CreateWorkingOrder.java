@@ -1,7 +1,6 @@
 package com.example.ravivats.worknopsysmobile.WorkingOrders;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,13 +30,13 @@ import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     static final String createWO_URL = "http://worknopsys.ml:5000/api/woapp/create";
-    EditText createWoStartDate, createWoAddress, createWoResources;
-    Spinner createWoProjectID, createWoTaskID, createWoCustomerID;
+    EditText createWoStartDate, createWoAddress;
+    Spinner createWoProjectID, createWoTaskID, createWoCustomerID, createWoResourceID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
     Button createWoButton;
-    String taskValue, projectValue, customerValue;
-    Map<String, String> taskMap, custMap, projectMap;
-    ArrayList<String> taskNameList, custNameList, projectNameList;
+    String taskValue, projectValue, customerValue, resourceValue;
+    Map<String, String> taskMap, custMap, projectMap, resourceMap;
+    ArrayList<String> taskNameList, custNameList, projectNameList, resourceNameList;
     Calendar cal;
     StringRequest createWORequest;
 
@@ -51,16 +50,18 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoAddress = (EditText) findViewById(R.id.create_wo_editText_address);
         createWoTaskID = (Spinner) findViewById(R.id.create_wo_spinner_tID);
         createWoCustomerID = (Spinner) findViewById(R.id.create_wo_spinner_cID);
-        createWoResources = (EditText) findViewById(R.id.create_wo_editText_resources);
+        createWoResourceID = (Spinner) findViewById(R.id.create_wo_spinner_rID);
         createWoButton = (Button) findViewById(R.id.create_wo_final_button);
         final RequestQueue requestWOQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
         taskMap = Constants.getTaskMap();
         custMap = Constants.getCustomerMap();
         projectMap = Constants.getProjectMap();
+        resourceMap =  Constants.getResourceMap();
         taskNameList = new ArrayList<String>();
         custNameList = new ArrayList<String>();
         projectNameList = new ArrayList<String>();
+        resourceNameList = new ArrayList<String>();
         for (Map.Entry<String, String> pairs : taskMap.entrySet()) {
             String key = pairs.getKey(); //String value = pairs.getValue();
             taskNameList.add(key);
@@ -76,15 +77,19 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
             projectNameList.add(key);
         }
 
+        for (Map.Entry<String, String> pairs : resourceMap.entrySet()) {
+            String key = pairs.getKey(); //String value = pairs.getValue();
+            resourceNameList.add(key);
+        }
+
         createWoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (createWoStartDate.getText().toString().equals("") || createWoAddress.getText().toString().equals("") || createWoResources.getText().toString().equals("")) {
+                if (createWoStartDate.getText().toString().equals("") || createWoAddress.getText().toString().equals("")) {
                     Toast.makeText(CreateWorkingOrder.this, "Please fill all details.", Toast.LENGTH_SHORT).show();
                 } else {
                     final String startDate = createWoStartDate.getText().toString();
                     final String address = createWoAddress.getText().toString();
-                    final String resources = createWoResources.getText().toString();
                     createWORequest = new StringRequest(Request.Method.POST, createWO_URL,
                             new Response.Listener<String>() {
                                 @Override
@@ -107,7 +112,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                             params.put("address", address);
                             params.put("customer", customerValue);
                             params.put("employee", Constants.getEMPLOYEE().getId());
-                            params.put("resources", resources);
+                            params.put("resources", resourceValue);
 
                             return params;
                         }
@@ -124,6 +129,10 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         taskSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoTaskID.setAdapter(taskSpinnerAdapter);
 
+        ArrayAdapter<String> resourceSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resourceNameList);
+        resourceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        createWoResourceID.setAdapter(resourceSpinnerAdapter);
+
         ArrayAdapter<String> custSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
         custSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoCustomerID.setAdapter(custSpinnerAdapter);
@@ -137,6 +146,18 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 taskValue = taskMap.get(createWoTaskID.getItemAtPosition(position).toString());
                 Toast.makeText(CreateWorkingOrder.this, "" + taskValue, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        createWoResourceID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                resourceValue = resourceMap.get(createWoResourceID.getItemAtPosition(position).toString());
+                Toast.makeText(CreateWorkingOrder.this, "" + resourceValue, Toast.LENGTH_SHORT).show();
             }
 
             @Override
