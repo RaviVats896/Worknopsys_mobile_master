@@ -107,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
                                         } else if (response.equalsIgnoreCase("false")) {
                                             Toast.makeText(LoginActivity.this, "Login failed! Please check login credentials.", Toast.LENGTH_SHORT).show();
                                         }
-
                                     }
                                 },
                                 new Response.ErrorListener() {
@@ -126,7 +125,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                 return params;
                             }
-
                         };
                         jsEmpRequest = new JsonObjectRequest
                                 (Request.Method.GET, EMPLOYEE_URL + employeePhone, null, new Response.Listener<JSONObject>() {
