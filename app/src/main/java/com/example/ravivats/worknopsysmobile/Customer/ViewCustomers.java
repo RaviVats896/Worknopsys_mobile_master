@@ -25,10 +25,9 @@ import java.util.ArrayList;
 
 public class ViewCustomers extends AppCompatActivity {
     ListView customersList;
-    String url = "http://worknopsys.ml:5000/api/customers";
+    String selectedCustomer, url = "http://worknopsys.ml:5000/api/customers";
     ProgressDialog dialog;
     JSONArray allCustomers;
-    String selectedCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

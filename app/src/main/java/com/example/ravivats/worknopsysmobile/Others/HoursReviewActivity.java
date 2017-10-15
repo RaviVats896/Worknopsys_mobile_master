@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,6 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -56,9 +56,8 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
     Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap;
-    TextView navDrawerNumber;
-    TextView navDrawerName;
-    TextView txtView1;
+    TextView navDrawerNumber, navDrawerName;
+    ListView hoursReviewList;
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
@@ -98,8 +97,16 @@ public class HoursReviewActivity extends AppCompatActivity
         taskInvMap = new HashMap<String, String>();
         customerInvMap = new HashMap<String, String>();
         projectInvMap = new HashMap<String, String>();
-        txtView1 = (TextView) findViewById(R.id.textview1);
+        hoursReviewList = (ListView) findViewById(R.id.hoursReviewList);
         queue = Volley.newRequestQueue(this);
+
+        // Refer parseJsonData() in ViewCustomers.java for detailed explanation.
+        ArrayList<String> hoursReviewData = new ArrayList();
+        for (int i = 0; i < 10; ++i) {
+                hoursReviewData.add("31.08.2017    Wednesday    19:00 pm");
+        }
+        ArrayAdapter hoursReviewAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,hoursReviewData );
+        hoursReviewList.setAdapter(hoursReviewAdapter);
 
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {
@@ -149,7 +156,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                txtView1.setText("Error");
+                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -176,7 +183,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                txtView1.setText("Error");
+                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -203,7 +210,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                txtView1.setText("Error");
+                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
             }
         });
         JsonArrayRequest woRetRequest = new JsonArrayRequest(Request.Method.GET, wo_url, null, new Response.Listener<JSONArray>() {
@@ -228,8 +235,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                txtView1.setText("Error");
-
+                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(authRequest);
