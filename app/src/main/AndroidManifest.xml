@@ -86,7 +86,8 @@
             android:value="cloudinary://123456789012345:abcdeghijklmnopqrstuvwxyz12@n07t21i7" />
 
         <activity android:name=".WorkingOrders.MyWorkingOrderDetails" />
-        <activity android:name=".WorkingOrders.WOResources"></activity>
+        <activity android:name=".WorkingOrders.WOResources" />
+        <activity android:name=".Others.HoursReviewResultsActivity"></activity>
     </application>
 
 </manifest>

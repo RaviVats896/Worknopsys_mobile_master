@@ -57,7 +57,6 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_AUTHID = "userid";
     Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap;
     TextView navDrawerNumber, navDrawerName;
-    ListView hoursReviewList;
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
@@ -97,16 +96,7 @@ public class HoursReviewActivity extends AppCompatActivity
         taskInvMap = new HashMap<String, String>();
         customerInvMap = new HashMap<String, String>();
         projectInvMap = new HashMap<String, String>();
-        hoursReviewList = (ListView) findViewById(R.id.hoursReviewList);
         queue = Volley.newRequestQueue(this);
-
-        // Refer parseJsonData() in ViewCustomers.java for detailed explanation.
-        ArrayList<String> hoursReviewData = new ArrayList();
-        for (int i = 0; i < 10; ++i) {
-                hoursReviewData.add("31.08.2017    Wednesday    19:00 pm");
-        }
-        ArrayAdapter hoursReviewAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,hoursReviewData );
-        hoursReviewList.setAdapter(hoursReviewAdapter);
 
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {

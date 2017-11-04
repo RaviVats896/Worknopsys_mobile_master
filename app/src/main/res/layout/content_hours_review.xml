@@ -13,10 +13,4 @@
     tools:context="com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity"
     tools:showIn="@layout/app_bar_hours_review">
 
-    <ListView
-        android:id="@+id/hoursReviewList"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>

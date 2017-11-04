@@ -147,8 +147,8 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     for (int i = 0; i < response.length(); i++) {
                                         JSONObject last = response.getJSONObject(i);
-                                        resourceMap.put(last.getString("RNR"),last.getString("_id"));
-                                        resourceInvMap.put(last.getString("_id"),last.getString("RNR"));
+                                        resourceMap.put(last.getString("RNR"), last.getString("_id"));
+                                        resourceInvMap.put(last.getString("_id"), last.getString("RNR"));
                                     }
                                     Constants.setResourceMap(resourceMap);
                                     Constants.setResourceInvMap(resourceInvMap);
