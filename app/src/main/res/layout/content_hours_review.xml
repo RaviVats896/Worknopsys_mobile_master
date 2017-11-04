@@ -13,4 +13,73 @@
     tools:context="com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity"
     tools:showIn="@layout/app_bar_hours_review">
 
+    <TextView
+        android:id="@+id/hours_review_header_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/set_filter"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/hours_review_customer_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hours_review_header_label"
+        android:layout_marginTop="25dp"
+        android:text="Customer :" />
+
+    <Spinner
+        android:id="@+id/hours_review_customer_spinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/hours_review_header_label"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/hours_review_project_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hours_review_customer_label"
+        android:layout_marginTop="25dp"
+        android:text="Project :" />
+
+    <Spinner
+        android:id="@+id/hours_review_project_spinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/hours_review_customer_label"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/hours_review_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hours_review_project_label"
+        android:layout_marginTop="25dp"
+        android:text="Date :" />
+
+    <EditText
+        android:id="@+id/hours_review_date_spinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/hours_review_project_label"
+        android:layout_marginTop="25dp"
+        android:hint="Choose Date"
+        android:inputType="date" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hours_review_date_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/hours_review_next_button"
+        android:text="@string/next" />
+
 </RelativeLayout>

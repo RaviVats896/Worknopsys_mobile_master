@@ -1,5 +1,6 @@
 package com.example.ravivats.worknopsysmobile.Others;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,9 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +38,7 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -46,17 +52,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HoursReviewActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener {
 
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
     Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap;
     TextView navDrawerNumber, navDrawerName;
+    EditText hoursReviewDateID;
+    Spinner hoursReviewCustomerID, hoursReviewProjectID;
+    Button hoursReviewNextButton;
+    DatePickerDialog.OnDateSetListener hoursReviewDateListener;
+    ArrayList<String> custNameList;
+    Calendar mCal;
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
@@ -98,6 +111,49 @@ public class HoursReviewActivity extends AppCompatActivity
         projectInvMap = new HashMap<String, String>();
         queue = Volley.newRequestQueue(this);
 
+        hoursReviewCustomerID = (Spinner) findViewById(R.id.hours_review_customer_spinner);
+        hoursReviewProjectID = (Spinner) findViewById(R.id.hours_review_project_spinner);
+        hoursReviewDateID = (EditText) findViewById(R.id.hours_review_date_spinner);
+        hoursReviewNextButton = (Button) findViewById(R.id.hours_review_next_button);
+
+        for(int i=0;i<10;i++){
+            custNameList.add("Option 1");
+        }
+
+        ArrayAdapter<String> hoursReviewCustomerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
+        hoursReviewCustomerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hoursReviewCustomerID.setAdapter(hoursReviewCustomerAdapter);
+
+        ArrayAdapter<String> hoursReviewProjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
+        hoursReviewProjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hoursReviewProjectID.setAdapter(hoursReviewProjectAdapter);
+
+        hoursReviewCustomerID.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+
+        hoursReviewDateID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dp1 = new DatePickerDialog(HoursReviewActivity.this, hoursReviewDateListener, mCal.get(Calendar.YEAR), mCal.get(Calendar.MONTH), mCal.get(Calendar.DAY_OF_MONTH));
+                dp1.show();
+            }
+        });
+
+        hoursReviewDateListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                mCal.set(Calendar.YEAR, year);
+                mCal.set(Calendar.MONTH, month);
+                mCal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                hoursReviewDateID.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+            }
+        };
+
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {
                     @Override
@@ -112,7 +168,6 @@ public class HoursReviewActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-
                     }
                 }) {
             @Override
@@ -363,5 +418,10 @@ public class HoursReviewActivity extends AppCompatActivity
 
         };
         queue.add(logoutRequest);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
     }
 }

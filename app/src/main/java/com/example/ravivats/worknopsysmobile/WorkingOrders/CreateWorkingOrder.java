@@ -57,7 +57,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         taskMap = Constants.getTaskMap();
         custMap = Constants.getCustomerMap();
         projectMap = Constants.getProjectMap();
-        resourceMap =  Constants.getResourceMap();
+        resourceMap = Constants.getResourceMap();
         taskNameList = new ArrayList<String>();
         custNameList = new ArrayList<String>();
         projectNameList = new ArrayList<String>();
@@ -113,10 +113,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                             params.put("customer", customerValue);
                             params.put("employee", Constants.getEMPLOYEE().getId());
                             params.put("resources", resourceValue);
-
                             return params;
                         }
-
                     };
 
                     requestWOQueue.add(createWORequest);
