@@ -124,6 +124,7 @@
         android:prompt="@string/salutation_prompt" />
 
     <Button
+        android:id="@+id/cc_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cc_facing_since_spinner"
