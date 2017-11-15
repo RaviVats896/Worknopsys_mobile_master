@@ -46,7 +46,9 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         editWOResourcesBtn = (Button) findViewById(R.id.edit_wo_resources_button);
         editWOTimingsBtn = (Button) findViewById(R.id.edit_wo_timings_button);
 
-        editWOResources.setText("Resources: " + resourceInvMap.get(workingOrder.getResources()));
+
+        //TODO:  Look into why resourceInvMap is getting null values. Maybe something is wrong with setResourceInvMap call.
+        //editWOResources.setText("Resources: " + resourceInvMap.get(workingOrder.getResources()));
         editWOStartDate.setText("Date: " + workingOrder.getStartDate());
         editWOAddress.setText("Address: " + workingOrder.getAddress());
         editWOProjectName.setText(projectInvMap.get(workingOrder.getProject()));

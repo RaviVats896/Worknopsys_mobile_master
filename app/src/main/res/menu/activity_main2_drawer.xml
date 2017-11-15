@@ -3,9 +3,9 @@
 
     <group>
         <item
-            android:id="@+id/nav_daily_overview"
-            android:icon="@drawable/ic_insert_chart_black_24dp"
-            android:title="Daily Overview" />
+            android:id="@+id/nav_hours_review"
+            android:icon="@drawable/ic_av_timer_black_24dp"
+            android:title="Hours Overview" />
         <item
             android:id="@+id/nav_working_orders"
             android:icon="@drawable/ic_assignment_black_24dp"
@@ -31,6 +31,10 @@
                 android:icon="@drawable/ic_group_add_black_24dp"
                 android:title="Create Customer" />
             <item
+                android:id="@+id/nav_create_complaint"
+                android:icon="@drawable/ic_complaint_black_24dp"
+                android:title="Create Complaint" />
+            <item
                 android:id="@+id/nav_create_project"
                 android:icon="@drawable/ic_create_new_folder_black_24dp"
                 android:title="Create Project" />
@@ -44,22 +48,17 @@
     <item android:title="User">
         <menu>
             <item
-                android:id="@+id/nav_hours_review"
-                android:icon="@drawable/ic_av_timer_black_24dp"
-                android:title="Hours Overview" />
-            <item
                 android:id="@+id/nav_config"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Configuration" />
             <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_exit_to_app_black_24dp"
-                android:title="Logout" />
-            <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="About" />
-
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Logout" />
         </menu>
     </item>
 

@@ -110,14 +110,18 @@ public class HoursReviewActivity extends AppCompatActivity
         customerInvMap = new HashMap<String, String>();
         projectInvMap = new HashMap<String, String>();
         queue = Volley.newRequestQueue(this);
+        custNameList = new ArrayList<String>();
+        mCal = Calendar.getInstance();
+
 
         hoursReviewCustomerID = (Spinner) findViewById(R.id.hours_review_customer_spinner);
         hoursReviewProjectID = (Spinner) findViewById(R.id.hours_review_project_spinner);
         hoursReviewDateID = (EditText) findViewById(R.id.hours_review_date_spinner);
         hoursReviewNextButton = (Button) findViewById(R.id.hours_review_next_button);
 
-        for(int i=0;i<10;i++){
-            custNameList.add("Option 1");
+
+        for (int i = 0; i < 10; i++) {
+            custNameList.add("Option " + i);
         }
 
         ArrayAdapter<String> hoursReviewCustomerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
@@ -128,19 +132,19 @@ public class HoursReviewActivity extends AppCompatActivity
         hoursReviewProjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hoursReviewProjectID.setAdapter(hoursReviewProjectAdapter);
 
-        hoursReviewCustomerID.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
 
         hoursReviewDateID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog dp1 = new DatePickerDialog(HoursReviewActivity.this, hoursReviewDateListener, mCal.get(Calendar.YEAR), mCal.get(Calendar.MONTH), mCal.get(Calendar.DAY_OF_MONTH));
                 dp1.show();
+            }
+        });
+
+        hoursReviewNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HoursReviewActivity.this, HoursReviewResultsActivity.class));
             }
         });
 
@@ -351,7 +355,7 @@ public class HoursReviewActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_daily_overview) {
+        if (id == R.id.nav_hours_review) {
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(HoursReviewActivity.this, MyWorkingOrders.class));
         } else if (id == R.id.nav_facebook) {
@@ -367,11 +371,12 @@ public class HoursReviewActivity extends AppCompatActivity
             startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
+        } else if (id == R.id.nav_create_complaint) {
+
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
             startActivity(new Intent(HoursReviewActivity.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_hours_review) {
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(HoursReviewActivity.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
@@ -379,7 +384,6 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(HoursReviewActivity.this, AboutActivity.class));
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

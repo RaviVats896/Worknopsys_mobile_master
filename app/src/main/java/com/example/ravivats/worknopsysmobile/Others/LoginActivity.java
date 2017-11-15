@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginBtn;
     StringRequest stringRequest;
     JsonObjectRequest jsEmpRequest;
+    JsonArrayRequest resourceRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onErrorResponse(VolleyError error) {
                                     }
                                 });
-                        JsonArrayRequest resourceRequest = new JsonArrayRequest(Request.Method.GET, RESOURCES_URL, null, new Response.Listener<JSONArray>() {
+                        resourceRequest = new JsonArrayRequest(Request.Method.GET, RESOURCES_URL, null, new Response.Listener<JSONArray>() {
 
                             @Override
                             public void onResponse(JSONArray response) {
@@ -154,11 +155,13 @@ public class LoginActivity extends AppCompatActivity {
                                     Constants.setResourceInvMap(resourceInvMap);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
+                                    Toast.makeText(LoginActivity.this, "Error in resource retrieval.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(LoginActivity.this, "Error in resource retrieval.", Toast.LENGTH_SHORT).show();
                             }
                         });
 

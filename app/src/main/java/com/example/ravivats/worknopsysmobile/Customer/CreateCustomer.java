@@ -146,8 +146,12 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Authorization auth1 = Constants.getAUTH();
-        if (id == R.id.nav_daily_overview) {
-
+        if (id == R.id.nav_hours_review) {
+            if (auth1.getHoursEdit())
+                startActivity(new Intent(CreateCustomer.this, HoursReviewActivity.class));
+            else {
+                Toast.makeText(CreateCustomer.this, "You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(CreateCustomer.this, MyWorkingOrders.class));
         } else if (id == R.id.nav_facebook) {
@@ -163,6 +167,8 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
 
+        } else if (id == R.id.nav_create_complaint) {
+
         } else if (id == R.id.nav_create_project) {
             if (auth1.getAdmEmpProjCreate())
                 startActivity(new Intent(CreateCustomer.this, CreateProjectDetails.class));
@@ -171,12 +177,6 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             }
         } else if (id == R.id.nav_mgmt_working_orders) {
             startActivity(new Intent(CreateCustomer.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_hours_review) {
-            if (auth1.getHoursEdit())
-                startActivity(new Intent(CreateCustomer.this, HoursReviewActivity.class));
-            else {
-                Toast.makeText(CreateCustomer.this, "You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateCustomer.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {

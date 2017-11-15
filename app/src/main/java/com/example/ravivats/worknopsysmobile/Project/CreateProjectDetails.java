@@ -155,9 +155,8 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
         // Handle navigation view item clicks here.
         Authorization auth1 = Constants.getAUTH();
         int id = item.getItemId();
-
-        if (id == R.id.nav_daily_overview) {
-            // Handle the camera action
+        if (id == R.id.nav_hours_review) {
+            startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(CreateProjectDetails.this, MyWorkingOrders.class));
         } else if (id == R.id.nav_facebook) {
@@ -173,12 +172,12 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectDetails.this, CreateCustomer.class));
+        } else if (id == R.id.nav_create_complaint) {
+
         } else if (id == R.id.nav_create_project) {
 
         } else if (id == R.id.nav_mgmt_working_orders) {
             startActivity(new Intent(CreateProjectDetails.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_hours_review) {
-            startActivity(new Intent(CreateProjectDetails.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateProjectDetails.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {

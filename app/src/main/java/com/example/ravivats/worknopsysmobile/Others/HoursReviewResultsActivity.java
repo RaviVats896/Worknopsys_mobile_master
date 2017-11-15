@@ -19,7 +19,8 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
         hoursReviewList = (ListView) findViewById(R.id.hoursReviewList);
 
         // Refer parseJsonData() in ViewCustomers.java for detailed explanation.
-        ArrayList<String> hoursReviewData = new ArrayList();
+        ArrayList<String> hoursReviewData = new ArrayList<String>();
+
         for (int i = 0; i < 10; ++i) {
             hoursReviewData.add("31/08/2017 Wednesday 19:00 pm");
         }

@@ -247,8 +247,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_daily_overview) {
-            // Handle the camera action
+        if (id == R.id.nav_hours_review) {
+            startActivity(new Intent(CreateProjectPictures.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_working_orders) {
             startActivity(new Intent(CreateProjectPictures.this, MyWorkingOrders.class));
         } else if (id == R.id.nav_facebook) {
@@ -264,12 +264,12 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             startActivity(sendIntent);
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectPictures.this, CreateCustomer.class));
+        } else if (id == R.id.nav_create_complaint) {
+
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(CreateProjectPictures.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {
             startActivity(new Intent(CreateProjectPictures.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_hours_review) {
-            startActivity(new Intent(CreateProjectPictures.this, HoursReviewActivity.class));
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateProjectPictures.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
