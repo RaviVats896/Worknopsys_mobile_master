@@ -32,6 +32,7 @@ import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.CpOrderDatePickerFragment;
 import com.example.ravivats.worknopsysmobile.CpOrderTimePickerFragment;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
@@ -175,7 +176,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectOrders.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_complaint) {
-
+            startActivity(new Intent(CreateProjectOrders.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(CreateProjectOrders.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {

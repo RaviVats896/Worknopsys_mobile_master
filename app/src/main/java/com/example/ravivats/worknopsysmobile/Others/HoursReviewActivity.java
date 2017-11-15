@@ -372,7 +372,7 @@ public class HoursReviewActivity extends AppCompatActivity
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_complaint) {
-
+            startActivity(new Intent(HoursReviewActivity.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {

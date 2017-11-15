@@ -31,6 +31,7 @@ import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
+import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
@@ -265,7 +266,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(CreateProjectPictures.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_complaint) {
-
+            startActivity(new Intent(CreateProjectPictures.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(CreateProjectPictures.this, CreateProjectDetails.class));
         } else if (id == R.id.nav_mgmt_working_orders) {

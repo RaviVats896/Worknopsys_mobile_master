@@ -29,6 +29,7 @@
     <string name="default_timing">00:00</string>
     <string name="set_filter">Set Filter:</string>
     <string name="enter_complaint_details">Enter Complaint Details:</string>
+    <string name="create_complaint">Create Complaint</string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>

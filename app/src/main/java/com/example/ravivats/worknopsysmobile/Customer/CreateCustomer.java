@@ -22,6 +22,7 @@ import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
@@ -168,7 +169,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         } else if (id == R.id.nav_create_customer) {
 
         } else if (id == R.id.nav_create_complaint) {
-
+            startActivity(new Intent(CreateCustomer.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             if (auth1.getAdmEmpProjCreate())
                 startActivity(new Intent(CreateCustomer.this, CreateProjectDetails.class));

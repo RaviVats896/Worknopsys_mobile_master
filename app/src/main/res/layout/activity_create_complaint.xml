@@ -129,6 +129,6 @@
         android:layout_below="@id/cc_facing_since_spinner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Create Complaint" />
+        android:text="@string/create_complaint" />
 
 </RelativeLayout>
