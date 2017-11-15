@@ -87,7 +87,8 @@
 
         <activity android:name=".WorkingOrders.MyWorkingOrderDetails" />
         <activity android:name=".WorkingOrders.WOResources" />
-        <activity android:name=".Others.HoursReviewResultsActivity"></activity>
+        <activity android:name=".Others.HoursReviewResultsActivity" />
+        <activity android:name=".Others.CreateComplaint"></activity>
     </application>
 
 </manifest>

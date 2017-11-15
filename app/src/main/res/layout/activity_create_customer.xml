@@ -50,8 +50,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="50dp"
                     android:text="@string/description"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/cp_customers_cust_name_label"
