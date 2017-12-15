@@ -117,6 +117,7 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Bank Name"
+        android:inputType="text"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
 
@@ -182,6 +183,7 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Bank User"
+        android:inputType="text"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
 
