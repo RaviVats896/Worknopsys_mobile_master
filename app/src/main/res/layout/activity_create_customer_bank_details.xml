@@ -249,6 +249,7 @@
         android:layout_marginTop="15dp"
         android:ems="8"
         android:hint="Currency"
+        android:inputType="text"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
 

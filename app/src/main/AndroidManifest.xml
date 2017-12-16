@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".Others.HoursReviewActivity"
-            android:label="@string/hours_review_activity"
+            android:label="Set Filter"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Project.CreateProjectDetails"
@@ -80,6 +80,9 @@
         <activity
             android:name=".WorkingOrders.TimingsEvidence"
             android:label="Evidence" />
+        <activity
+            android:name=".Others.HoursReviewResultsActivity"
+            android:label="@string/hours_review_activity"/>
 
         <meta-data
             android:name="CLOUDINARY_URL"
@@ -87,8 +90,6 @@
 
         <activity android:name=".WorkingOrders.MyWorkingOrderDetails" />
         <activity android:name=".WorkingOrders.WOResources" />
-        <activity android:name=".Others.HoursReviewResultsActivity" />
-        <activity android:name=".Others.CreateComplaint"></activity>
+        <activity android:name=".Others.CreateComplaint"/>
     </application>
-
 </manifest>

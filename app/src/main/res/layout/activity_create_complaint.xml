@@ -18,10 +18,30 @@
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/cc_title_label"
+        android:id="@+id/cc_category_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cc_desc_label"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Category" />
+
+    <Spinner
+        android:id="@+id/cc_category_spinner"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/cc_desc_label"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:dropDownWidth="wrap_content"
+        android:prompt="@string/salutation_prompt" />
+
+    <TextView
+        android:id="@+id/cc_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cc_category_spinner"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Title" />
@@ -31,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/cc_desc_label"
+        android:layout_below="@id/cc_category_spinner"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="15dp"
         android:ems="12"
@@ -59,35 +79,15 @@
         android:layout_marginTop="15dp"
         android:ems="12"
         android:hint="Complaint Description"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:textColorHint="@color/colorAccent"
         android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/cc_category_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cc_description_edit_text"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Category" />
-
-    <Spinner
-        android:id="@+id/cc_category_spinner"
-        android:layout_width="225dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/cc_description_edit_text"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="20dp"
-        android:dropDownWidth="wrap_content"
-        android:prompt="@string/salutation_prompt" />
 
     <TextView
         android:id="@+id/cc_number_of_people_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cc_category_spinner"
+        android:layout_below="@id/cc_description_edit_text"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="No. of people" />
@@ -97,7 +97,7 @@
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/cc_category_spinner"
+        android:layout_below="@id/cc_description_edit_text"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp"
         android:dropDownWidth="wrap_content"

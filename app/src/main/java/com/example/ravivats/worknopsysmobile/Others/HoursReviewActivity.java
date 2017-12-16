@@ -119,7 +119,7 @@ public class HoursReviewActivity extends AppCompatActivity
         hoursReviewDateID = (EditText) findViewById(R.id.hours_review_date_spinner);
         hoursReviewNextButton = (Button) findViewById(R.id.hours_review_next_button);
 
-
+        hoursReviewDateID.setKeyListener(null);
         for (int i = 0; i < 10; i++) {
             custNameList.add("Option " + i);
         }
