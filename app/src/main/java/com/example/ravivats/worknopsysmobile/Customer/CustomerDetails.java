@@ -42,6 +42,7 @@ public class CustomerDetails extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         Salutation.setAdapter(adapter);
+        Salutation.setEnabled(false);
 
         CustomerName.setText(SelectedCustomer.getCName());
         DebNumber.setText(SelectedCustomer.getDebitorNumber());
@@ -60,6 +61,7 @@ public class CustomerDetails extends AppCompatActivity {
                 Salutation.setSelection(3);
                 break;
         }
+
         PhoneNumber.setText(SelectedCustomer.getPhone());
         Fax.setText(SelectedCustomer.getFax());
         Email.setText(SelectedCustomer.getEmail());

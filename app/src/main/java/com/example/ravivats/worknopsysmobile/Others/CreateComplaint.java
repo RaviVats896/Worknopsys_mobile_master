@@ -27,15 +27,15 @@ public class CreateComplaint extends AppCompatActivity {
         complaintDesc = (EditText) findViewById(R.id.cc_description_edit_text);
 
         categoryAdapter = ArrayAdapter.createFromResource(this, R.array.category_array, android.R.layout.simple_spinner_item);
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinne
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinner
         categorySpinner.setAdapter(categoryAdapter);
 
         noOfPeopleAdapter = ArrayAdapter.createFromResource(this, R.array.no_of_people_array, android.R.layout.simple_spinner_item);
-        noOfPeopleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinne
+        noOfPeopleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinner
         noOfPeopleSpinner.setAdapter(noOfPeopleAdapter);
 
         facingSinceAdapter = ArrayAdapter.createFromResource(this, R.array.facing_since_array, android.R.layout.simple_spinner_item);
-        facingSinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinne
+        facingSinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// Apply the adapter to the spinner
         facingSinceSpinner.setAdapter(facingSinceAdapter);
     }
 }
