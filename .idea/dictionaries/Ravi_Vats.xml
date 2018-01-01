@@ -3,6 +3,8 @@
     <words>
       <w>cust</w>
       <w>iban</w>
+      <w>proj</w>
+      <w>workerid</w>
     </words>
   </dictionary>
 </component>
