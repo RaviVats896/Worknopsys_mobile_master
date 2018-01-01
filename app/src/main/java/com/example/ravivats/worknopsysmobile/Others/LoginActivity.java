@@ -146,10 +146,10 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONArray response) {
                                 try {
-                                    for (int i = 0; i < response.length(); i++) {
+                                    for (int i = 2; i < response.length(); i++) {
                                         JSONObject last = response.getJSONObject(i);
-                                        resourceMap.put(last.getString("RNR"), last.getString("_id"));
-                                        resourceInvMap.put(last.getString("_id"), last.getString("RNR"));
+                                        resourceMap.put(last.getString("RListDesc1")+", "+last.getString("RListDesc2")+", "+last.getString("RListDesc3"), last.getString("_id"));
+                                        resourceInvMap.put(last.getString("_id"), last.getString("RListDesc1")+", "+last.getString("RListDesc2")+", "+last.getString("RListDesc3"));
                                     }
                                     Constants.setResourceMap(resourceMap);
                                     Constants.setResourceInvMap(resourceInvMap);
