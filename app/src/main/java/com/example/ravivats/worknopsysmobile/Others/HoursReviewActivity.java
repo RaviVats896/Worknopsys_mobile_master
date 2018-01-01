@@ -62,7 +62,7 @@ public class HoursReviewActivity extends AppCompatActivity
     public static final String KEY_USERNAME = "employeephone";
     public static final String KEY_PASSWORD = "employeepassword";
     public static final String KEY_AUTHID = "userid";
-    Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap;
+    Map<String, String> taskMap, taskInvMap, customerMap, customerInvMap, projectMap, projectInvMap, categoryMap, categoryInvMap, cityMap, cityInvMap;
     TextView navDrawerNumber, navDrawerName;
     EditText hoursReviewDateID;
     Spinner hoursReviewCustomerID, hoursReviewProjectID;
@@ -75,10 +75,13 @@ public class HoursReviewActivity extends AppCompatActivity
     RequestQueue queue;
     final static String task_url = "http://worknopsys.ml:5000/api/tasks";
     final static String customer_url = "http://worknopsys.ml:5000/api/customers";
+    final static String category_url = "http://worknopsys.ml:5000/api/categories";
+    final static String city_url = "http://worknopsys.ml:5000/api/cities";
     final static String project_url = "http://worknopsys.ml:5000/api/projectapp";
     final static String auth_url = "http://worknopsys.ml:5000/api/auth/user";
     final static String LOGOUT_URL = "http://worknopsys.ml:5000/api/employees/logout";
     final static String wo_url = "http://worknopsys.ml:5000/api/woapp";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +112,10 @@ public class HoursReviewActivity extends AppCompatActivity
         taskInvMap = new HashMap<String, String>();
         customerInvMap = new HashMap<String, String>();
         projectInvMap = new HashMap<String, String>();
+        categoryMap = new HashMap<String, String>();
+        categoryInvMap = new HashMap<String, String>();
+        cityMap = new HashMap<String, String>();
+        cityInvMap = new HashMap<String, String>();
         queue = Volley.newRequestQueue(this);
         custNameList = new ArrayList<String>();
         mCal = Calendar.getInstance();
@@ -205,7 +212,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching tasks!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -232,7 +239,7 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching customers!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -259,9 +266,10 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching projects!", Toast.LENGTH_SHORT).show();
             }
         });
+
         JsonArrayRequest woRetRequest = new JsonArrayRequest(Request.Method.GET, wo_url, null, new Response.Listener<JSONArray>() {
 
             @Override
@@ -284,14 +292,67 @@ public class HoursReviewActivity extends AppCompatActivity
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HoursReviewActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching WOs!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        JsonArrayRequest categoryRetRequest = new JsonArrayRequest(Request.Method.GET, category_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        categoryMap.put(last.getString("name"), last.getString("id"));
+                        categoryInvMap.put(last.getString("id"), last.getString("name"));
+                    }
+                    Constants.setCategoryMap(categoryMap);
+                    Constants.setCategoryInvMap(categoryInvMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching categories!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        JsonArrayRequest cityRetRequest = new JsonArrayRequest(Request.Method.GET, city_url, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject last = response.getJSONObject(i);
+                        cityMap.put(last.getString("name"), last.getString("id"));
+                        cityInvMap.put(last.getString("id"), last.getString("name"));
+                    }
+                    Constants.setCityMap(cityMap);
+                    Constants.setCityInvMap(cityInvMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HoursReviewActivity.this, "Error occurred in fetching cities!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         queue.add(authRequest);
+        queue.add(categoryRetRequest);
         queue.add(taskRetRequest);
         queue.add(custRetRequest);
         queue.add(projectRetRequest);
         queue.add(woRetRequest);
+        queue.add(cityRetRequest);
     }
 
     @Override
