@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_editText_address"
@@ -21,7 +21,7 @@
         android:layout_below="@id/edit_wo_editText_sDate"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_pID_label"
@@ -30,8 +30,8 @@
         android:layout_below="@id/edit_wo_editText_address"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:text="Project Name: "
-        android:textSize="20sp" />
+        android:text="@string/project_name"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_pID"
@@ -41,7 +41,7 @@
         android:layout_below="@id/edit_wo_editText_address"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_tID_label"
@@ -50,8 +50,8 @@
         android:layout_below="@id/edit_wo_spinner_pID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:text="Task Name: "
-        android:textSize="20sp" />
+        android:text="@string/task_name"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_tID"
@@ -62,7 +62,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:dropDownWidth="wrap_content"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_cID_label"
@@ -71,8 +71,8 @@
         android:layout_below="@id/edit_wo_spinner_tID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:text="Customer Name: "
-        android:textSize="20sp" />
+        android:text="@string/customer_name"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_spinner_cID"
@@ -82,7 +82,7 @@
         android:layout_below="@id/edit_wo_spinner_tID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/edit_wo_editText_resources"
@@ -91,7 +91,7 @@
         android:layout_below="@id/edit_wo_spinner_cID"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/edit_wo_timings_button"

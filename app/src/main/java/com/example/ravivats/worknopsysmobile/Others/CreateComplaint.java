@@ -32,8 +32,8 @@ public class CreateComplaint extends AppCompatActivity {
     ArrayAdapter<CharSequence> noOfPeopleAdapter, facingSinceAdapter;
     Button ccSubmitButton;
     EditText complaintTitle, complaintDesc;
-    String facingSinceArray[] = {"0–10 days", "10–30 days", "30–50 days", "More than 50 days"};
-    String noOfPeopleArray[] = {"0–10 people", "10–30 people", "30–50 people", "More than 50 people"};
+    String facingSinceArray[] = {"1–20 days", "21–50 days", "50+ days"};
+    String noOfPeopleArray[] = {"1–20 people", "21–50 people", "50+ people"};
     StringRequest createComplaintRequest;
 
     @Override

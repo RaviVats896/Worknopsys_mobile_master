@@ -30,6 +30,9 @@
     <string name="set_filter">Set Filter:</string>
     <string name="enter_complaint_details">Enter Complaint Details:</string>
     <string name="create_complaint">Create Complaint</string>
+    <string name="project_name">Project Name :</string>
+    <string name="task_name">Task Name :</string>
+    <string name="customer_name">Customer Name :</string>
     <string-array name="salutation_array">
         <item>Mr</item>
         <item>Dr</item>
@@ -37,10 +40,9 @@
         <item>Ms</item>
     </string-array>
     <string-array name="facing_since_array">
-        <item>0–10 days</item>
-        <item>10–30 days</item>
-        <item>30–50 days</item>
-        <item>More than 50 days</item>
+        <item>1–20 days</item>
+        <item>21–50 days</item>
+        <item>50+ days</item>
     </string-array>
     <string-array name="category_array">
         <item>Medical</item>
@@ -49,10 +51,9 @@
         <item>Payment</item>
     </string-array>
     <string-array name="no_of_people_array">
-        <item>0–10 people</item>
-        <item>10–30 people</item>
-        <item>30–50 people</item>
-        <item>More than 50 people</item>
+        <item>1–20 people</item>
+        <item>21–50 people</item>
+        <item>50+ people</item>
     </string-array>
 
     <string-array name="project_status_array">
