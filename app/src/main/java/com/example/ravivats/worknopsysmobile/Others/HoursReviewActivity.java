@@ -73,14 +73,14 @@ public class HoursReviewActivity extends AppCompatActivity
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
-    final static String task_url = "http://worknopsys.ml:5000/api/tasks";
-    final static String customer_url = "http://worknopsys.ml:5000/api/customers";
-    final static String category_url = "http://worknopsys.ml:5000/api/categories";
-    final static String city_url = "http://worknopsys.ml:5000/api/cities";
-    final static String project_url = "http://worknopsys.ml:5000/api/projectapp";
-    final static String auth_url = "http://worknopsys.ml:5000/api/auth/user";
-    final static String LOGOUT_URL = "http://worknopsys.ml:5000/api/employees/logout";
-    final static String wo_url = "http://worknopsys.ml:5000/api/woapp";
+    final static String task_url = "http://207.154.200.101:5000/api/tasks";
+    final static String customer_url = "http://207.154.200.101:5000/api/customers";
+    final static String category_url = "http://207.154.200.101:5000/api/categories";
+    final static String city_url = "http://207.154.200.101:5000/api/cities";
+    final static String project_url = "http://207.154.200.101:5000/api/projectapp";
+    final static String auth_url = "http://207.154.200.101:5000/api/auth/user";
+    final static String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
+    final static String wo_url = "http://207.154.200.101:5000/api/woapp";
 
 
     @Override

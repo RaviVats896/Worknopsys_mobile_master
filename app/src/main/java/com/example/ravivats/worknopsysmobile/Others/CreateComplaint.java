@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateComplaint extends AppCompatActivity {
-    static final String createComplaint_URL = "http://worknopsys.ml:5000/api/complaint/create";
+    static final String createComplaint_URL = "http://207.154.200.101:5000/api/complaint/create";
     Spinner categorySpinner, noOfPeopleSpinner, facingSinceSpinner, citySpinner;
     String categoryValue, noOfPeopleValue, facingSinceValue, cityValue;
     Map<String, String> categoryMap, cityMap;

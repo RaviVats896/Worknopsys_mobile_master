@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class ViewCustomers extends AppCompatActivity {
     ListView customersList;
-    String selectedCustomer, url = "http://worknopsys.ml:5000/api/customers";
+    String selectedCustomer, url = "http://207.154.200.101:5000/api/customers";
     ProgressDialog dialog;
     JSONArray allCustomers;
 

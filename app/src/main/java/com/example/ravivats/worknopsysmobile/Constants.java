@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class Constants {
 
-    final static String LOGOUT_URL = "http://worknopsys.ml:5000/api/employees/logout";
+    final static String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
     private static Map<String, String> taskMap, taskInvMap, projectMap, projectInvMap, customerMap, customerInvMap, resourceMap, resourceInvMap, categoryMap, categoryInvMap, cityMap, cityInvMap;
     private static ArrayList<WorkingOrder> workingOrders;
     private static Boolean posLocation, projEnhance;

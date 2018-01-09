@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateProjectOrders extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    public static final String CREATE_URL = "http://worknopsys.ml:5000/api/projectapp/create";
+    public static final String CREATE_URL = "http://207.154.200.101:5000/api/projectapp/create";
     Button cpOrdersSubmitBtn;
     EditText cpOrdersDatePickerButton, cpOrdersActivity, cpOrdersShortText, cpOrdersActivityStatus;
     EditText cpOrdersTimePickerButton, cpOrdersLongtext;

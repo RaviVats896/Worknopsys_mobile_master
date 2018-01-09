@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WOResources extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    static final String RESOURCES_URL = "http://worknopsys.ml:5000/api/resourcesapp/create";
+    static final String RESOURCES_URL = "http://207.154.200.101:5000/api/resourcesapp/create";
     private int REQUEST_CAMERA = 2, SELECT_FILE = 1, flag, workingOrderIndex, imageViewChoice = 0;
     private static final String TAG = "WOResources";
     private Uri fileUri;

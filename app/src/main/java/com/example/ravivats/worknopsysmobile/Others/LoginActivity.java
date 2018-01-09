@@ -36,9 +36,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    static final String REGISTER_URL = "http://worknopsys.ml:5000/api/employees/auth";
-    static final String EMPLOYEE_URL = "http://worknopsys.ml:5000/api/employees/";
-    static final String RESOURCES_URL = "http://worknopsys.ml:5000/api/resources";
+    static final String REGISTER_URL = "http://207.154.200.101:5000/api/employees/auth";
+    static final String EMPLOYEE_URL = "http://207.154.200.101:5000/api/employees/";
+    static final String RESOURCES_URL = "http://207.154.200.101:5000/api/resources";
     static final String KEY_USERNAME = "employeephone";
     static final String KEY_PASSWORD = "employeepassword";
     Map<String, String> resourceMap, resourceInvMap;

@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigurationActivity extends AppCompatActivity {
-    static final String CHANGE_PASS_URL = "http://worknopsys.ml:5000/api/changepass";
+    static final String CHANGE_PASS_URL = "http://207.154.200.101:5000/api/changepass";
     Switch configProjectEnhance, configPosLocation;
     Button changePassword;
     StringRequest changePassRequest;
