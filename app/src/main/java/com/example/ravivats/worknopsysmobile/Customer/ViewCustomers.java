@@ -65,7 +65,8 @@ public class ViewCustomers extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getApplicationContext(), "Some error occurred!!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Some error occurred!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewCustomers.this, "Some error occurred!!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });
@@ -77,7 +78,7 @@ public class ViewCustomers extends AppCompatActivity {
     void parseJsonData(String jsonString) {
         try {
             JSONArray customersArray = new JSONArray(jsonString);
-            ArrayList<String> al = new ArrayList();
+            ArrayList<String> al = new ArrayList<String>();
 
             for (int i = 0; i < customersArray.length(); ++i) {
                 if (customersArray.getJSONObject(i).getString("CName") != null) {
@@ -85,7 +86,7 @@ public class ViewCustomers extends AppCompatActivity {
                 }
             }
 
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, al);
+            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al);
             customersList.setAdapter(adapter);
         } catch (JSONException e) {
             e.printStackTrace();

@@ -38,7 +38,6 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.CreateWorkingOrder;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
@@ -68,11 +67,13 @@ public class HoursReviewActivity extends AppCompatActivity
     Spinner hoursReviewCustomerID, hoursReviewProjectID;
     Button hoursReviewNextButton;
     DatePickerDialog.OnDateSetListener hoursReviewDateListener;
-    ArrayList<String> custNameList;
+    ArrayList<String> customerNameList, projNameList;
+    String projValue, custValue;
     Calendar mCal;
     String IMAGE_URL;
     ImageView mImageView;
     RequestQueue queue;
+    ArrayAdapter<String> hoursReviewCustomerAdapter, hoursReviewProjectAdapter;
     final static String task_url = "http://207.154.200.101:5000/api/tasks";
     final static String customer_url = "http://207.154.200.101:5000/api/customers";
     final static String category_url = "http://207.154.200.101:5000/api/categories";
@@ -117,9 +118,10 @@ public class HoursReviewActivity extends AppCompatActivity
         cityMap = new HashMap<String, String>();
         cityInvMap = new HashMap<String, String>();
         queue = Volley.newRequestQueue(this);
-        custNameList = new ArrayList<String>();
-        mCal = Calendar.getInstance();
+        customerNameList = new ArrayList<String>();
+        projNameList = new ArrayList<String>();
 
+        mCal = Calendar.getInstance();
 
         hoursReviewCustomerID = (Spinner) findViewById(R.id.hours_review_customer_spinner);
         hoursReviewProjectID = (Spinner) findViewById(R.id.hours_review_project_spinner);
@@ -127,15 +129,13 @@ public class HoursReviewActivity extends AppCompatActivity
         hoursReviewNextButton = (Button) findViewById(R.id.hours_review_next_button);
 
         hoursReviewDateID.setKeyListener(null);
-        for (int i = 0; i < 10; i++) {
-            custNameList.add("Option " + i);
-        }
 
-        ArrayAdapter<String> hoursReviewCustomerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
+        hoursReviewCustomerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         hoursReviewCustomerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hoursReviewCustomerID.setAdapter(hoursReviewCustomerAdapter);
 
-        ArrayAdapter<String> hoursReviewProjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
+
+        hoursReviewProjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         hoursReviewProjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hoursReviewProjectID.setAdapter(hoursReviewProjectAdapter);
 
@@ -151,7 +151,11 @@ public class HoursReviewActivity extends AppCompatActivity
         hoursReviewNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HoursReviewActivity.this, HoursReviewResultsActivity.class));
+                Intent intent = new Intent(HoursReviewActivity.this, HoursReviewResultsActivity.class);
+                intent.putExtra("projValue", projValue);
+                intent.putExtra("custValue", custValue);
+                intent.putExtra("dateValue", hoursReviewDateID.getText().toString());
+                startActivity(intent);
             }
         });
 
@@ -164,6 +168,31 @@ public class HoursReviewActivity extends AppCompatActivity
                 hoursReviewDateID.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         };
+
+        hoursReviewCustomerID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                custValue = customerMap.get(hoursReviewCustomerID.getItemAtPosition(position).toString());
+                Toast.makeText(HoursReviewActivity.this, "" + custValue, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        hoursReviewProjectID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                projValue = projectMap.get(hoursReviewProjectID.getItemAtPosition(position).toString());
+                Toast.makeText(HoursReviewActivity.this, "" + projValue, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
 
         StringRequest authRequest = new StringRequest(Request.Method.POST, auth_url,
                 new Response.Listener<String>() {
@@ -230,6 +259,10 @@ public class HoursReviewActivity extends AppCompatActivity
                     }
                     Constants.setCustomerMap(customerMap);
                     Constants.setCustomerInvMap(customerInvMap);
+                    for (Map.Entry<String, String> pairs : customerMap.entrySet()) {
+                        String key = pairs.getKey(); //String value = pairs.getValue();
+                        hoursReviewCustomerAdapter.add(key);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -257,6 +290,10 @@ public class HoursReviewActivity extends AppCompatActivity
                     }
                     Constants.setProjectMap(projectMap);
                     Constants.setProjectInvMap(projectInvMap);
+                    for (Map.Entry<String, String> pairs : projectMap.entrySet()) {
+                        String key = pairs.getKey(); //String value = pairs.getValue();
+                        hoursReviewProjectAdapter.add(key);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
