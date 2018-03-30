@@ -177,9 +177,11 @@ public class CreateProjectDetails extends AppCompatActivity implements Navigatio
             startActivity(new Intent(CreateProjectDetails.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
 
-        } else if (id == R.id.nav_mgmt_working_orders) {
-            startActivity(new Intent(CreateProjectDetails.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_config) {
+        }
+//        else if (id == R.id.nav_mgmt_working_orders) {
+//            startActivity(new Intent(CreateProjectDetails.this, ManagementWorkingOrders.class));
+//        }
+        else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateProjectDetails.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateProjectDetails.this, LoginActivity.class));

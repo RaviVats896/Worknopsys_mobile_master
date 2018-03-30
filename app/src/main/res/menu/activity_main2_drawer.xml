@@ -38,11 +38,10 @@
                 android:id="@+id/nav_create_project"
                 android:icon="@drawable/ic_create_new_folder_black_24dp"
                 android:title="Create Project" />
-            <item
-                android:id="@+id/nav_mgmt_working_orders"
-                android:icon="@drawable/ic_assignment_late_black_24dp"
-                android:title="Management Working Orders" />
-
+            <!--<item-->
+                <!--android:id="@+id/nav_mgmt_working_orders"-->
+                <!--android:icon="@drawable/ic_assignment_late_black_24dp"-->
+                <!--android:title="Management Working Orders" />-->
         </menu>
     </item>
     <item android:title="User">

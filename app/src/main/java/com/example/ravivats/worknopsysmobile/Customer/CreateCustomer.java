@@ -176,9 +176,11 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             else {
                 Toast.makeText(CreateCustomer.this, "You aren't authorized for this feature.", Toast.LENGTH_SHORT).show();
             }
-        } else if (id == R.id.nav_mgmt_working_orders) {
-            startActivity(new Intent(CreateCustomer.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_config) {
+        }
+//        else if (id == R.id.nav_mgmt_working_orders) {
+//          startActivity(new Intent(CreateCustomer.this, ManagementWorkingOrders.class));
+//         }
+        else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateCustomer.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateCustomer.this, LoginActivity.class));

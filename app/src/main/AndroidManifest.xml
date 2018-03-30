@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".Others.HoursReviewActivity"
-            android:label="Set Filter"
+            android:label="Hours Review Details "
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Project.CreateProjectDetails"
@@ -55,10 +55,10 @@
             android:label="@string/create_customer" />
         <activity
             android:name=".Customer.ViewCustomers"
-            android:label="ViewCustomers" />
+            android:label="View Customers" />
         <activity
             android:name=".Customer.CustomerDetails"
-            android:label="CustomerDetails" />
+            android:label="Customer Details" />
         <activity
             android:name=".Others.AboutActivity"
             android:label="About" />
@@ -82,7 +82,7 @@
             android:label="Evidence" />
         <activity
             android:name=".Others.HoursReviewResultsActivity"
-            android:label="@string/hours_review_activity" />
+            android:label="Hours Review Results" />
 
         <meta-data
             android:name="CLOUDINARY_URL"

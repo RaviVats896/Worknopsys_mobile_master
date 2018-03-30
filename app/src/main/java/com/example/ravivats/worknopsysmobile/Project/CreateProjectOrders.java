@@ -179,9 +179,11 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
             startActivity(new Intent(CreateProjectOrders.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(CreateProjectOrders.this, CreateProjectDetails.class));
-        } else if (id == R.id.nav_mgmt_working_orders) {
-            startActivity(new Intent(CreateProjectOrders.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_config) {
+        }
+//        else if (id == R.id.nav_mgmt_working_orders) {
+//            startActivity(new Intent(CreateProjectOrders.this, ManagementWorkingOrders.class));
+//        }
+        else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateProjectOrders.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateProjectOrders.this, LoginActivity.class));

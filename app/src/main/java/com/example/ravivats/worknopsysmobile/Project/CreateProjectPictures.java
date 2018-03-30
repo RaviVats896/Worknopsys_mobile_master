@@ -269,9 +269,11 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             startActivity(new Intent(CreateProjectPictures.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(CreateProjectPictures.this, CreateProjectDetails.class));
-        } else if (id == R.id.nav_mgmt_working_orders) {
-            startActivity(new Intent(CreateProjectPictures.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_config) {
+        }
+//        else if (id == R.id.nav_mgmt_working_orders) {
+//            startActivity(new Intent(CreateProjectPictures.this, ManagementWorkingOrders.class));
+//        }
+        else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateProjectPictures.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(CreateProjectPictures.this, LoginActivity.class));

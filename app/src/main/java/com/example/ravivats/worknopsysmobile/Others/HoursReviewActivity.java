@@ -95,8 +95,14 @@ public class HoursReviewActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"abc@gmail.com"});
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(HoursReviewActivity.this, "There are no email clients installed. Action can't be performed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -473,9 +479,11 @@ public class HoursReviewActivity extends AppCompatActivity
             startActivity(new Intent(HoursReviewActivity.this, CreateComplaint.class));
         } else if (id == R.id.nav_create_project) {
             startActivity(new Intent(HoursReviewActivity.this, CreateProjectDetails.class));
-        } else if (id == R.id.nav_mgmt_working_orders) {
-            startActivity(new Intent(HoursReviewActivity.this, ManagementWorkingOrders.class));
-        } else if (id == R.id.nav_config) {
+        }
+//        else if (id == R.id.nav_mgmt_working_orders) {
+//            startActivity(new Intent(HoursReviewActivity.this, ManagementWorkingOrders.class));
+//        }
+        else if (id == R.id.nav_config) {
             startActivity(new Intent(HoursReviewActivity.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
             logoutFunction();
