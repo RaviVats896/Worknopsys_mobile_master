@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     static final String createWO_URL = "http://207.154.200.101:5000/api/woapp/create";
-    EditText createWoStartDate, createWoAddress;
+    EditText createWoStartDate, createWoHouseNumber, createWoStreet, createWoCity, createWoState, createWoCountry,createWoZipCode;
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID, createWoResourceID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
     Button createWoButton;
@@ -47,7 +47,12 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
 
         createWoProjectID = (Spinner) findViewById(R.id.create_wo_spinner_pID);
         createWoStartDate = (EditText) findViewById(R.id.create_wo_editText_sDate);
-        createWoAddress = (EditText) findViewById(R.id.create_wo_editText_address);
+        createWoHouseNumber = (EditText) findViewById(R.id.create_wo_editText_house_number);
+        createWoStreet = (EditText) findViewById(R.id.create_wo_editText_street);
+        createWoCity = (EditText) findViewById(R.id.create_wo_editText_city);
+        createWoState = (EditText) findViewById(R.id.create_wo_editText_state);
+        createWoCountry = (EditText) findViewById(R.id.create_wo_editText_country);
+        createWoZipCode = (EditText) findViewById(R.id.create_wo_editText_zip_code);
         createWoTaskID = (Spinner) findViewById(R.id.create_wo_spinner_tID);
         createWoCustomerID = (Spinner) findViewById(R.id.create_wo_spinner_cID);
         createWoResourceID = (Spinner) findViewById(R.id.create_wo_spinner_rID);
@@ -85,11 +90,11 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (createWoStartDate.getText().toString().equals("") || createWoAddress.getText().toString().equals("")) {
+                if (createWoStartDate.getText().toString().equals("") || createWoHouseNumber.getText().toString().equals("") || createWoStreet.getText().toString().equals("") || createWoCity.getText().toString().equals("") || createWoState.getText().toString().equals("") || createWoCountry.getText().toString().equals("") || createWoZipCode.getText().toString().equals("")) {
                     Toast.makeText(CreateWorkingOrder.this, "Please fill all details.", Toast.LENGTH_SHORT).show();
                 } else {
                     final String startDate = createWoStartDate.getText().toString();
-                    final String address = createWoAddress.getText().toString();
+                    final String address = createWoHouseNumber.getText().toString() + ", " + createWoStreet.getText().toString() + ", " + createWoCity.getText().toString() + ", " + createWoState.getText().toString() + ", " + createWoCountry.getText().toString() + ". Zip: " + createWoZipCode.getText().toString();
                     createWORequest = new StringRequest(Request.Method.POST, createWO_URL,
                             new Response.Listener<String>() {
                                 @Override
