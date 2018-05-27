@@ -85,6 +85,7 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         woResourcesPName = (EditText) findViewById(R.id.wo_resources_pName);
         woResourcesNxtBtn = (Button) findViewById(R.id.wo_resources_nextBtn);
 
+        woResourcesPName.setText(Constants.getEMPLOYEE().getFirstName() + " " + Constants.getEMPLOYEE().getLastName());
         workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
         workingOrders = new ArrayList<WorkingOrder>();
         workingOrders = Constants.getWorkingOrders();
