@@ -1,6 +1,7 @@
 package com.example.ravivats.worknopsysmobile.Others;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import com.example.ravivats.worknopsysmobile.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     StringRequest createTimingsRequest;
     JSONArray allTimings;
+    JSONObject  timingsObject;
     static final String createTimings_URL = "http://207.154.200.101:5000/api/timings/find";
 
     @Override
@@ -49,13 +52,13 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         parseJsonData(response);
+                        Toast.makeText(HoursReviewResultsActivity.this, "Response is:" + response, Toast.LENGTH_SHORT).show();
                         try {
                             allTimings = new JSONArray(response);
-                            // Constants.setCUSTOMERS(allCustomers);
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(HoursReviewResultsActivity.this, "JSON Array Response couldn't be parsed properly", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -78,7 +81,6 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
 
         requestQueue.add(createTimingsRequest);
 
-
 //        ArrayList<String> hoursReviewData = new ArrayList<String>();
 //
 //        for (int i = 0; i < 10; ++i) {
@@ -90,15 +92,24 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
 
     void parseJsonData(String jsonString) {
         try {
-            JSONArray customersArray = new JSONArray(jsonString);
-            ArrayList<String> al = new ArrayList<String>();
+            JSONArray timingsArray = new JSONArray(jsonString);
+            ArrayList<String> timingsArrayList = new ArrayList<String>();
 
-            for (int i = 0; i < customersArray.length(); ++i) {
-                if (customersArray.getJSONObject(i).getString("CName") != null) {
-                    al.add(customersArray.getJSONObject(i).getString("CName"));
+            for (int i = 0; i < timingsArray.length(); ++i) {
+                if (timingsArray.getJSONObject(i).getString("Going") != null) {
+                    timingsArrayList.add("Going time: " + timingsArray.getJSONObject(i).getString("Going"));
+                }
+                if (timingsArray.getJSONObject(i).getString("Working") != null) {
+                    timingsArrayList.add("Working time: " + timingsArray.getJSONObject(i).getString("Working"));
+                }
+                if (timingsArray.getJSONObject(i).getString("Break") != null) {
+                    timingsArrayList.add("Break time: " + timingsArray.getJSONObject(i).getString("Break"));
+                }
+                if (timingsArray.getJSONObject(i).getString("Returning") != null) {
+                    timingsArrayList.add("Returning time: " + timingsArray.getJSONObject(i).getString("Returning"));
                 }
             }
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al);
+            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, timingsArrayList);
             hoursReviewList.setAdapter(adapter);
         } catch (JSONException e) {
             e.printStackTrace();
