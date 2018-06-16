@@ -16,8 +16,10 @@ import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.Time24HrFormatValidator;
 import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +48,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
             evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate, evidencePersonName;
     int workingOrderIndex;
+    private static Time24HrFormatValidator time24HrFormatValidator = new Time24HrFormatValidator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +77,10 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceBTimePicker1.setText(R.string.default_timing);
         evidenceBTimePicker2.setText(R.string.default_timing);
 
-
         workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
         workingOrders = new ArrayList<WorkingOrder>();
         workingOrders = Constants.getWorkingOrders();
         workingOrder = workingOrders.get(workingOrderIndex);
-
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
@@ -161,8 +162,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceGTimePicker1.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceGTime1(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceGTimePicker1.setText(time);
+                Constants.setEvidenceGTime1(time);
             }
         };
         evidenceGTime2Listener = new TimePickerDialog.OnTimeSetListener() {
@@ -170,8 +172,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceGTimePicker2.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceGTime2(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceGTimePicker2.setText(time);
+                Constants.setEvidenceGTime2(time);
             }
         };
 
@@ -180,8 +183,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceBTimePicker1.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceBTime1(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceBTimePicker1.setText(time);
+                Constants.setEvidenceBTime1(time);
             }
         };
         evidenceBTime2Listener = new TimePickerDialog.OnTimeSetListener() {
@@ -189,8 +193,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceBTimePicker2.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceBTime2(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceBTimePicker2.setText(time);
+                Constants.setEvidenceBTime2(time);
             }
         };
 
@@ -199,8 +204,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceWTimePicker1.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceWTime1(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceWTimePicker1.setText(time);
+                Constants.setEvidenceWTime1(time);
             }
         };
         evidenceWTime2Listener = new TimePickerDialog.OnTimeSetListener() {
@@ -208,8 +214,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceWTimePicker2.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceWTime2(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceWTimePicker2.setText(time);
+                Constants.setEvidenceWTime2(time);
             }
         };
 
@@ -218,8 +225,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceRTimePicker1.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceRTime1(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceRTimePicker1.setText(time);
+                Constants.setEvidenceRTime1(time);
             }
         };
         evidenceRTime2Listener = new TimePickerDialog.OnTimeSetListener() {
@@ -227,8 +235,9 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                evidenceRTimePicker2.setText(hourOfDay + ":" + minute);
-                Constants.setEvidenceRTime2(hourOfDay + ":" + minute);
+                String time = getTimeIn24HrFormat(hourOfDay, minute);
+                evidenceRTimePicker2.setText(time);
+                Constants.setEvidenceRTime2(time);
             }
         };
         evidenceWorkDateListener = new DatePickerDialog.OnDateSetListener() {
@@ -250,6 +259,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
+                                    Log.i("TimingsEvidence.java","Response is:" + response);
                                     Toast.makeText(TimingsEvidence.this, "Response is:" + response, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
                                 }
@@ -257,6 +267,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
+                                    Log.e("TimingsEvidence.java", "Request failed! Please check your Internet Connection.");
                                     Toast.makeText(TimingsEvidence.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
                                     error.printStackTrace();
                                 }
@@ -264,6 +275,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                         @Override
                         protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<String, String>();
+                            Log.i("TimingsEvidence.java", "Employee id:" + Constants.getEMPLOYEE().getId());
                             params.put("employee", Constants.getEMPLOYEE().getId());
                             params.put("wo", workingOrder.getId());
                             params.put("resource", workingOrder.getResources());
@@ -280,21 +292,49 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                             params.put("rto", evidenceRTimePicker2.getText().toString());
                             return params;
                         }
-
                     };
                     requestQueue.add(timingsRequest);
                 } else {
-                    Toast.makeText(TimingsEvidence.this, "Please enter details in all fields.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimingsEvidence.this, "Please enter details in all fields. Enter the timings in HH:MM format only.", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
+    public String getTimeIn24HrFormat(int hourOfDay, int minute){
+        String hour, min;
+        if(hourOfDay >= 0  && hourOfDay <= 9){
+            hour = "0" + hourOfDay;
+        } else {
+            hour = ""+ hourOfDay;
+        }
+
+        if(minute >= 0  && minute <= 9){
+            min = "0" + minute;
+        } else {
+            min = "" + minute;
+        }
+
+        return hour + ":" + min;
+    }
     public boolean isEntryMade() {
-        if (evidenceWorkDate.getText() != null && !evidenceWorkDate.getText().toString().equals("")) {
-            if (evidencePersonName.getText() != null && !evidencePersonName.getText().toString().equals("")) {
+        try{
+            if (evidenceWorkDate.getText() != null && !evidenceWorkDate.getText().toString().equals("")
+                && evidencePersonName.getText() != null && !evidencePersonName.getText().toString().equals("")
+                && evidenceGTimePicker1.getText()!= null && time24HrFormatValidator.validate(evidenceGTimePicker1.getText().toString())
+                && evidenceGTimePicker2.getText()!= null && time24HrFormatValidator.validate(evidenceGTimePicker2.getText().toString())
+                && evidenceWTimePicker1.getText()!= null && time24HrFormatValidator.validate(evidenceWTimePicker1.getText().toString())
+                && evidenceWTimePicker2.getText()!= null && time24HrFormatValidator.validate(evidenceWTimePicker2.getText().toString())
+                && evidenceBTimePicker1.getText()!= null && time24HrFormatValidator.validate(evidenceBTimePicker1.getText().toString())
+                && evidenceBTimePicker2.getText()!= null && time24HrFormatValidator.validate(evidenceBTimePicker2.getText().toString())
+                && evidenceRTimePicker1.getText()!= null && time24HrFormatValidator.validate(evidenceRTimePicker1.getText().toString())
+                && evidenceRTimePicker2.getText()!= null && time24HrFormatValidator.validate(evidenceRTimePicker2.getText().toString())
+                ) {
                 return true;
             }
+        } catch(Exception ex) {
+            Log.e("TimingsEvidence.java", ex.getMessage());
+            ex.printStackTrace();
         }
         return false;
     }
@@ -330,7 +370,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             Constants.setEvidenceGTime2(getString(R.string.default_timing));
             Constants.setEvidenceRTime1(getString(R.string.default_timing));
             Constants.setEvidenceRTime2(getString(R.string.default_timing));
-            Constants.setEvidenceWorkDate("12/12/2017");
+            Constants.setEvidenceWorkDate("12/12/2012");
             startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
         }
         return super.onOptionsItemSelected(item);
