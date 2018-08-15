@@ -68,7 +68,6 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceRTimePicker1 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker1);
         evidenceRTimePicker2 = (EditText) findViewById(R.id.create_wo_evidence_rTimePicker2);
 
-        evidencePersonName.setText(Constants.getEMPLOYEE().getFirstName() + " " + Constants.getEMPLOYEE().getLastName());
         evidenceGTimePicker1.setText(R.string.default_timing);
         evidenceGTimePicker2.setText(R.string.default_timing);
         evidenceWTimePicker1.setText(R.string.default_timing);
@@ -80,6 +79,8 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
 
         workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
         customerId = getIntent().getStringExtra("woCustomerId");
+        evidencePersonName.setText(getIntent().getStringExtra("woCustomerName"));
+        //evidencePersonName.setText(Constants.getEMPLOYEE().getFirstName() + " " + Constants.getEMPLOYEE().getLastName());
 
         workingOrders = new ArrayList<WorkingOrder>();
         workingOrders = Constants.getWorkingOrders();

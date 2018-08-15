@@ -68,6 +68,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
                 Intent i = new Intent(MyWorkingOrderDetails.this, TimingsEvidence.class);
                 i.putExtra("woPosition", workingOrderIndex);
                 i.putExtra("woCustomerId", workingOrder.getCustomer());
+                i.putExtra("woCustomerName", custInvMap.get(workingOrder.getCustomer()));
                 startActivity(i);
             }
         });
