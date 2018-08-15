@@ -42,6 +42,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
     Button timingsSubmitButton;
     ArrayList<WorkingOrder> workingOrders;
     WorkingOrder workingOrder;
+    String customerId;
     TimePickerDialog.OnTimeSetListener evidenceGTime1Listener, evidenceGTime2Listener, evidenceWTime1Listener,
             evidenceWTime2Listener, evidenceBTime1Listener, evidenceBTime2Listener, evidenceRTime1Listener, evidenceRTime2Listener;
     DatePickerDialog.OnDateSetListener evidenceWorkDateListener;
@@ -78,6 +79,8 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         evidenceBTimePicker2.setText(R.string.default_timing);
 
         workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
+        customerId = getIntent().getStringExtra("woCustomerId");
+
         workingOrders = new ArrayList<WorkingOrder>();
         workingOrders = Constants.getWorkingOrders();
         workingOrder = workingOrders.get(workingOrderIndex);
@@ -276,7 +279,8 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
                         protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<String, String>();
                             Log.i("TimingsEvidence.java", "Employee id:" + Constants.getEMPLOYEE().getId());
-                            params.put("employee", Constants.getEMPLOYEE().getId());
+                            // params.put("employee", Constants.getEMPLOYEE().getId());
+                            params.put("employee", customerId);
                             params.put("wo", workingOrder.getId());
                             params.put("resource", workingOrder.getResources());
                             params.put("startdate", workingOrder.getStartDate());

@@ -65,7 +65,10 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         editWOTimingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyWorkingOrderDetails.this, TimingsEvidence.class).putExtra("woPosition", workingOrderIndex));
+                Intent i = new Intent(MyWorkingOrderDetails.this, TimingsEvidence.class);
+                i.putExtra("woPosition", workingOrderIndex);
+                i.putExtra("woCustomerId", workingOrder.getCustomer());
+                startActivity(i);
             }
         });
     }
