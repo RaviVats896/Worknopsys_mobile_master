@@ -36,7 +36,6 @@ import java.util.Map;
 
 public class TimingsEvidence extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    static final String TIMINGS_URL = "http://207.154.200.101:5000/api/timings/create";
     Calendar cal;
     StringRequest timingsRequest;
     Button timingsSubmitButton;
@@ -49,7 +48,12 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
     EditText evidenceGTimePicker1, evidenceGTimePicker2, evidenceWTimePicker1, evidenceWTimePicker2,
             evidenceBTimePicker1, evidenceBTimePicker2, evidenceRTimePicker1, evidenceRTimePicker2, evidenceWorkDate, evidencePersonName;
     int workingOrderIndex;
+    RequestQueue requestQueue;
     private static Time24HrFormatValidator time24HrFormatValidator = new Time24HrFormatValidator();
+    static final String TIMINGS_URL = "http://207.154.200.101:5000/api/timings/create";
+    static final String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
+    public static final String KEY_USERNAME = "employeephone";
+    public static final String KEY_PASSWORD = "employeepassword";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +90,7 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
         workingOrders = Constants.getWorkingOrders();
         workingOrder = workingOrders.get(workingOrderIndex);
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
 
         evidenceWorkDate.setOnClickListener(new View.OnClickListener() {
@@ -377,8 +381,44 @@ public class TimingsEvidence extends AppCompatActivity implements TimePickerDial
             Constants.setEvidenceRTime2(getString(R.string.default_timing));
             Constants.setEvidenceWorkDate("12/12/2012");
             startActivity(new Intent(TimingsEvidence.this, MyWorkingOrderDetails.class));
+        } else if (id == R.id.create_wo_evidence_logout) {
+            logoutFunction();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logoutFunction() {
+        StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("true")) {
+                            Toast.makeText(TimingsEvidence.this, "Logout successful.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TimingsEvidence.this, LoginActivity.class));
+                        } else if (response.equalsIgnoreCase("false")) {
+                            Toast.makeText(TimingsEvidence.this, "Logout failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(TimingsEvidence.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
+                params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
+
+                return params;
+            }
+
+        };
+        requestQueue.add(logoutRequest);
     }
 
 }
