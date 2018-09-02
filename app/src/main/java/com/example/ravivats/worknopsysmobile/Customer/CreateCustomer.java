@@ -18,6 +18,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
@@ -31,6 +37,9 @@ import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.Authorization;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class CreateCustomer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     Spinner salutationSpinner;
@@ -39,6 +48,10 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     EditText CustomerAddress, CustomerCity, CustomerPostCode, CustomerCCode;
     String ckname, cdebnum, ccdate, ceditedon, ceditedby, csalutation, ccname, cphone, cfax, cwebsite, cemail, cacity, caadd, capostcode, caccode;
     Bundle customerInfo;
+    RequestQueue customerQueue;
+    public static final String KEY_USERNAME = "employeephone";
+    public static final String KEY_PASSWORD = "employeepassword";
+    static final String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +68,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
         salutationSpinner = (Spinner) findViewById(R.id.cp_customers_salutation_spinner);
         customerInfo = new Bundle();
+        customerQueue = Volley.newRequestQueue(this);
         createCustomerNxtBtn = (Button) findViewById(R.id.cp_customers_nxt_btn);
         CustomerName = (EditText) findViewById(R.id.cp_customers_cust_name_edit_text);
         CustomerDebNumber = (EditText) findViewById(R.id.cp_customers_cust_debno_edit_text);
@@ -73,6 +87,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         salutationSpinner.setAdapter(adapter);
+
         salutationSpinner.setOnItemSelectedListener(this);
         if (auth.getAdmEmpCustCreate()) {
             createCustomerNxtBtn.setClickable(false);
@@ -134,7 +149,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
             }
         }
         if (id == R.id.logout) {
-            startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
+            logoutFunction();
         }
 
         return super.onOptionsItemSelected(item);
@@ -183,7 +198,7 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
         else if (id == R.id.nav_config) {
             startActivity(new Intent(CreateCustomer.this, ConfigurationActivity.class));
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
+            logoutFunction();
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(CreateCustomer.this, AboutActivity.class));
         }
@@ -202,6 +217,40 @@ public class CreateCustomer extends AppCompatActivity implements NavigationView.
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private void logoutFunction() {
+        StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("true")) {
+                            Toast.makeText(CreateCustomer.this, "Logout successful.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateCustomer.this, LoginActivity.class));
+                        } else if (response.equalsIgnoreCase("false")) {
+                            Toast.makeText(CreateCustomer.this, "Logout failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(CreateCustomer.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
+                params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
+
+                return params;
+            }
+
+        };
+        customerQueue.add(logoutRequest);
     }
 
 

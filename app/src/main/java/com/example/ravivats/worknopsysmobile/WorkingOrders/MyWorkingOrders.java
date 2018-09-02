@@ -10,14 +10,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrderViewAdapter;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class MyWorkingOrders extends AppCompatActivity {
@@ -28,6 +38,11 @@ public class MyWorkingOrders extends AppCompatActivity {
     FloatingActionButton createWO;
     ArrayList<WorkingOrder> workingOrders;
     Map<String, String> taskInvMap, custInvMap, projectInvMap;
+    RequestQueue myWOQueue;
+    public static final String KEY_USERNAME = "employeephone";
+    public static final String KEY_PASSWORD = "employeepassword";
+    static final String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +58,7 @@ public class MyWorkingOrders extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new WorkingOrderViewAdapter(getDataSet());
         mRecyclerView.setAdapter(mAdapter);
+        myWOQueue = Volley.newRequestQueue(this);
         createWO = (FloatingActionButton) findViewById(R.id.create_new_wo_button);
         createWO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +89,8 @@ public class MyWorkingOrders extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.create_working_orders) {
             startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
+        } else if(id == R.id.create_wo_logout){
+            logoutFunction();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -88,6 +106,39 @@ public class MyWorkingOrders extends AppCompatActivity {
                 startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position",position));
             }
         });
+    }
+
+    private void logoutFunction() {
+        StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("true")) {
+                            Toast.makeText(MyWorkingOrders.this, "Logout successful.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MyWorkingOrders.this, LoginActivity.class));
+                        } else if (response.equalsIgnoreCase("false")) {
+                            Toast.makeText(MyWorkingOrders.this, "Logout failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(MyWorkingOrders.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
+                params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
+
+                return params;
+            }
+        };
+        myWOQueue.add(logoutRequest);
     }
 
     private ArrayList<WorkingOrderObject> getDataSet() {

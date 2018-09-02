@@ -1,6 +1,7 @@
 package com.example.ravivats.worknopsysmobile.WorkingOrders;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateWorkingOrder extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    static final String createWO_URL = "http://207.154.200.101:5000/api/woapp/create";
+
     EditText createWoStartDate, createWoHouseNumber, createWoStreet, createWoCity, createWoState, createWoCountry,createWoZipCode;
     Spinner createWoProjectID, createWoTaskID, createWoCustomerID, createWoResourceID;
     DatePickerDialog.OnDateSetListener createWoStartDateListener;
@@ -39,6 +42,11 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
     ArrayList<String> taskNameList, custNameList, projectNameList, resourceNameList;
     Calendar cal;
     StringRequest createWORequest;
+    RequestQueue requestWOQueue;
+    public static final String KEY_USERNAME = "employeephone";
+    public static final String KEY_PASSWORD = "employeepassword";
+    static final String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
+    static final String createWO_URL = "http://207.154.200.101:5000/api/woapp/create";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +65,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         createWoCustomerID = (Spinner) findViewById(R.id.create_wo_spinner_cID);
         createWoResourceID = (Spinner) findViewById(R.id.create_wo_spinner_rID);
         createWoButton = (Button) findViewById(R.id.create_wo_final_button);
-        final RequestQueue requestWOQueue = Volley.newRequestQueue(this);
+        requestWOQueue = Volley.newRequestQueue(this);
         cal = Calendar.getInstance();
         taskMap = Constants.getTaskMap();
         custMap = Constants.getCustomerMap();
@@ -226,14 +234,49 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         int id = item.getItemId();
         if (id == R.id.choose_resources) {
             //startActivity(new Intent(CreateWorkingOrder.this, ViewCustomers.class));
+        } else if(id == R.id.logout) {
+            logoutFunction();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+    }
+
+    private void logoutFunction() {
+        StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("true")) {
+                            Toast.makeText(CreateWorkingOrder.this, "Logout successful.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateWorkingOrder.this, LoginActivity.class));
+                        } else if (response.equalsIgnoreCase("false")) {
+                            Toast.makeText(CreateWorkingOrder.this, "Logout failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(CreateWorkingOrder.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
+                params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
+
+                return params;
+            }
+
+        };
+        requestWOQueue.add(logoutRequest);
     }
 
 }

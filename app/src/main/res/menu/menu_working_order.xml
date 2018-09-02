@@ -7,4 +7,9 @@
         android:orderInCategory="100"
         android:title="@string/create_working_orders"
         app:showAsAction="withText" />
+    <item
+        android:id="@+id/create_wo_logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never" />
 </menu>
