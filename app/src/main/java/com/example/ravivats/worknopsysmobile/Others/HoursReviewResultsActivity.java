@@ -79,7 +79,7 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("project", extras.getString("projValue"));
                 params.put("customer", extras.getString("custValue"));
                 params.put("startdate", extras.getString("dateValue"));
@@ -99,9 +99,9 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
 
     void parseJsonData(String jsonString) {
         try {
-            JSONArray timingsArray = new JSONArray(jsonString);;
+            JSONArray timingsArray = new JSONArray(jsonString);
             // ArrayList<String> timingsArrayList = new ArrayList<String>();
-            ArrayList<HoursReviewResultsObject> timingsArrayList = new ArrayList<HoursReviewResultsObject>();
+            ArrayList<HoursReviewResultsObject> timingsArrayList = new ArrayList<>();
 
             for (int i = 0; i < timingsArray.length(); ++i) {
                 HoursReviewResultsObject obj = new HoursReviewResultsObject("Going time: ", "Working time: ", "Break time: ", "Returning time: ", "Work Date: 12/12/2012");

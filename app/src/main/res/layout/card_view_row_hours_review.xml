@@ -21,40 +21,42 @@
                 android:id="@+id/card_wo_workDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPurple"
                 android:textStyle="italic" />
             <TextView
                 android:id="@+id/card_wo_goingTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_wo_workDate"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimaryDark" />
             <TextView
                 android:id="@+id/card_wo_workingTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_wo_goingTime"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorAccent" />
             <TextView
                 android:id="@+id/card_wo_breakTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_wo_workingTime"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorGreen" />
             <TextView
                 android:id="@+id/card_wo_returningTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_wo_breakTime"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp" />
-
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorTeal" />
         </RelativeLayout>
-
 
     </android.support.v7.widget.CardView>
 
