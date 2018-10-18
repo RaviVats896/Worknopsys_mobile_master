@@ -1,12 +1,10 @@
 package com.example.ravivats.worknopsysmobile.Others;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,14 +13,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.HoursReviewResultAdapter;
 import com.example.ravivats.worknopsysmobile.HoursReviewResultsObject;
 import com.example.ravivats.worknopsysmobile.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,9 +89,7 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
 
         requestQueue.add(createTimingsRequest);
 
-
 //        ArrayList<String> hoursReviewData = new ArrayList<String>();
-//
 //        for (int i = 0; i < 10; ++i) {
 //            hoursReviewData.add("31/08/2017 Wednesday 19:00 pm");
 //        }
@@ -118,15 +112,12 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
                 }
                 if (timingsArray.getJSONObject(i).getString("Working") != null) {
                     obj.setWorkingTime("Working time: " + timingsArray.getJSONObject(i).getString("Working"));
-                    //timingsArrayList.add("Working time: " + timingsArray.getJSONObject(i).getString("Working"));
                 }
                 if (timingsArray.getJSONObject(i).getString("Break") != null) {
                     obj.setBreakTime("Break time: " + timingsArray.getJSONObject(i).getString("Break"));
-                    //timingsArrayList.add("Break time: " + timingsArray.getJSONObject(i).getString("Break"));
                 }
                 if (timingsArray.getJSONObject(i).getString("Returning") != null) {
                     obj.setReturningTime("Returning time: " + timingsArray.getJSONObject(i).getString("Returning"));
-                    //timingsArrayList.add("Returning time: " + timingsArray.getJSONObject(i).getString("Returning"));
                 }
 
                 if (timingsArray.getJSONObject(i).getString("WorkDate") != null) {
@@ -135,6 +126,12 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
 
                 timingsArrayList.add(i, obj);
             }
+
+            if(timingsArray.length() == 0) {
+                HoursReviewResultsObject defaultObj = new HoursReviewResultsObject("No Work scheduled for now!", "Enjoy your leisure time. :)", "", "", "");
+                timingsArrayList.add(defaultObj);
+            }
+
             mAdapter = new HoursReviewResultAdapter(timingsArrayList);
             mRecyclerView.setAdapter(mAdapter);
             //  ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, timingsArrayList);

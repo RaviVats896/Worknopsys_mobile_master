@@ -1,6 +1,5 @@
 package com.example.ravivats.worknopsysmobile;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;

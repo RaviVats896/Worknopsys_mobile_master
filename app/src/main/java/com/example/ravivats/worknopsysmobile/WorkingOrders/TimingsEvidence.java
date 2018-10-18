@@ -3,22 +3,8 @@ package com.example.ravivats.worknopsysmobile.WorkingOrders;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.ravivats.worknopsysmobile.Constants;
-import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
-import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
-import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.Time24HrFormatValidator;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
-
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +14,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
+import com.example.ravivats.worknopsysmobile.R;
+import com.example.ravivats.worknopsysmobile.Time24HrFormatValidator;
+import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
