@@ -111,24 +111,28 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
                     // timingsArrayList.add("Going time: " + timingsArray.getJSONObject(i).getString("Going"));
                 }
                 if (timingsArray.getJSONObject(i).getString("Working") != null) {
-                    obj.setWorkingTime("Working time: " + timingsArray.getJSONObject(i).getString("Working"));
+                    obj.setWorkingTime("Working time: " + timingsArray.getJSONObject(i).getString("Working")
+                            .replace("{", "").replace("}", "").replace("\"","").replace(","," "));
                 }
                 if (timingsArray.getJSONObject(i).getString("Break") != null) {
-                    obj.setBreakTime("Break time: " + timingsArray.getJSONObject(i).getString("Break"));
+                    obj.setBreakTime("Break time: " + timingsArray.getJSONObject(i).getString("Break")
+                            .replace("{", "").replace("}", "").replace("\"","").replace(","," "));
                 }
                 if (timingsArray.getJSONObject(i).getString("Returning") != null) {
-                    obj.setReturningTime("Returning time: " + timingsArray.getJSONObject(i).getString("Returning"));
+                    obj.setReturningTime("Returning time: " + timingsArray.getJSONObject(i).getString("Returning")
+                            .replace("{", "").replace("}", "").replace("\"","").replace(","," "));
                 }
 
                 if (timingsArray.getJSONObject(i).getString("WorkDate") != null) {
-                    obj.setWorkDate("Work Date: " + timingsArray.getJSONObject(i).getString("WorkDate"));
+                    obj.setWorkDate("Work Date: " + timingsArray.getJSONObject(i).getString("WorkDate")
+                            .replace("{", "").replace("}", "").replace("\"","").replace(","," "));
                 }
 
                 timingsArrayList.add(i, obj);
             }
 
             if(timingsArray.length() == 0) {
-                HoursReviewResultsObject defaultObj = new HoursReviewResultsObject("No Work scheduled for now!", "Enjoy your leisure time. :)", "", "", "");
+                HoursReviewResultsObject defaultObj = new HoursReviewResultsObject("No Work scheduled for now!", "", "", "", "");
                 timingsArrayList.add(defaultObj);
             }
 
