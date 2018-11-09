@@ -107,7 +107,8 @@ public class HoursReviewResultsActivity extends AppCompatActivity {
                 HoursReviewResultsObject obj = new HoursReviewResultsObject("Going time: ", "Working time: ", "Break time: ", "Returning time: ", "Work Date: 12/12/2012");
 
                 if (timingsArray.getJSONObject(i).getString("Going") != null) {
-                    obj.setGoingTime("Going time: " + timingsArray.getJSONObject(i).getString("Going"));
+                    obj.setGoingTime("Going time: " + timingsArray.getJSONObject(i).getString("Going")
+                            .replace("{", "").replace("}", "").replace("\"","").replace(","," "));
                     // timingsArrayList.add("Going time: " + timingsArray.getJSONObject(i).getString("Going"));
                 }
                 if (timingsArray.getJSONObject(i).getString("Working") != null) {
