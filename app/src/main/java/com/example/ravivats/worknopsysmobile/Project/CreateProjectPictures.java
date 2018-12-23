@@ -2,6 +2,7 @@ package com.example.ravivats.worknopsysmobile.Project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -44,6 +45,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +56,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     String userChosenTask;
     ImageView cpPicturesImageView;
     String picLocation, picId;
+    ArrayList<String> picLocations = new ArrayList<>();
     private int REQUEST_CAMERA = 2, SELECT_FILE = 1, flag;
     private static final String TAG = "CPPictures";
     private Uri fileUri;
@@ -90,12 +93,15 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 try {
-                    picId = detailsBundle.getString("CustomerName") + "_" + detailsBundle.getString("CustomerName")
-                            + "_" + Constants.getDate() + "_" + Constants.getTime();
-                    Log.e("picID", picId);
-                    Map m = cloudinary.uploader().upload(picLocation, ObjectUtils.asMap("public_id", picId));
-                    Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
-
+                    // for(String picLtn : picLocations) {
+                    for (int cnt = 0; cnt < picLocations.size(); cnt++) {
+                        String picLtn =  picLocations.get(cnt);
+                        picId = detailsBundle.getString("CustomerName") + "_" + detailsBundle.getString("CustomerName")
+                                + "_" + Constants.getDate() + "_" + Constants.getTime() + "_pic_" + cnt;
+                        Log.e("picID", picId);
+                        Map m = cloudinary.uploader().upload(picLtn, ObjectUtils.asMap("public_id", picId));
+                        Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (IOException e) {
                     Toast.makeText(CreateProjectPictures.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
@@ -181,15 +187,35 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
 
     @SuppressWarnings("deprecation")
     private Bitmap onSelectFromGalleryResult(Intent data) {
+        picLocations = new ArrayList<>();
         Bitmap bm = null;
         if (data != null) {
-            Log.d(TAG, "data not null");
-            try {
-                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-                getUri(bm);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (data.getClipData() != null) {
+                ClipData mClipData = data.getClipData();
+                ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+                for (int i = 0; i < mClipData.getItemCount(); i++) {
+                    ClipData.Item item = mClipData.getItemAt(i);
+                    Uri uri = item.getUri();
+                    mArrayUri.add(uri);
+                    try {
+                        bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), uri);
+                        getUri(bm);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else if(data.getData() != null) {
+
+                // Get the cursor
+                Log.d(TAG, "data not null");
+                try {
+                    bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+                    getUri(bm);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
         flag = 1;
         return bm;
@@ -197,6 +223,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
 
 
     private void onCaptureImageResult(Intent data) {
+        picLocations = new ArrayList<>();
         // Bitmap bitmap = cpPicturesImageView.getDrawingCache();
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         //Bitmap b = Bitmap.createScaledBitmap(thumbnail, 150, 150, false);
@@ -229,7 +256,8 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
 
         fileUri = Uri.fromFile(destination);
         picLocation = fileUri.toString().substring(7);
-        Log.e("Destination", picLocation);
+        picLocations.add(picLocation);
+        Log.e("Destination" + (picLocations.size() + 1), picLocation);
     }
 
     @Override
@@ -245,7 +273,6 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_hours_review) {
