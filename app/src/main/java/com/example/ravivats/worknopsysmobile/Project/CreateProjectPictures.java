@@ -20,13 +20,18 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.example.ravivats.worknopsysmobile.Customer.CustomerDetails;
+import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
@@ -39,6 +44,8 @@ import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrde
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
+
+import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -55,8 +62,12 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     ImageButton cpPicturesCameraBtn, cpPicturesUploadBtn, cpPicturesDeleteBtn;
     String userChosenTask;
     ImageView cpPicturesImageView;
+    ListView picturesList;
     String picLocation, picId;
     ArrayList<String> picLocations = new ArrayList<>();
+    ArrayList<String> picIds = new ArrayList<>();
+    ArrayList<Uri> picUris = new ArrayList<>();
+
     private int REQUEST_CAMERA = 2, SELECT_FILE = 1, flag;
     private static final String TAG = "CPPictures";
     private Uri fileUri;
@@ -74,6 +85,19 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        picturesList = (ListView) findViewById(R.id.cp_pictures_picturesList);
+        picturesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri uri = picUris.get(position);
+                try {
+                    Bitmap thumbnail = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), uri);
+                    cpPicturesImageView.setImageBitmap(thumbnail);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         cpPicturesImageView = (ImageView) findViewById(R.id.cp_pictures_ImageView);
         cpPicturesNxtBtn = (Button) findViewById(R.id.cp_pictures_nextBtn);
         cpPicturesCameraBtn = (ImageButton) findViewById(R.id.cp_pictures_camera);
@@ -93,14 +117,14 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 try {
-                    // for(String picLtn : picLocations) {
-                    for (int cnt = 0; cnt < picLocations.size(); cnt++) {
-                        String picLtn =  picLocations.get(cnt);
+                    for (int count = 0; count < picLocations.size(); count++) {
+                        String picLtn =  picLocations.get(count);
                         picId = detailsBundle.getString("CustomerName") + "_" + detailsBundle.getString("CustomerName")
-                                + "_" + Constants.getDate() + "_" + Constants.getTime() + "_pic_" + cnt;
+                                + "_" + Constants.getDate() + "_" + Constants.getTime() + "_pic_" + count;
                         Log.e("picID", picId);
                         Map m = cloudinary.uploader().upload(picLtn, ObjectUtils.asMap("public_id", picId));
                         Toast.makeText(CreateProjectPictures.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
+                        picIds.add(picId);
                     }
                 } catch (IOException e) {
                     Toast.makeText(CreateProjectPictures.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
@@ -125,6 +149,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             @Override
             public void onClick(View v) {
                 detailsBundle.putString("PictureId", picId);
+                detailsBundle.putStringArray("PictureIdArray", picIds.toArray(new String[0]));
                 Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
                 in.putExtras(detailsBundle);
                 startActivity(in);
@@ -193,7 +218,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         if (data != null) {
             if (data.getClipData() != null) {
                 ClipData mClipData = data.getClipData();
-                ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+                ArrayList<Uri> mArrayUri = new ArrayList<>();
                 for (int i = 0; i < mClipData.getItemCount(); i++) {
                     ClipData.Item item = mClipData.getItemAt(i);
                     Uri uri = item.getUri();
@@ -205,6 +230,9 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                         e.printStackTrace();
                     }
                 }
+                picUris = mArrayUri;
+                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, picLocations);
+                picturesList.setAdapter(adapter);
             } else if(data.getData() != null) {
 
                 // Get the cursor
@@ -215,8 +243,9 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, picLocations);
+                picturesList.setAdapter(adapter);
             }
-
         }
         flag = 1;
         return bm;

@@ -115,6 +115,7 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("customername", totalBundle.getString("CustomerName"));
                         params.put("fileurl", totalBundle.getString("PictureId"));
+                        // params.put("fileurl", totalBundle.getString("PictureIdArray"));
                         params.put("projectname", totalBundle.getString("ProjectName"));
                         params.put("startdate", totalBundle.getString("ProjectStartDate"));
                         params.put("status", totalBundle.getString("ProjectStatus"));
