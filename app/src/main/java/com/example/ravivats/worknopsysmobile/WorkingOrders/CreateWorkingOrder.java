@@ -25,8 +25,10 @@ import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -213,7 +215,9 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                createWoStartDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                Date date = new Date(year-1900, month, dayOfMonth);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                createWoStartDate.setText(formatter.format(date));
             }
         };
     }
