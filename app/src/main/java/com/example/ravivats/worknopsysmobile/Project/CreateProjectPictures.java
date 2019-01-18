@@ -1,7 +1,6 @@
 package com.example.ravivats.worknopsysmobile.Project;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,21 +16,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.example.ravivats.worknopsysmobile.Customer.CustomerDetails;
-import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
+import android.support.v7.app.AlertDialog;
 import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
@@ -40,11 +42,9 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.Utility;
-
 import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
@@ -65,6 +65,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
     ListView picturesList;
     String picLocation, picId;
     ArrayList<String> picLocations = new ArrayList<>();
+    ArrayList<String> picDescriptions = new ArrayList<>();
     ArrayList<String> picIds = new ArrayList<>();
     ArrayList<Uri> picUris = new ArrayList<>();
 
@@ -86,6 +87,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         picturesList = (ListView) findViewById(R.id.cp_pictures_picturesList);
+
         picturesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,6 +98,48 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        picturesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                final int position = i;
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateProjectPictures.this);
+                alertDialog.setTitle("Set Picture Description");
+                // final TextView oldDesc = new TextView(CreateProjectPictures.this);
+
+                if(picDescriptions.get(i) != null)
+                    alertDialog.setMessage("Current Description: " + picDescriptions.get(i)); // oldDesc.setText("Current Description: " + picDescriptions.get(i));
+
+                else alertDialog.setMessage("Current Description: no description"); // oldDesc.setText("Current Description: no description");
+
+                final EditText newDesc = new EditText(CreateProjectPictures.this);
+                newDesc.setHint("New Description");
+                LinearLayout ll = new LinearLayout(CreateProjectPictures.this);
+                ll.setOrientation(LinearLayout.VERTICAL);
+                // ll.addView(oldDesc);
+                ll.addView(newDesc);
+
+                alertDialog.setView(ll);
+
+                alertDialog.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        picDescriptions.set(position, newDesc.getText().toString());
+                    }
+                });
+
+                alertDialog.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
+                return true;
             }
         });
         cpPicturesImageView = (ImageView) findViewById(R.id.cp_pictures_ImageView);
@@ -150,6 +194,7 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
             public void onClick(View v) {
                 detailsBundle.putString("PictureId", picId);
                 detailsBundle.putStringArray("PictureIdArray", picIds.toArray(new String[0]));
+                detailsBundle.putStringArray("PictureDescriptionArray", picDescriptions.toArray(new String[0]));
                 Intent in = new Intent(CreateProjectPictures.this, CreateProjectOrders.class);
                 in.putExtras(detailsBundle);
                 startActivity(in);
@@ -231,6 +276,12 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                     }
                 }
                 picUris = mArrayUri;
+
+                picDescriptions.clear();
+                for(String picLocation : picLocations){
+                    picDescriptions.add("No description");
+                }
+
                 ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, picLocations);
                 picturesList.setAdapter(adapter);
             } else if(data.getData() != null) {
@@ -243,6 +294,12 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                picDescriptions.clear();
+                for(String picLocation : picLocations){
+                    picDescriptions.add("No description");
+                }
+
                 ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, picLocations);
                 picturesList.setAdapter(adapter);
             }
@@ -260,6 +317,11 @@ public class CreateProjectPictures extends AppCompatActivity implements Navigati
         cpPicturesImageView.setImageBitmap(thumbnail);
         flag = 1;
         getUri(thumbnail);
+
+        picDescriptions.clear();
+        for(String picLocation : picLocations){
+            picDescriptions.add("No description");
+        }
     }
 
     private void getUri(Bitmap bitmap) {
