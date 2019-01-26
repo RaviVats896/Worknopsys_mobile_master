@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.Others.AboutActivity;
 import com.example.ravivats.worknopsysmobile.Others.BrowserActivity;
 import com.example.ravivats.worknopsysmobile.Others.ConfigurationActivity;
@@ -35,7 +37,6 @@ import com.example.ravivats.worknopsysmobile.Customer.CreateCustomer;
 import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.R;
 
@@ -63,7 +64,14 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         totalBundle = getIntent().getExtras();
+        String[] pictureIdArray  = totalBundle.getStringArray("PictureIdArray");
+        String[] pictureDescriptionArray = totalBundle.getStringArray("PictureDescriptionArray");
+
+        final String picIdArray = TextUtils.join(Constants.STRING_SPLITTER, pictureIdArray);
+        final String picDescriptionArray = TextUtils.join(Constants.STRING_SPLITTER, pictureDescriptionArray);
+
         final RequestQueue createProjectQueue = Volley.newRequestQueue(this);
         cpOrdersSubmitBtn = (Button) findViewById(R.id.cp_orders_nxt_button);
         cpOrdersDatePickerButton = (EditText) findViewById(R.id.cp_orders_date_edit_text);
@@ -87,6 +95,9 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                 newFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
+
+
+
         cpOrdersSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,9 +125,9 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("customername", totalBundle.getString("CustomerName"));
-                        params.put("fileurl", totalBundle.getString("PictureId"));
-                        // params.put("fileurls", totalBundle.getString("PictureIdArray"));
-                        // params.put("filedescs", totalBundle.getString("PictureDescriptionArray"));
+                        //params.put("fileurl", totalBundle.getString("PictureId"));
+                        params.put("fileurls", picIdArray);
+                        params.put("filedescs", picDescriptionArray);
                         params.put("projectname", totalBundle.getString("ProjectName"));
                         params.put("startdate", totalBundle.getString("ProjectStartDate"));
                         params.put("status", totalBundle.getString("ProjectStatus"));
@@ -214,3 +225,5 @@ public class CreateProjectOrders extends AppCompatActivity implements Navigation
                 .append(minute));
     }
 }
+
+
