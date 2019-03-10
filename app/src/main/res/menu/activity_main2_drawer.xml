@@ -22,6 +22,11 @@
             android:id="@+id/nav_whatsapp"
             android:icon="@drawable/whatsapp_logo"
             android:title="WhatsApp" />
+        <item
+            android:id="@+id/nav_qr_code"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Task List" />
+
     </group>
 
     <item android:title="Administration">

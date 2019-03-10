@@ -17,6 +17,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.hardware.camera" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +38,7 @@
             android:name=".Others.HoursReviewActivity"
             android:label="Hours Review Details "
             android:theme="@style/AppTheme.NoActionBar" />
+        <!-- android:theme="@style/AppTheme.NoActionBar" -->
         <activity
             android:name=".Project.CreateProjectDetails"
             android:label="@string/create_project"
@@ -92,8 +95,12 @@
 
         <activity android:name=".WorkingOrders.MyWorkingOrderDetails" />
         <activity android:name=".WorkingOrders.WOResources" />
+
         <activity
             android:name=".Others.CreateComplaint"
             android:label="Create Complaint" />
+
+        <activity android:name=".Others.QRScanActivity" />
     </application>
+
 </manifest>

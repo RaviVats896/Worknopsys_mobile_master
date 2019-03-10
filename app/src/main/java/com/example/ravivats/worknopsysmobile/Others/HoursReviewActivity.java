@@ -95,7 +95,7 @@ public class HoursReviewActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"abc@gmail.com"});
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{"abc@gmail.com"});
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
@@ -471,6 +471,8 @@ public class HoursReviewActivity extends AppCompatActivity
             sendIntent.setType("text/plain");
             sendIntent.setPackage("com.whatsapp");
             startActivity(sendIntent);
+        } else if (id == R.id.nav_qr_code) {
+            startActivity(new Intent(HoursReviewActivity.this, QRScanActivity.class));
         } else if (id == R.id.nav_create_customer) {
             startActivity(new Intent(HoursReviewActivity.this, CreateCustomer.class));
         } else if (id == R.id.nav_create_complaint) {

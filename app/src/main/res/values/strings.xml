@@ -60,4 +60,5 @@
         <item>In process</item>
         <item>Completed</item>
     </string-array>
+    <string name="title_activity_qrcode_info">QRCodeInfoActivity</string>
 </resources>
