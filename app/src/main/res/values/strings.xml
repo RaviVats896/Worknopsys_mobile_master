@@ -61,4 +61,6 @@
         <item>Completed</item>
     </string-array>
     <string name="title_activity_qrcode_info">QRCodeInfoActivity</string>
+    <string name="scannedContents">Scanned contents:</string>
+    <string name="qr_code_scanned_results">QR Code Scanned Results</string>
 </resources>

@@ -5,21 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Others.QRScanActivity">
+
     <TextView
         android:id="@+id/qr_code_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="QR Code Result" />
+        android:text="@string/qr_code_scanned_results"
+        android:textColor="@color/colorPrimary"
+        android:enabled="false"/>
+
+    <ListView
+        android:id="@+id/qrCodeInfoList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qr_code_text"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/scan_new_qr_code"
-        android:layout_margin="@dimen/fab_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_add_black_24dp" />
 
 </RelativeLayout>
