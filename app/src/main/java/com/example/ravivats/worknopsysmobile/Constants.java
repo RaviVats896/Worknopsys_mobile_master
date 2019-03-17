@@ -1,8 +1,8 @@
 package com.example.ravivats.worknopsysmobile;
 
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
-import com.example.ravivats.worknopsysmobile.domain.Employee;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Employee;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 import org.json.JSONArray;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

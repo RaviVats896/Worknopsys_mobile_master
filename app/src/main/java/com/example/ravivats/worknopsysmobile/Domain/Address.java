@@ -1,5 +1,5 @@
 
-package com.example.ravivats.worknopsysmobile.domain;
+package com.example.ravivats.worknopsysmobile.Domain;
 
 import java.io.Serializable;
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 
 import java.util.ArrayList;
 import java.util.Map;

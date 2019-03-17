@@ -1,8 +1,6 @@
-package com.example.ravivats.worknopsysmobile.domain;
+package com.example.ravivats.worknopsysmobile.Domain;
 
 
-
-import java.io.Serializable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

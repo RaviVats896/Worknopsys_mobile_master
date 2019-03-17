@@ -38,10 +38,10 @@ import com.example.ravivats.worknopsysmobile.Customer.ViewCustomers;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
-import com.example.ravivats.worknopsysmobile.domain.Customer;
-import com.example.ravivats.worknopsysmobile.domain.Task;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Customer;
+import com.example.ravivats.worknopsysmobile.Domain.Task;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

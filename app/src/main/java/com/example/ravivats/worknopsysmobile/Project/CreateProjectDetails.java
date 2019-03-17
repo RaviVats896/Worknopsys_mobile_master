@@ -28,10 +28,9 @@ import com.example.ravivats.worknopsysmobile.DatePickerFragment;
 import com.example.ravivats.worknopsysmobile.Others.CreateComplaint;
 import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
-import com.example.ravivats.worknopsysmobile.WorkingOrders.ManagementWorkingOrders;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
 
 public class CreateProjectDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
     EditText cpDetailsStartDatePickerBtn, cpDetailsCustName, cpDetailsProjName, cpDetailsStreet, cpDetailsCity, cpDetailsZip;
