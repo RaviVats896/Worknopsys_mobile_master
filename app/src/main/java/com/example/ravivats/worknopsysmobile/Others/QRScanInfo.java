@@ -1,6 +1,8 @@
 package com.example.ravivats.worknopsysmobile.Others;
 
-public class QRScanInfo {
+import java.io.Serializable;
+
+public class QRScanInfo implements Serializable {
     private String imageUrl;
     private String description;
 
