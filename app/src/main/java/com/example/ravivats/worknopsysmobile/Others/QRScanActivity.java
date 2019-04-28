@@ -38,14 +38,15 @@ public class QRScanActivity extends AppCompatActivity {
     private final static String QR_CODE_DESCRIPTION = "desc";
     private final static String QR_CODE_IMAGE_URL = "url";
     private List<QRScanInfo> tempList = new ArrayList<>();
-    Context context = getApplicationContext();
-    TinyDB tinydb = new TinyDB(context);
+    TinyDB tinydb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrscan);
         qrCodeInfoList = (ListView) findViewById(R.id.qrCodeInfoList);
+        Context context = getApplicationContext();
+        tinydb = new TinyDB(context);
 
         ArrayList<String> tempScannedStringList = tinydb.getListString(getString(R.string.shared_pref_QR_code_string_list_key));
         if (tempScannedStringList != null) {
