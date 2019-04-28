@@ -95,12 +95,11 @@
 
         <activity android:name=".WorkingOrders.MyWorkingOrderDetails" />
         <activity android:name=".WorkingOrders.WOResources" />
-
         <activity
             android:name=".Others.CreateComplaint"
             android:label="Create Complaint" />
-
         <activity android:name=".Others.QRScanActivity" />
+        <activity android:name=".Others.QRResourcesDisplay"></activity>
     </application>
 
 </manifest>

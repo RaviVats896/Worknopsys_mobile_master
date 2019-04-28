@@ -3,13 +3,13 @@ package com.example.ravivats.worknopsysmobile.Others;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -34,9 +34,13 @@ public class QRScanActivity extends AppCompatActivity {
     private IntentIntegrator qrScan;
     private List<String> qrScannedStringList = new ArrayList<>();
     private ListView qrCodeInfoList;
-    private List<List<QRScanInfo>> qrScannedInfoList = new ArrayList<>();
+    private List<String> qrScannedInfoList = new ArrayList<>();
     private final static String QR_CODE_DESCRIPTION = "desc";
     private final static String QR_CODE_IMAGE_URL = "url";
+    private final static String SMALL_SEPARATOR = "@~qsmlsprtr~@";
+    private final static String BIG_SEPARATOR = "@~qbgsprtr~@";
+    public final static String QR_IMAGE_INFO_PREFIX = "@~ImageURL~@:";
+    public final static String QR_DESC_INFO_PREFIX = "@~ImageDesc~@:";
     private List<QRScanInfo> tempList = new ArrayList<>();
     TinyDB tinydb;
 
@@ -48,6 +52,32 @@ public class QRScanActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         tinydb = new TinyDB(context);
 
+        qrCodeInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayList<String> qrScanInfoTempList = new ArrayList<>();
+                if (qrScannedInfoList.get(i) != null) {
+
+                    String qrTempString = qrScannedInfoList.get(i);
+                    // Log.d("QRScanActivity", "qrTempString" + qrTempString);
+                    String[] qrScanInfoList = qrTempString.split(BIG_SEPARATOR);
+                    for (String qrScanInfo : qrScanInfoList) {
+                        // Log.d("QRScanActivity", "qrScanInfo" + qrScanInfo);
+                        if (qrScanInfo.length() > 1) {
+                            String[] allInfo = qrScanInfo.split(SMALL_SEPARATOR);
+                            if (allInfo.length == 1)
+                                qrScanInfoTempList.add(QR_IMAGE_INFO_PREFIX + allInfo[0]);
+                            else if (allInfo.length == 2) {
+                                qrScanInfoTempList.add(QR_IMAGE_INFO_PREFIX + allInfo[0]);
+                                qrScanInfoTempList.add(QR_DESC_INFO_PREFIX + allInfo[1]);
+                            }
+                        }
+                    }
+                }
+                startActivity(new Intent(QRScanActivity.this, QRResourcesDisplay.class).putStringArrayListExtra("qrScanInfoList", qrScanInfoTempList));
+            }
+        });
+
         ArrayList<String> tempScannedStringList = tinydb.getListString(getString(R.string.shared_pref_QR_code_string_list_key));
         if (tempScannedStringList != null) {
             if (tempScannedStringList.size() > 0) {
@@ -56,7 +86,7 @@ public class QRScanActivity extends AppCompatActivity {
             }
         }
 
-        List<List<QRScanInfo>> tempScannedInfoList = tinydb.getOwnListObject(getString(R.string.shared_pref_QR_code_list_key));
+        ArrayList<String> tempScannedInfoList = tinydb.getListString(getString(R.string.shared_pref_QR_code_list_key));
         if (tempScannedInfoList != null) {
             if (tempScannedInfoList.size() > 0) {
                 qrScannedInfoList.clear();
@@ -77,7 +107,10 @@ public class QRScanActivity extends AppCompatActivity {
 
     private void updateListView() {
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, qrScannedStringList);
+
+
         qrCodeInfoList.setAdapter(adapter);
+
     }
 
     // Getting the scan results
@@ -108,11 +141,14 @@ public class QRScanActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     List<QRScanInfo> qrScannedSingleInfo = new ArrayList<>();
                                     try {
+                                        String tempString = "";
                                         for (int i = 0; i < resultJsonArray.length(); i++) {
                                             qrScannedSingleInfo.add(new QRScanInfo(resultJsonArray.getJSONObject(i).getString(QR_CODE_IMAGE_URL), resultJsonArray.getJSONObject(i).getString(QR_CODE_DESCRIPTION)));
+                                            tempString += resultJsonArray.getJSONObject(i).getString(QR_CODE_IMAGE_URL) + SMALL_SEPARATOR + resultJsonArray.getJSONObject(i).getString(QR_CODE_DESCRIPTION) + BIG_SEPARATOR;
                                         }
-                                        qrScannedInfoList.add(qrScannedSingleInfo);
-                                        tinydb.putOwnListObject(getString(R.string.shared_pref_QR_code_list_key), qrScannedInfoList);
+                                        // Log.d("QRScanActivity", "TempString" + tempString);
+                                        qrScannedInfoList.add(tempString);
+                                        tinydb.putListString(getString(R.string.shared_pref_QR_code_list_key), qrScannedInfoList);
                                         if (qrScannedSingleInfo.size() == 1)
                                             qrScannedStringList.add("Scanned QR Code " + (qrScannedStringList.size() + 1) + ": " + qrScannedSingleInfo.get(0).getDescription());
                                         else if (qrScannedSingleInfo.size() >= 2)
