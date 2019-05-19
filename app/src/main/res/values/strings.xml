@@ -66,4 +66,5 @@
     <string name="scannedContents">Scanned contents:</string>
     <string name="qr_code_scanned_results">QR Code Scanned Results</string>
     <string name="qr_code_scanned_resources">Scanned Resources</string>
+    <string name="scanned_resource_list">Scanned Resources:</string>
 </resources>

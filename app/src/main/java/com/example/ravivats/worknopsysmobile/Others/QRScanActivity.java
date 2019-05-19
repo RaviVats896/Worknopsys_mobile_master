@@ -41,7 +41,6 @@ public class QRScanActivity extends AppCompatActivity {
     private final static String BIG_SEPARATOR = "@~qbgsprtr~@";
     public final static String QR_IMAGE_INFO_PREFIX = "@~ImageURL~@:";
     public final static String QR_DESC_INFO_PREFIX = "@~ImageDesc~@:";
-    private List<QRScanInfo> tempList = new ArrayList<>();
     TinyDB tinydb;
 
     @Override
@@ -55,7 +54,8 @@ public class QRScanActivity extends AppCompatActivity {
         qrCodeInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ArrayList<String> qrScanInfoTempList = new ArrayList<>();
+                ArrayList<String> qrScanImageInfoTempList = new ArrayList<>();
+                ArrayList<String> qrScanDescInfoTempList = new ArrayList<>();
                 if (qrScannedInfoList.get(i) != null) {
 
                     String qrTempString = qrScannedInfoList.get(i);
@@ -65,16 +65,20 @@ public class QRScanActivity extends AppCompatActivity {
                         // Log.d("QRScanActivity", "qrScanInfo" + qrScanInfo);
                         if (qrScanInfo.length() > 1) {
                             String[] allInfo = qrScanInfo.split(SMALL_SEPARATOR);
-                            if (allInfo.length == 1)
-                                qrScanInfoTempList.add(QR_IMAGE_INFO_PREFIX + allInfo[0]);
-                            else if (allInfo.length == 2) {
-                                qrScanInfoTempList.add(QR_IMAGE_INFO_PREFIX + allInfo[0]);
-                                qrScanInfoTempList.add(QR_DESC_INFO_PREFIX + allInfo[1]);
+                            if (allInfo.length == 1) {
+                                qrScanImageInfoTempList.add(allInfo[0]);
+                                qrScanDescInfoTempList.add("No description provided");
+                            } else if (allInfo.length == 2) {
+                                qrScanImageInfoTempList.add(allInfo[0]);
+                                qrScanDescInfoTempList.add(allInfo[1]);
                             }
                         }
                     }
                 }
-                startActivity(new Intent(QRScanActivity.this, QRResourcesDisplay.class).putStringArrayListExtra("qrScanInfoList", qrScanInfoTempList));
+                startActivity(new Intent(QRScanActivity.this, QRResourcesDisplay.class)
+                        .putStringArrayListExtra("qrScanImageInfoList", qrScanImageInfoTempList)
+                        .putStringArrayListExtra("qrScanDescInfoList", qrScanDescInfoTempList));
+
             }
         });
 
@@ -106,9 +110,7 @@ public class QRScanActivity extends AppCompatActivity {
     }
 
     private void updateListView() {
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, qrScannedStringList);
-
-
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrScannedStringList);
         qrCodeInfoList.setAdapter(adapter);
 
     }
