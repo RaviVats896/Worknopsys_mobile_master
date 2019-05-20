@@ -58,7 +58,7 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
     EditText woResourcesImageDesc1, woResourcesImageDesc2, woResourcesImageDesc3, woResourcesWorkDate, woResourcesPName;
     Button woResourcesNxtBtn;
     String userChosenTask;
-    String picLocation1 = "", picLocation2 = "", picLocation3 = "", picId;
+    String picLocation1 = "", picLocation2 = "", picLocation3 = "", picId1 = "", picId2 = "", picId3 = "";
     ArrayList<WorkingOrder> workingOrders;
     WorkingOrder workingOrder;
 
@@ -87,7 +87,7 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
 
         woResourcesPName.setText(Constants.getEMPLOYEE().getFirstName() + " " + Constants.getEMPLOYEE().getLastName());
         workingOrderIndex = getIntent().getIntExtra("woPosition", 0);
-        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = new ArrayList<>();
         workingOrders = Constants.getWorkingOrders();
         workingOrder = workingOrders.get(workingOrderIndex);
 
@@ -149,11 +149,11 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
             @Override
             public void onClick(View v) {
                 try {
-                    picId = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime();
-                    Log.e("picID", picId);
+                    picId1 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_1";
+                    Log.e("pic Id1", picId1);
                     if (!picLocation1.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation1, ObjectUtils.asMap("public_id", picId));
-                        Toast.makeText(WOResources.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
+                        Map m = cloudinary.uploader().upload(picLocation1, ObjectUtils.asMap("public_id", picId1));
+                        Toast.makeText(WOResources.this, "Resource 1 upload successful", Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
@@ -166,11 +166,11 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
             @Override
             public void onClick(View v) {
                 try {
-                    picId = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime();
-                    Log.e("picID", picId);
+                    picId2 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_2";
+                    Log.e("pic Id2", picId2);
                     if (!picLocation2.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation2, ObjectUtils.asMap("public_id", picId));
-                        Toast.makeText(WOResources.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
+                        Map m = cloudinary.uploader().upload(picLocation2, ObjectUtils.asMap("public_id", picId2));
+                        Toast.makeText(WOResources.this, "Resource 2 upload successful", Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
@@ -183,11 +183,11 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
             @Override
             public void onClick(View v) {
                 try {
-                    picId = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime();
-                    Log.e("picID", picId);
+                    picId3 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_3";
+                    Log.e("pic Id3", picId3);
                     if (!picLocation3.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation3, ObjectUtils.asMap("public_id", picId));
-                        Toast.makeText(WOResources.this, "Upload Successful.", Toast.LENGTH_SHORT).show();
+                        Map m = cloudinary.uploader().upload(picLocation3, ObjectUtils.asMap("public_id", picId3));
+                        Toast.makeText(WOResources.this, "Resource 3 upload successful", Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
@@ -235,15 +235,15 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
                         }) {
                     @Override
                     protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
+                        Map<String, String> params = new HashMap<>();
                         params.put("employee", Constants.getEMPLOYEE().getId());
                         params.put("wo", workingOrder.getId());
                         params.put("startdate", workingOrder.getStartDate());
                         params.put("workdate", woResourcesWorkDate.getText().toString());
                         params.put("pname", woResourcesPName.getText().toString());
-                        params.put("rlist1", picLocation1);
-                        params.put("rlist2", picLocation2);
-                        params.put("rlist3", picLocation3);
+                        params.put("rlist1", picId1);
+                        params.put("rlist2", picId2);
+                        params.put("rlist3", picId3);
                         params.put("rdesc1", woResourcesImageDesc1.getText().toString());
                         params.put("rdesc2", woResourcesImageDesc2.getText().toString());
                         params.put("rdesc3", woResourcesImageDesc3.getText().toString());
