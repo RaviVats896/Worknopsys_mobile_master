@@ -111,19 +111,19 @@ public class HoursReviewActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        taskMap = new HashMap<String, String>();
-        customerMap = new HashMap<String, String>();
-        projectMap = new HashMap<String, String>();
-        taskInvMap = new HashMap<String, String>();
-        customerInvMap = new HashMap<String, String>();
-        projectInvMap = new HashMap<String, String>();
-        categoryMap = new HashMap<String, String>();
-        categoryInvMap = new HashMap<String, String>();
-        cityMap = new HashMap<String, String>();
-        cityInvMap = new HashMap<String, String>();
+        taskMap = new HashMap<>();
+        customerMap = new HashMap<>();
+        projectMap = new HashMap<>();
+        taskInvMap = new HashMap<>();
+        customerInvMap = new HashMap<>();
+        projectInvMap = new HashMap<>();
+        categoryMap = new HashMap<>();
+        categoryInvMap = new HashMap<>();
+        cityMap = new HashMap<>();
+        cityInvMap = new HashMap<>();
         queue = Volley.newRequestQueue(this);
-        customerNameList = new ArrayList<String>();
-        projNameList = new ArrayList<String>();
+        customerNameList = new ArrayList<>();
+        projNameList = new ArrayList<>();
 
         mCal = Calendar.getInstance();
 
@@ -134,12 +134,12 @@ public class HoursReviewActivity extends AppCompatActivity
 
         hoursReviewDateID.setKeyListener(null);
 
-        hoursReviewCustomerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        hoursReviewCustomerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         hoursReviewCustomerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hoursReviewCustomerID.setAdapter(hoursReviewCustomerAdapter);
 
 
-        hoursReviewProjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        hoursReviewProjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         hoursReviewProjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hoursReviewProjectID.setAdapter(hoursReviewProjectAdapter);
 
@@ -216,7 +216,7 @@ public class HoursReviewActivity extends AppCompatActivity
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(KEY_AUTHID, Constants.getEMPLOYEE().getId());
                 return params;
             }
@@ -316,7 +316,7 @@ public class HoursReviewActivity extends AppCompatActivity
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    ArrayList<WorkingOrder> results = new ArrayList<WorkingOrder>();
+                    ArrayList<WorkingOrder> results = new ArrayList<>();
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject last = response.getJSONObject(i);
                         Gson gson = new Gson();
@@ -401,8 +401,6 @@ public class HoursReviewActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -519,7 +517,7 @@ public class HoursReviewActivity extends AppCompatActivity
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
                 params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
 

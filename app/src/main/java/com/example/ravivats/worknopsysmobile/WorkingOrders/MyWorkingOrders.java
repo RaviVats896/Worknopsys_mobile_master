@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
@@ -46,7 +47,7 @@ public class MyWorkingOrders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_working_orders);
-        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = new ArrayList<>();
         workingOrders = Constants.getWorkingOrders();
         taskInvMap = Constants.getTaskInvMap();
         custInvMap = Constants.getCustomerInvMap();
@@ -107,6 +108,11 @@ public class MyWorkingOrders extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(MyWorkingOrders.this, HoursReviewActivity.class));
+    }
+
     private void logoutFunction() {
         StringRequest logoutRequest = new StringRequest(Request.Method.POST, LOGOUT_URL,
                 new Response.Listener<String>() {
@@ -130,7 +136,7 @@ public class MyWorkingOrders extends AppCompatActivity {
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
                 params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
 

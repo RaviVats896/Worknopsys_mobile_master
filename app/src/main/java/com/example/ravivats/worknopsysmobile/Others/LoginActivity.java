@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         loginPersonalNoEditText.getText().clear();
         loginPasswordEditText.getText().clear();
         locationSwitch.setChecked(false);
-        resourceMap = new HashMap<String, String>();
-        resourceInvMap = new HashMap<String, String>();
+        resourceMap = new HashMap<>();
+        resourceInvMap = new HashMap<>();
         Context context = getApplicationContext();
         final SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         h1 = sharedPref.getString(KEY_USERNAME, "--");
@@ -113,12 +113,15 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onErrorResponse(VolleyError error) {
                                         error.printStackTrace();
                                         Toast.makeText(LoginActivity.this, "Request failed! Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, CreateWorkingOrder.class));
+                                        /* * *
+                                         * Used in case of web-server failures to test the application
+                                         * startActivity(new Intent(LoginActivity.this, CreateWorkingOrder.class));
+                                         */
                                     }
                                 }) {
                             @Override
                             protected Map<String, String> getParams() {
-                                Map<String, String> params = new HashMap<String, String>();
+                                Map<String, String> params = new HashMap<>();
                                 params.put(KEY_USERNAME, employeePhone);
                                 params.put(KEY_PASSWORD, employeePassword);
 
@@ -171,7 +174,5 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        return;
-    }
+    public void onBackPressed() {}
 }

@@ -76,10 +76,10 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         custMap = Constants.getCustomerMap();
         projectMap = Constants.getProjectMap();
         // resourceMap = Constants.getResourceMap();
-        taskNameList = new ArrayList<String>();
-        custNameList = new ArrayList<String>();
-        projectNameList = new ArrayList<String>();
-        // resourceNameList = new ArrayList<String>();
+        taskNameList = new ArrayList<>();
+        custNameList = new ArrayList<>();
+        projectNameList = new ArrayList<>();
+        // resourceNameList = new ArrayList<>();
         for (Map.Entry<String, String> pairs : taskMap.entrySet()) {
             String key = pairs.getKey(); //String value = pairs.getValue();
             taskNameList.add(key);
@@ -123,7 +123,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                             }) {
                         @Override
                         protected Map<String, String> getParams() {
-                            Map<String, String> params = new HashMap<String, String>();
+                            Map<String, String> params = new HashMap<>();
                             params.put("startdate", startDate);
                             params.put("task", taskValue);
                             params.put("project", projectValue);
@@ -141,19 +141,19 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
             }
         });
 
-        ArrayAdapter<String> taskSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskNameList);
+        ArrayAdapter<String> taskSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskNameList);
         taskSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoTaskID.setAdapter(taskSpinnerAdapter);
 
-//        ArrayAdapter<String> resourceSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resourceNameList);
+//        ArrayAdapter<String> resourceSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, resourceNameList);
 //        resourceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        createWoResourceID.setAdapter(resourceSpinnerAdapter);
 
-        ArrayAdapter<String> custSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, custNameList);
+        ArrayAdapter<String> custSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, custNameList);
         custSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoCustomerID.setAdapter(custSpinnerAdapter);
 
-        ArrayAdapter<String> projectSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectNameList);
+        ArrayAdapter<String> projectSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, projectNameList);
         projectSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         createWoProjectID.setAdapter(projectSpinnerAdapter);
 
@@ -248,8 +248,11 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {}
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void logoutFunction() {
@@ -275,7 +278,7 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
                 params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
 
