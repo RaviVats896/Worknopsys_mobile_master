@@ -52,15 +52,14 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
     Calendar cal;
     StringRequest resourcesRequest;
     DatePickerDialog.OnDateSetListener woResourcesWorkDateListener;
-    ImageButton woResourcesCamera1Btn, woResourcesUpload1Btn, woResourcesDelete1Btn, woResourcesCamera2Btn,
-            woResourcesUpload2Btn, woResourcesDelete2Btn, woResourcesCamera3Btn, woResourcesUpload3Btn, woResourcesDelete3Btn;
+    ImageButton woResourcesCamera1Btn, woResourcesDelete1Btn, woResourcesCamera2Btn, woResourcesDelete2Btn, woResourcesCamera3Btn, woResourcesDelete3Btn;
     ImageView woResourcesImageView1, woResourcesImageView2, woResourcesImageView3;
     EditText woResourcesImageDesc1, woResourcesImageDesc2, woResourcesImageDesc3, woResourcesWorkDate, woResourcesPName;
     Button woResourcesNxtBtn;
-    String userChosenTask;
-    String picLocation1 = "", picLocation2 = "", picLocation3 = "", picId1 = "", picId2 = "", picId3 = "";
+    String userChosenTask, picLocation1 = "", picLocation2 = "", picLocation3 = "", picId1 = "", picId2 = "", picId3 = "";
     ArrayList<WorkingOrder> workingOrders;
     WorkingOrder workingOrder;
+    Cloudinary cloudinary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +71,9 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         woResourcesCamera1Btn = (ImageButton) findViewById(R.id.wo_resources_camera1);
         woResourcesCamera2Btn = (ImageButton) findViewById(R.id.wo_resources_camera2);
         woResourcesCamera3Btn = (ImageButton) findViewById(R.id.wo_resources_camera3);
-        woResourcesUpload1Btn = (ImageButton) findViewById(R.id.wo_resources_upload1);
-        woResourcesUpload2Btn = (ImageButton) findViewById(R.id.wo_resources_upload2);
-        woResourcesUpload3Btn = (ImageButton) findViewById(R.id.wo_resources_upload3);
+        // woResourcesUpload1Btn = (ImageButton) findViewById(R.id.wo_resources_upload1);
+        // woResourcesUpload2Btn = (ImageButton) findViewById(R.id.wo_resources_upload2);
+        // woResourcesUpload3Btn = (ImageButton) findViewById(R.id.wo_resources_upload3);
         woResourcesDelete1Btn = (ImageButton) findViewById(R.id.wo_resources_delete1);
         woResourcesDelete2Btn = (ImageButton) findViewById(R.id.wo_resources_delete2);
         woResourcesDelete3Btn = (ImageButton) findViewById(R.id.wo_resources_delete3);
@@ -100,7 +99,7 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         config.put("cloud_name", "worknopsys");
         config.put("api_key", "675743786426914");
         config.put("api_secret", "8aoJtViSin-WWv4NF5XLIwf9tnI");
-        final Cloudinary cloudinary = new Cloudinary(config);
+        cloudinary = new Cloudinary(config);
 
         woResourcesImageView1.setImageResource(R.drawable.ic_menu_gallery_black);
         woResourcesImageView2.setImageResource(R.drawable.ic_menu_gallery_black);
@@ -145,56 +144,57 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
                 selectImage();
             }
         });
-        woResourcesUpload1Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    picId1 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_1";
-                    Log.e("pic Id1", picId1);
-                    if (!picLocation1.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation1, ObjectUtils.asMap("public_id", picId1));
-                        Toast.makeText(WOResources.this, "Resource 1 upload successful", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-            }
-        });
 
-        woResourcesUpload2Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    picId2 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_2";
-                    Log.e("pic Id2", picId2);
-                    if (!picLocation2.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation2, ObjectUtils.asMap("public_id", picId2));
-                        Toast.makeText(WOResources.this, "Resource 2 upload successful", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        woResourcesUpload3Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    picId3 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_3";
-                    Log.e("pic Id3", picId3);
-                    if (!picLocation3.equals("")) {
-                        Map m = cloudinary.uploader().upload(picLocation3, ObjectUtils.asMap("public_id", picId3));
-                        Toast.makeText(WOResources.this, "Resource 3 upload successful", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-            }
-        });
+//        woResourcesUpload1Btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try {
+//                    picId1 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_1";
+//                    Log.e("pic Id1", picId1);
+//                    if (!picLocation1.equals("")) {
+//                        Map m = cloudinary.uploader().upload(picLocation1, ObjectUtils.asMap("public_id", picId1));
+//                        Toast.makeText(WOResources.this, "Resource 1 upload successful", Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (IOException e) {
+//                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//
+//        woResourcesUpload2Btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try {
+//                    picId2 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_2";
+//                    Log.e("pic Id2", picId2);
+//                    if (!picLocation2.equals("")) {
+//                        Map m = cloudinary.uploader().upload(picLocation2, ObjectUtils.asMap("public_id", picId2));
+//                        Toast.makeText(WOResources.this, "Resource 2 upload successful", Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (IOException e) {
+//                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//
+//        woResourcesUpload3Btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try {
+//                    picId3 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_3";
+//                    Log.e("pic Id3", picId3);
+//                    if (!picLocation3.equals("")) {
+//                        Map m = cloudinary.uploader().upload(picLocation3, ObjectUtils.asMap("public_id", picId3));
+//                        Toast.makeText(WOResources.this, "Resource 3 upload successful", Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (IOException e) {
+//                    Toast.makeText(WOResources.this, "Upload failed. Check your internet connection.", Toast.LENGTH_SHORT).show();
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
         woResourcesDelete1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,6 +218,9 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         woResourcesNxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String uploadResult = uploadImages();
+                Toast.makeText(WOResources.this, uploadResult, Toast.LENGTH_SHORT).show();
+
                 resourcesRequest = new StringRequest(Request.Method.POST, RESOURCES_URL,
                         new Response.Listener<String>() {
                             @Override
@@ -256,6 +259,49 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
         });
 
 
+    }
+
+    private String uploadImages(){
+        ArrayList<String> successMessage = new ArrayList<>();
+        ArrayList<String> errorMessage = new ArrayList<>();
+
+        try {
+            picId1 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_1";
+            Log.e("pic Id1", picId1);
+            if (!picLocation1.equals("")) {
+                Map m = cloudinary.uploader().upload(picLocation1, ObjectUtils.asMap("public_id", picId1));
+                successMessage.add("Image 1");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorMessage.add("Image 1");
+        }
+
+        try {
+            picId2 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_2";
+            Log.e("pic Id2", picId2);
+            if (!picLocation2.equals("")) {
+                Map m = cloudinary.uploader().upload(picLocation2, ObjectUtils.asMap("public_id", picId2));
+                successMessage.add("Image 2");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorMessage.add("Image 2");
+        }
+
+        try {
+            picId3 = workingOrder.getId() + Constants.getDate() + "_" + Constants.getTime() + "_pic_3";
+            Log.e("pic Id3", picId3);
+            if (!picLocation3.equals("")) {
+                Map m = cloudinary.uploader().upload(picLocation3, ObjectUtils.asMap("public_id", picId3));
+                successMessage.add("Image 1");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorMessage.add("Image 3");
+        }
+
+        return "Successfully uploaded images: " + successMessage.toString() + ", Failed to upload images: " + errorMessage.toString();
     }
 
     private void selectImage() {
@@ -413,6 +459,10 @@ public class WOResources extends AppCompatActivity implements DatePickerDialog.O
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+    public void onBackPressed() {
+        super.onBackPressed();
     }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {}
 }

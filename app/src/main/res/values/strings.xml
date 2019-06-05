@@ -67,4 +67,7 @@
     <string name="qr_code_scanned_results">QR Code Scanned Results</string>
     <string name="qr_code_scanned_resources">Scanned Resources</string>
     <string name="scanned_resource_list">Scanned Resources:</string>
+    <string name="image_1_description">Image 1 Description</string>
+    <string name="image_2_description">Image 2 Description</string>
+    <string name="image_3_description">Image 3 Description</string>
 </resources>

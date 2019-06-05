@@ -149,8 +149,8 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     for (int i = 2; i < response.length(); i++) {
                                         JSONObject last = response.getJSONObject(i);
-                                        resourceMap.put(last.getString("RListDesc1")+", "+last.getString("RListDesc2")+", "+last.getString("RListDesc3"), last.getString("_id"));
-                                        resourceInvMap.put(last.getString("_id"), last.getString("RListDesc1")+", "+last.getString("RListDesc2")+", "+last.getString("RListDesc3"));
+                                        resourceMap.put(last.getString("RListDesc1") + ", " + last.getString("RListDesc2") + ", " + last.getString("RListDesc3"), last.getString("_id"));
+                                        resourceInvMap.put(last.getString("_id"), last.getString("RListDesc1") + ", " + last.getString("RListDesc2") + ", " + last.getString("RListDesc3"));
                                     }
                                     Constants.setResourceMap(resourceMap);
                                     Constants.setResourceInvMap(resourceInvMap);
@@ -174,5 +174,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {
+    }
 }

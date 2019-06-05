@@ -89,7 +89,7 @@ public class MyWorkingOrders extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.create_working_orders) {
             startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
-        } else if(id == R.id.create_wo_logout){
+        } else if (id == R.id.create_wo_logout) {
             logoutFunction();
         }
         return super.onOptionsItemSelected(item);
@@ -103,7 +103,7 @@ public class MyWorkingOrders extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position",position));
+                startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position", position));
             }
         });
     }
@@ -124,7 +124,6 @@ public class MyWorkingOrders extends AppCompatActivity {
                         } else if (response.equalsIgnoreCase("false")) {
                             Toast.makeText(MyWorkingOrders.this, "Logout failed.", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -150,7 +149,7 @@ public class MyWorkingOrders extends AppCompatActivity {
         ArrayList results = new ArrayList<WorkingOrderObject>();
         for (int index = 0; index < workingOrders.size(); index++) {
             WorkingOrder workingOrder = workingOrders.get(index);
-            WorkingOrderObject obj = new WorkingOrderObject(taskInvMap.get(workingOrder.getTask()), workingOrder.getStartDate(),projectInvMap.get(workingOrder.getProject()),  custInvMap.get(workingOrder.getCustomer()), workingOrder.getAddress());
+            WorkingOrderObject obj = new WorkingOrderObject(taskInvMap.get(workingOrder.getTask()), workingOrder.getStartDate(), projectInvMap.get(workingOrder.getProject()), custInvMap.get(workingOrder.getCustomer()), workingOrder.getAddress());
             results.add(index, obj);
         }
         return results;

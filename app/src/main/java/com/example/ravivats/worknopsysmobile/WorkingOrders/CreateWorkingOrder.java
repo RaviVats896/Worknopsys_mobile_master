@@ -248,7 +248,8 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {}
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+    }
 
     @Override
     public void onBackPressed() {
