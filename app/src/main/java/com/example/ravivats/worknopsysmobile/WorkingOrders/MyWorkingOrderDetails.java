@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_working_order_details);
         workingOrderIndex = getIntent().getIntExtra("position", 0);
-        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = new ArrayList<>();
         workingOrders = Constants.getWorkingOrders();
         workingOrder = workingOrders.get(workingOrderIndex);
         taskInvMap = Constants.getTaskInvMap();
@@ -74,7 +74,6 @@ public class MyWorkingOrderDetails extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         startActivity(new Intent(MyWorkingOrderDetails.this, MyWorkingOrders.class));
     }
 }

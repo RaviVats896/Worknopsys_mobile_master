@@ -34,7 +34,7 @@ import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.WorkingOrders.MyWorkingOrders;
 import com.example.ravivats.worknopsysmobile.Project.CreateProjectDetails;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
 
 import java.util.HashMap;
 import java.util.Map;

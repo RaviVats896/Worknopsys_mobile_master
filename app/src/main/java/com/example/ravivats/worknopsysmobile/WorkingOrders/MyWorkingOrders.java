@@ -19,11 +19,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ravivats.worknopsysmobile.Constants;
+import com.example.ravivats.worknopsysmobile.Others.HoursReviewActivity;
 import com.example.ravivats.worknopsysmobile.Others.LoginActivity;
 import com.example.ravivats.worknopsysmobile.R;
 import com.example.ravivats.worknopsysmobile.WorkingOrderObject;
 import com.example.ravivats.worknopsysmobile.WorkingOrderViewAdapter;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class MyWorkingOrders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_working_orders);
-        workingOrders = new ArrayList<WorkingOrder>();
+        workingOrders = new ArrayList<>();
         workingOrders = Constants.getWorkingOrders();
         taskInvMap = Constants.getTaskInvMap();
         custInvMap = Constants.getCustomerInvMap();
@@ -88,7 +89,7 @@ public class MyWorkingOrders extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.create_working_orders) {
             startActivity(new Intent(MyWorkingOrders.this, CreateWorkingOrder.class));
-        } else if(id == R.id.create_wo_logout){
+        } else if (id == R.id.create_wo_logout) {
             logoutFunction();
         }
         return super.onOptionsItemSelected(item);
@@ -102,9 +103,14 @@ public class MyWorkingOrders extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
-                startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position",position));
+                startActivity(new Intent(MyWorkingOrders.this, MyWorkingOrderDetails.class).putExtra("position", position));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(MyWorkingOrders.this, HoursReviewActivity.class));
     }
 
     private void logoutFunction() {
@@ -118,7 +124,6 @@ public class MyWorkingOrders extends AppCompatActivity {
                         } else if (response.equalsIgnoreCase("false")) {
                             Toast.makeText(MyWorkingOrders.this, "Logout failed.", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -130,7 +135,7 @@ public class MyWorkingOrders extends AppCompatActivity {
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(KEY_USERNAME, Constants.getEMPLOYEE().getPhone());
                 params.put(KEY_PASSWORD, Constants.getEMPLOYEE().getPassword());
 
@@ -144,7 +149,7 @@ public class MyWorkingOrders extends AppCompatActivity {
         ArrayList results = new ArrayList<WorkingOrderObject>();
         for (int index = 0; index < workingOrders.size(); index++) {
             WorkingOrder workingOrder = workingOrders.get(index);
-            WorkingOrderObject obj = new WorkingOrderObject(taskInvMap.get(workingOrder.getTask()), workingOrder.getStartDate(),projectInvMap.get(workingOrder.getProject()),  custInvMap.get(workingOrder.getCustomer()), workingOrder.getAddress());
+            WorkingOrderObject obj = new WorkingOrderObject(taskInvMap.get(workingOrder.getTask()), workingOrder.getStartDate(), projectInvMap.get(workingOrder.getProject()), custInvMap.get(workingOrder.getCustomer()), workingOrder.getAddress());
             results.add(index, obj);
         }
         return results;

@@ -1,8 +1,8 @@
 package com.example.ravivats.worknopsysmobile;
 
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
-import com.example.ravivats.worknopsysmobile.domain.Employee;
-import com.example.ravivats.worknopsysmobile.domain.WorkingOrder;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Employee;
+import com.example.ravivats.worknopsysmobile.Domain.WorkingOrder;
 import org.json.JSONArray;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ import java.util.Map;
 public class Constants {
 
     final static String LOGOUT_URL = "http://207.154.200.101:5000/api/employees/logout";
+    public final static String STRING_SPLITTER = "@q!g,z";
     private static Map<String, String> taskMap, taskInvMap, projectMap, projectInvMap, customerMap, customerInvMap, resourceMap, resourceInvMap, categoryMap, categoryInvMap, cityMap, cityInvMap;
     private static ArrayList<WorkingOrder> workingOrders;
     private static Boolean posLocation, projEnhance;

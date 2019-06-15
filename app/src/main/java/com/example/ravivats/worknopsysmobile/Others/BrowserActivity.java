@@ -33,7 +33,8 @@ public class BrowserActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         initCollapsingToolbar();
-        webView.getSettings().setJavaScriptEnabled(true);
+        // Is enabling JS really needed?
+        // webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(postUrl);
         webView.setHorizontalScrollBarEnabled(false);
         webView.getSettings().setSupportZoom(true);

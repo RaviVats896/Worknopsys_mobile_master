@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Spinner;
 
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.Customer;
+import com.example.ravivats.worknopsysmobile.Domain.Customer;
 import com.google.gson.Gson;
 
 public class CustomerDetails extends AppCompatActivity {

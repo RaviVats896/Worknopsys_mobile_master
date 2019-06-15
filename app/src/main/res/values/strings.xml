@@ -23,6 +23,8 @@
     <string name="share_whatsapp">Download the Worknopsys app to seamlessly manage your work.For more details, visit http://worknopsys.ml:5000/ </string>
     <string name="create_working_orders">Create Working Order</string>
     <string name="preference_file_key">com.example.ravivats.worknopsysmobile.preference_file_key</string>
+    <string name="shared_pref_QR_code_list_key">com.example.ravivats.worknopsysmobile.shared_pref_QR_code_list_key</string>
+    <string name="shared_pref_QR_code_string_list_key">com.example.ravivats.worknopsysmobile.shared_pref_QR_code_string_list_key</string>
     <string name="to_time">TO</string>
     <string name="from_time">FROM</string>
     <string name="submit">SUBMIT</string>
@@ -60,4 +62,12 @@
         <item>In process</item>
         <item>Completed</item>
     </string-array>
+    <string name="title_activity_qrcode_info">QRCodeInfoActivity</string>
+    <string name="scannedContents">Scanned contents:</string>
+    <string name="qr_code_scanned_results">QR Code Scanned Results</string>
+    <string name="qr_code_scanned_resources">Scanned Resources</string>
+    <string name="scanned_resource_list">Scanned Resources:</string>
+    <string name="image_1_description">Image 1 Description</string>
+    <string name="image_2_description">Image 2 Description</string>
+    <string name="image_3_description">Image 3 Description</string>
 </resources>

@@ -8,7 +8,7 @@ import android.widget.Switch;
 
 import com.example.ravivats.worknopsysmobile.Constants;
 import com.example.ravivats.worknopsysmobile.R;
-import com.example.ravivats.worknopsysmobile.domain.Authorization;
+import com.example.ravivats.worknopsysmobile.Domain.Authorization;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 public class AboutActivity extends AppCompatActivity {
