@@ -238,10 +238,13 @@ public class CreateWorkingOrder extends AppCompatActivity implements DatePickerD
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        // if (id == R.id.choose_resources) {
+        // startActivity(new Intent(CreateWorkingOrder.this, ViewCustomers.class));
+        // } else
+
         int id = item.getItemId();
-        if (id == R.id.choose_resources) {
-            //startActivity(new Intent(CreateWorkingOrder.this, ViewCustomers.class));
-        } else if (id == R.id.logout) {
+        if (id == R.id.logout) {
             logoutFunction();
         }
         return super.onOptionsItemSelected(item);
